@@ -1,0 +1,11 @@
+cpu-g (0.10.0-1ubuntu0) wily; urgency=medium
+
+  * Added graphic card info
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Wed, 02 Mar 2016 23:20:00 +0100
+
+cpu-g (0.9.2-1ubuntu0) wily; urgency=medium
+
+  * First release
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Wed, 02 Mar 2016 07:52:47 +0100

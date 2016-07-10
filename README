@@ -1,0 +1,6 @@
+CPU-G 0.9.0
+by Fotis Tsamis <ftsamis@gmail.com>
+
+CPU-G is a python and gtk+ application that shows some useful information about your hardware. It collects and displays information about your CPU, RAM, Motherboard, some general information about your system and more.
+
+Site: http://cpug.sourceforge.net/
