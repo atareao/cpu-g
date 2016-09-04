@@ -3,12 +3,17 @@ Section: utils
 Priority: extra
 Maintainer: Lorenzo Carbonell Cerezo <lorenzo.carbonell.cerezo@gmail.com>
 Build-Depends: debhelper (>= 7.0.50~), python-support, python (>=2.7)
-Standards-Version: 3.8.3
+Standards-Version: 3.8.4
 Homepage: http://www.atareao.es
 
 Package: cpu-g
 Architecture: all
 Depends: ${misc:Depends}, ${python:Depends},
+    python3-gi,
+    python3-matplotlib,
+    python3-psutil,
+    python3-crontab,
+    python3-numpy,
     gir1.2-gtk-3.0,
     gir1.2-gdkpixbuf-2.0,
     mesa-utils
@@ -16,4 +21,3 @@ Description: CPU-G shows useful information about your computer
  CPU-G is an application that shows useful
  information about your CPU, RAM, Motherboard
  and some general information about your system
-

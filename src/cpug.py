@@ -24,243 +24,30 @@
 #    License along with this program.
 #    If not, see <http://www.gnu.org/licenses/>.
 
-import os
-import re
-import sys
-import comun
-import platform
-import subprocess
+import gi
+try:
+    gi.require_version('GLib', '2.0')
+    gi.require_version('Gtk', '3.0')
+except Exception as e:
+    print(e)
+    exit(-1)
 from gi.repository import Gtk
 from gi.repository import GObject
+from gi.repository import GLib
+import os
+import comun
+import time
+import datetime
+import sys
+import numpy
+import decimal
 from comun import _
-
-
-class Investigator():
-
-    def readfile(self, filename):
-        try:
-            f = open(filename, 'r')
-            data = f.read()
-            f.close()
-            return data
-        except Exception as e:
-            print(e)
-            return 'N/A'
-
-    def logo(self, core):
-        model = self.cpuinfo("model", core)
-        vendor = self.cpuinfo("vendor", core)
-        if vendor == 'AMD':
-            label = 'amd.png'
-        elif vendor == 'Intel':
-            label = 'intel.png'
-        # AMDs
-        if re.match("AMD Athlon\(tm\) 64 X2.*", model)\
-                or re.match("AMD Athlon\(tm\) X2.*", model):
-            label = 'AMD-AthlonX2.png'
-        elif re.match("AMD Sempron\(tm\).*", model):
-            label = 'AMD-Sempron.png'
-        elif re.match("Mobile AMD Sempron\(tm\).*", model):
-            label = 'AMD-Sempron-Mobile.png'
-        elif re.match("Dual-Core AMD Opteron\(tm\).*", model)\
-                or re.match("AMD Opteron\(tm\).*", model):
-            label = 'AMD-Opteron.png'
-        elif re.match("AMD Athlon\(tm\) XP.*", model):
-            label = 'AMD-AthlonXP.png'
-        elif re.match("AMD Athlon\(tm\) 64 Processor.*", model):
-            label = 'AMD-Athlon64.png'
-        elif re.match("AMD Phenom\(tm\).*", model):
-            label = 'AMD-Phenom.png'
-        # Intels
-        elif re.match("Intel\(R\) Core\(TM\)2 Duo.*", model):
-            label = 'Intel-Core2Duo.png'
-        elif re.match("Intel\(R\) Core\(TM\)2 Quad.*", model):
-            label = 'Intel-Core2Quad.png'
-        elif re.match("Intel\(R\) Core\(TM\)2 CPU.*", model):
-            label = 'Intel-Core2Quad.png'
-        elif re.match("Intel\(R\) Atom\(TM\) CPU.*", model):
-            label = 'Intel-Atom.png'
-        elif re.match("Intel\(R\) Core\(TM\)2 Extreme CPU.*", model):
-            label = 'Intel-Core2Extreme.png'
-        elif re.match("Intel\(R\) Xeon\(TM\).*", model):
-            label = 'Intel-Xeon.png'
-        elif re.match(".*Pentium II.*", model):
-            label = 'Intel-Pentium2.png'
-        elif re.match("Intel\(R\) Pentium\(R\) Dual CPU.*", model):
-            label = 'Intel-PentiumDual.png'
-        return label
-
-    def hostname(self):
-        ans = self.readfile('/etc/hostname')
-        if ans.endswith('\n'):
-            ans = ans[:-1]
-        return ans
-
-    def cpuinfo(self, var, core=0):
-        info = self.readfile("/proc/cpuinfo")
-
-        if var == 'vendor':
-            vendor = re.findall("vendor_id\s*:\s*(.*)", info)
-            if vendor[core] == 'AuthenticAMD':
-                vendor[core] = 'AMD'
-            elif vendor[core] == 'GenuineIntel':
-                vendor[core] = 'Intel'
-            return vendor[core]
-        elif var == 'corespeed':
-            return re.findall("cpu MHz\s*:\s*(.*)", info)[core] + ' MHz'
-        elif var == 'model':
-            return re.findall("model name\s*:\s*(.*)", info)[core]
-        elif var == 'cache':
-            return re.findall("cache size\s*:\s*(.*)", info)[core]
-        elif var == 'modelnumber':
-            return re.findall("model\s*:\s*(.*)", info)[core]
-        elif var == 'family':
-            return re.findall("cpu family\s*:\s*(.*)", info)[core]
-        elif var == 'stepping':
-            return re.findall("stepping\s*:\s*(.*)", info)[core]
-        elif var == 'coresnum':
-            return str(len(re.findall("processor\s*:\s*(.*)", info)))
-        elif var == 'flags':
-            return re.findall("flags\s*:\s*(.*)", info)[core]
-        elif var == 'bogomips':
-            return re.findall("bogomips\s*:\s*(.*)", info)[core]
-        elif var == 'width':
-            if re.findall(' lm(?![-a-zA-Z0-9_])',
-                          re.findall("flags\s*:(.*)", info)[core]):
-                return '64-bit'
-            else:
-                return '32-bit'
-
-    def sysdevcpu(self, core, level, kind):
-        coresinsysdev = str(
-            len(re.findall("'cpu[0-9]'",
-                           str(os.listdir("/sys/devices/system/cpu/")))))
-        if coresinsysdev == self.cpuinfo('coresnum'):
-            cores_matching = True
-        else:
-            # FIXME: Wrong text. (?)
-            print("Error: Cannot decide if the cores are %s or %s.\n" +
-                  "Using the lowest value as the real cores number." %
-                  (self.cpuinfo('coresnum'), coresinsysdev))
-        path = '/sys/devices/system/cpu/cpu%i/cache/' % (core)
-        indexes = len(
-            re.findall("'index[0-9]*'", str(os.listdir(path))))
-        for index in range(indexes):
-            levelpath = path + 'index%i/level' % (index)
-            typepath = path + 'index%i/type' % (index)
-            size = path + 'index%i/size' % (index)
-        # os.chdir(newpath)
-        if self.readfile(levelpath).strip() == str(level) and\
-                self.readfile(typepath).strip() == kind:
-            return self.readfile(size).strip()
-        elif index == range(indexes)[-1]:
-            return 'N/A'
-
-    def distro(self):
-        try:
-            values = platform.linux_distribution()
-        except AttributeError:
-            values = platform.dist()
-        if len(values) != 0:
-            return "%s %s %s" % (values[0], values[1], values[2])
-        else:
-            return self.readfile('/etc/issue').strip()
-
-    def gccver(self):
-        gcc_version = os.popen('gcc -dumpversion').read().strip()
-        if gcc_version != '':
-            return gcc_version
-        else:
-            return 'N/A'
-
-    def xver(self):
-        command = subprocess.Popen(
-            ['Xorg', '-version'],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-        stdout, stderr = command.communicate()
-        return re.findall("X\.Org X Server (.*)", stderr.decode())[0]
-
-    def raminfo(self):
-        data = self.readfile('/proc/meminfo')
-        values = {'total': int(re.findall('^MemTotal:\s*([0-9]*)',
-                                          data, re.M)[0]) / 1024,
-                  'free': int(re.findall('^MemFree:\s*([0-9]*)',
-                                         data, re.M)[0]) / 1024,
-                  'buffers': int(re.findall('^Buffers:\s*([0-9]*)',
-                                            data, re.M)[0]) / 1024,
-                  'cached': int(re.findall('^Cached:\s*([0-9]*)',
-                                           data, re.M)[0]) / 1024,
-                  'used': 0,
-                  'active': int(re.findall('^Active:\s*([0-9]*)',
-                                           data, re.M)[0]) / 1024,
-                  'inactive': int(re.findall('^Inactive:\s*([0-9]*)',
-                                             data, re.M)[0]) / 1024,
-                  'cached': int(re.findall('^Cached:\s*([0-9]*)',
-                                           data, re.M)[0]) / 1024
-                  }
-        values['free'] = values['free'] + \
-            values['buffers'] + values['cached']
-        values['used'] = values['total'] - values['free']
-        return values
-
-    def mobo(self, var):
-        # var can be: board_vendor, board_name, bios_vendor,
-        # bios_version, bios_date, or chassis_type
-        return self.readfile('/sys/devices/virtual/dmi/id/' + var).strip()
-
-    def uptime(self):
-        total = int(self.readfile('/proc/uptime').split('.')[0])
-        days = int(total / 86400)
-        hours = int((total / 3600) - (days * 24))
-        minutes = int((total / 60) - ((days * 1440) + (hours * 60)))
-        return "%i days, %i hours, %i minutes" % (days, hours, minutes)
-
-    def get_graphic_card_logo(self):
-        card_logo = os.popen("lspci | grep \'VGA\'").read()
-        # Intel
-        if re.findall("Intel\s*", card_logo):
-          label = 'intel.png'
-        # ATI
-        # ATI Technologies replace to ATI. See bug
-        # https://bugs.launchpad.net/cpug/+bug/959115
-        elif re.findall("ATI\s*", card_logo):
-          label = 'ati.png'
-        # nVidia
-        elif re.findall("nVidia\s*", card_logo):
-          label = 'nvidia.png'
-        else:
-          label = 'unknown.png'
-        return os.path.join(comun.GRAPHICCARDDIR, label)
-
-    # Graphic tab
-    def open_gl(self, var):
-        open_gl_ = os.popen('glxinfo').read()
-        print(open_gl_)
-        vga = os.popen("lspci | grep 'VGA' | cut -d ':' -f 3").read()
-        print(vga)
-        if var == 'vendor':
-            if open_gl_ != '':
-                return re.findall("OpenGL vendor string: (.*)", open_gl_)[0]
-            else:
-                return 'N/A'
-        elif var == 'renderer':
-            if open_gl_ != '':
-                return re.findall("OpenGL renderer string: (.*)", open_gl_)[0]
-            else:
-                return 'N/A'
-        elif var == 'version':
-            if open_gl_ != '':
-                return re.findall("OpenGL version string: (.*)", open_gl_)[0]
-            else:
-                return 'N/A'
-        elif var == 'VGA':
-            if vga != '':
-                return vga
-            else:
-                return 'N/A'
-    # End Graphic Tab
-
+from crontab import CronTab
+import getpass
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas
+import matplotlib.ticker as ticker
+from investigator import Investigator
 
 class CPUG(Gtk.Window):
     """Description"""
@@ -632,7 +419,7 @@ class CPUG(Gtk.Window):
         notebook.append_page(vbox4, Gtk.Label.new(_('System')))
         frame41 = Gtk.Frame.new()
         vbox4.pack_start(frame41, True, True, 0)
-        table41 = Gtk.Table(7, 2, False)
+        table41 = Gtk.Table(7, 3, False)
         frame41.add(table41)
         label = Gtk.Label(_('Hostname'))
         label.set_alignment(0, 0.5)
@@ -667,50 +454,92 @@ class CPUG(Gtk.Window):
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
-        label = Gtk.Label(_('Distribution'))
+        label = Gtk.Label(_('GCC Version'))
         label.set_alignment(0, 0.5)
         table41.attach(label, 0, 1, 3, 4,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
-        self.distribution = Gtk.Entry()
-        table41.attach(self.distribution, 1, 2, 3, 4,
-                       xoptions=Gtk.AttachOptions.FILL,
-                       yoptions=Gtk.AttachOptions.FILL,
-                       xpadding=5, ypadding=5)
-        label = Gtk.Label(_('GCC Version'))
-        label.set_alignment(0, 0.5)
-        table41.attach(label, 0, 1, 4, 5,
-                       xoptions=Gtk.AttachOptions.FILL,
-                       yoptions=Gtk.AttachOptions.FILL,
-                       xpadding=5, ypadding=5)
         self.gcc_version = Gtk.Entry()
-        table41.attach(self.gcc_version, 1, 2, 4, 5,
+        table41.attach(self.gcc_version, 1, 2, 3, 4,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         label = Gtk.Label(_('Uptime'))
         label.set_alignment(0, 0.5)
-        table41.attach(label, 0, 1, 5, 6,
+        table41.attach(label, 0, 1, 4, 5,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         self.uptime = Gtk.Entry()
-        table41.attach(self.uptime, 1, 2, 5, 6,
+        table41.attach(self.uptime, 1, 2, 4, 5,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         label = Gtk.Label(_('Xorg version'))
         label.set_alignment(0, 0.5)
-        table41.attach(label, 0, 1, 6, 7,
+        table41.attach(label, 0, 1, 5, 6,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         self.xorg_version = Gtk.Entry()
-        table41.attach(self.xorg_version, 1, 2, 6, 7,
+        table41.attach(self.xorg_version, 1, 2, 5, 6,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Resolution'))
+        label.set_alignment(0, 0.5)
+        table41.attach(label, 0, 1, 6, 7,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.screen_resolution = Gtk.Entry()
+        self.screen_resolution.set_width_chars(50)
+        table41.attach(self.screen_resolution, 1, 2, 6, 7,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Distribution'))
+        label.set_alignment(0, 0.5)
+        table41.attach(label, 0, 1, 7, 8,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.distribution = Gtk.Entry()
+        table41.attach(self.distribution, 1, 2, 7, 8,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Desktop environment'))
+        label.set_alignment(0, 0.5)
+        table41.attach(label, 0, 1, 8, 9,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.desktop_environment = Gtk.Entry()
+        self.desktop_environment.set_width_chars(50)
+        table41.attach(self.desktop_environment, 1, 2, 8, 9,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Window manager'))
+        label.set_alignment(0, 0.5)
+        table41.attach(label, 0, 1, 9, 10,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.window_manager = Gtk.Entry()
+        self.window_manager.set_width_chars(50)
+        table41.attach(self.window_manager, 1, 2, 9, 10,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.distro_logo = Gtk.Image()
+        table41.attach(self.distro_logo, 2, 3, 0, 10,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+
         vbox5 = Gtk.VBox(spacing=5)
         vbox5.set_border_width(5)
         notebook.append_page(vbox5, Gtk.Label.new(_('Graphic')))
@@ -770,28 +599,157 @@ class CPUG(Gtk.Window):
 
         vbox6 = Gtk.VBox(spacing=5)
         vbox6.set_border_width(5)
-        notebook.append_page(vbox6, Gtk.Label.new(_('About')))
-        frame61 = Gtk.Frame.new()
-        vbox6.pack_start(frame61, True, True, 0)
-        table61 = Gtk.Table(9, 1, False)
-        frame61.add(table61)
+        notebook.append_page(vbox6, Gtk.Label.new(_('Battery')))
+
+        frame60 = Gtk.Frame.new()
+        vbox6.pack_start(frame60, True, True, 0)
+        table601 = Gtk.Table(3, 3, False)
+        frame60.add(table601)
+        label = Gtk.Label(_('Monitoring battery?'))
+        label.set_alignment(0, 0.5)
+        table601.attach(label, 0, 1, 0, 1,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.monitor_battery = Gtk.Switch()
+        self.monitor_battery.set_active(self.is_monitor_battery_activated())
+        table601.attach(self.monitor_battery, 0, 1, 1, 2,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.monitor_battery.connect('state-set',
+                                     self.on_monitor_battery_activate)
+        frame611 = Gtk.Frame.new()
+        vbox6.pack_start(frame611, True, True, 0)
+        table611 = Gtk.Table(3, 3, False)
+        frame611.add(table611)
+        label = Gtk.Label(_('Manufacturer'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 0, 1, 0, 1,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.battery_manufacturer = Gtk.Entry()
+        self.battery_manufacturer.set_width_chars(50)
+        table611.attach(self.battery_manufacturer, 1, 2, 0, 1,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Model name'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 0, 1, 1, 2,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.battery_model_name = Gtk.Entry()
+        self.battery_model_name.set_width_chars(50)
+        table611.attach(self.battery_model_name, 1, 2, 1, 2,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Serial number'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 0, 1, 2, 3,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.battery_serial_number = Gtk.Entry()
+        self.battery_serial_number.set_width_chars(50)
+        table611.attach(self.battery_serial_number, 1, 2, 2, 3,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Technology'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 0, 1, 3, 4,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.battery_technology = Gtk.Entry()
+        self.battery_technology.set_width_chars(50)
+        table611.attach(self.battery_technology, 1, 2, 3, 4,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Estimated time remaining'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 0, 1, 4, 5,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.battery_estimated_duration = Gtk.Entry()
+        self.battery_estimated_duration.set_width_chars(50)
+        table611.attach(self.battery_estimated_duration, 1, 2, 4, 5,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Estimated battery discharge time'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 0, 1, 5, 6,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.battery_data2 = Gtk.Entry()
+        self.battery_data2.set_width_chars(50)
+        table611.attach(self.battery_data2, 1, 2, 5, 6,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Battery level'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 0, 1, 6, 8,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.battery_level_value = Gtk.Entry()
+        self.battery_level_value.set_width_chars(50)
+        table611.attach(self.battery_level_value, 1, 2, 6, 7,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+        self.battery_level = Gtk.LevelBar()
+        self.battery_level.set_min_value(0)
+        self.battery_level.set_max_value(100)
+        self.battery_level.set_value(50)
+        table611.attach(self.battery_level, 1, 2, 7, 8,
+                       xoptions=Gtk.AttachOptions.FILL,
+                       yoptions=Gtk.AttachOptions.FILL,
+                       xpadding=5, ypadding=5)
+
+        # add graph
+        self.fig = Figure(figsize=(20,20), dpi=80)
+        self.ax = self.fig.add_subplot(111)
+        self.canvas = FigureCanvas(self.fig)
+        self.canvas.set_size_request(500,300)
+        vbox6.pack_start(self.canvas, True, True, 0)
+        self.liststore = Gtk.ListStore(float, float)
+        self.liststore.append([2.35, 2.40])
+        self.liststore.append([3.45, 4.70])
+
+        vbox99 = Gtk.VBox(spacing=5)
+        vbox99.set_border_width(5)
+        notebook.append_page(vbox99, Gtk.Label.new(_('About')))
+        frame991 = Gtk.Frame.new()
+        vbox99.pack_start(frame991, True, True, 0)
+        table991 = Gtk.Table(9, 1, False)
+        frame991.add(table991)
         logo = Gtk.Image()
         logo.set_from_file(comun.ICON)
-        table61.attach(logo, 0, 1, 0, 1,
+        table991.attach(logo, 0, 1, 0, 1,
                        xoptions=Gtk.AttachOptions.EXPAND,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         label = Gtk.Label()
         label.set_markup('<span color="black" font_desc="Ubuntu 32">%s</span>'
                          % ('<b>CPU-G</b>'))
-        table61.attach(label, 0, 1, 1, 2,
+        table991.attach(label, 0, 1, 1, 2,
                        xoptions=Gtk.AttachOptions.EXPAND,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         label = Gtk.Label()
-        label.set_markup('<span font_desc="Ubuntu 18">%s</span>'
+        label.set_markup('<span font_desc="Ubuntu 16">%s</span>'
                          % (comun.VERSION))
-        table61.attach(label, 0, 1, 2, 3,
+        table991.attach(label, 0, 1, 2, 3,
                        xoptions=Gtk.AttachOptions.EXPAND,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
@@ -803,32 +761,143 @@ and some general information about your system
         label = Gtk.Label()
         label.set_markup('<span font_desc="Ubuntu 14">%s</span>'
                          % (cpug_description))
-        table61.attach(label, 0, 1, 3, 4,
+        table991.attach(label, 0, 1, 3, 4,
                        xoptions=Gtk.AttachOptions.EXPAND,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         mcopyright = """
-Copyright © 2009-2010 Fotis Tsamis <ftsamis@gmail.com>
-Michael Schmöller <schmoemi@users.sourceforge.net>
-Copyright © 2012 Michał Głowienka <eloaders@yahoo.com>
+Copyright © 2009-2010 Fotis Tsamis
+Michael Schmöller
+Copyright © 2012 Michał Głowienka
 Copyright © 2012 Michał Olber
 Copyright © 2016 Lorenzo Carbonell
 """
         label = Gtk.Label()
         label.set_markup('<span font_desc="Ubuntu 12">%s</span>'
                          % (mcopyright))
-        table61.attach(label, 0, 1, 4, 8,
+        table991.attach(label, 0, 1, 4, 8,
                        xoptions=Gtk.AttachOptions.EXPAND,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         label = Gtk.LinkButton(uri='http://www.atareao.es')
         label.set_label('http://www.atareao.es')
-        table61.attach(label, 0, 1, 8, 9,
+        table991.attach(label, 0, 1, 8, 9,
                        xoptions=Gtk.AttachOptions.EXPAND,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
+        self.ram_updater = 0
+        self.uptime_updater = 0
+        self.battery_updater = 0
         self.update_info()
+        if self.is_monitor_battery_activated():
+            self.read_data_for_battery_plot()
         self.show_all()
+
+    def read_data_for_battery_plot(self):
+        if os.path.exists('/var/tmp/monitor_battery.log'):
+            reader = open('/var/tmp/monitor_battery.log', 'r')
+            data = list(reversed(list(reader)))
+            reader.close()
+            if len(data) > 3:
+                data = data[:288]
+                ctime = int(time.time())
+                result = []
+                for adata in data:
+                    current = int(adata[-4:-2])
+                    result.append([ctime, current])
+                    ctime = ctime - 300
+                result = list(reversed(result))
+                minx = -1
+                maxx = -1
+                self.liststore.clear()
+                for element in result:
+                    self.liststore.append(element)
+                    if element[0] < minx or minx == -1:
+                        minx = element[0]
+                    if element[0] > maxx or maxx == -1:
+                        maxx = element[0]
+                self.ax.cla()
+                self.ax.set_xlim(minx, maxx)
+                self.ax.set_ylim(-10, 110)
+                self.ax.grid(True)
+
+                def format_date(x, pos=None):
+                    ltime = time.localtime(x)
+                    return time.strftime('%H:%M', ltime)
+
+                self.ax.xaxis.set_major_formatter(
+                    ticker.FuncFormatter(format_date))
+                self.fig.autofmt_xdate()
+                for row in self.liststore:
+                    self.ax.scatter(row[:1], row[1:],
+                                    marker='.', s=50, linewidths=1)
+                self.fig.canvas.draw()
+                return True
+            return False
+
+    def get_battery_duration(self):
+        if self.read_data_for_battery_plot():
+            inv = Investigator()
+            if inv.battery_info('status').lower() == 'discharging' and\
+                    self.is_monitor_battery_activated():
+                reader = open('/var/tmp/monitor_battery.log', 'r')
+                data = reversed(list(reader))
+                gdata = []
+                previous = 0
+                for line in data:
+                    current = int(line[-4:-2])
+                    if current >= previous:
+                        print(current)
+                        gdata.append(current)
+                    else:
+                        break
+                    previous = current
+                result = []
+                ctime = int(time.time())
+                current_level = gdata[0]
+                for adata in gdata:
+                    result.append([ctime, adata])
+                    ctime = ctime - 300
+                result = list(reversed(result))
+                previous = -1
+                count = 0
+                first = result[0][1]
+                for element in result[1:]:
+                    current = element[1]
+                    if first == current:
+                        count += 1
+                    else:
+                        break
+                result = result[count:]
+                #
+                M = numpy.empty([len(result), 2])
+                YA = numpy.empty([len(result), 1])
+                for index, row in enumerate(result):
+                    x = decimal.Decimal(row[0])
+                    y = decimal.Decimal(row[1])
+                    YA[index, 0] = decimal.Decimal(y)
+                    M[index, 0] = 1
+                    M[index, 1] = decimal.Decimal(x)
+                # pseudoinversa
+                # MS = (AT x A)^-1 x AT
+                A = numpy.mat(M.copy())
+                AT = A.T
+                #ATA = numpy.dot(AT,A)
+                ATA = AT * A
+                ATAI = ATA.I
+                MS = numpy.dot(ATAI,AT)
+                Y = numpy.mat(YA.copy())
+                ANS = MS * Y
+                a = ANS[0]
+                b = ANS[1]
+                value = int(-a/b)
+                self.battery_estimated_duration.set_text(
+                    str(datetime.timedelta(seconds=(int(value - time.time())))))
+                self.battery_data2.set_text(time.strftime('%H:%M:%S',
+                                            time.localtime(value)))
+                self.battery_level_value.set_text('%s %%' % current_level)
+                self.battery_level.set_value(current_level)
+        return True
 
     def uptime_update(self):
         self.uptime.set_text(Investigator().uptime())
@@ -848,6 +917,9 @@ Copyright © 2016 Lorenzo Carbonell
 
     def close_application(self, widget):
         print("Quit")
+        self.stop_ram_updater()
+        self.stop_uptime_updater()
+        self.stop_battery_updater()
         sys.exit(0)
 
     def on_core_changed(self, widget):
@@ -869,22 +941,71 @@ Copyright © 2016 Lorenzo Carbonell
         self.bios_vendor.set_text(inv.mobo('bios_vendor'))
         self.bios_version.set_text(inv.mobo('bios_version'))
         self.bios_date.set_text(inv.mobo('bios_date'))
-        self.ram_update()
-        GObject.timeout_add(1000, self.ram_update)
-        self.uptime_update()
-        GObject.timeout_add(1000 * 60, self.uptime_update)
         self.hostname.set_text(os.uname()[1])
         self.architecture.set_text(os.uname()[4])
         self.kernel.set_text(os.uname()[2])
         self.xorg_version.set_text(inv.xver())
+        self.screen_resolution.set_text(inv.resolution())
+        self.desktop_environment.set_text(inv.desktop_environment())
+        self.window_manager.set_text(inv.get_window_manager())
         self.gcc_version.set_text(inv.gccver())
         self.distribution.set_text(inv.distro())
+        distro_logo = inv.get_distro_logo()
+        if distro_logo is not None:
+            print(distro_logo)
+            self.distro_logo.set_from_file(distro_logo)
         #
         self.graphic_controller.set_text(inv.open_gl('VGA'))
         self.opengl_vendor.set_text(inv.open_gl('vendor'))
         self.opengl_renderer.set_text(inv.open_gl('renderer'))
         self.opengl_version.set_text(inv.open_gl('version'))
         self.graphic_card_logo.set_from_file(inv.get_graphic_card_logo())
+        #
+        self.battery_manufacturer.set_text(inv.battery_info('manufacturer'))
+        self.battery_model_name.set_text(inv.battery_info('model_name'))
+        self.battery_serial_number.set_text(inv.battery_info('serial_number'))
+        self.battery_technology.set_text(inv.battery_info('technology'))
+        #
+        self.start_ram_updater()
+        self.start_uptime_update()
+        if self.is_monitor_battery_activated():
+            self.start_battery_updater()
+        else:
+            self.stop_battery_updater()
+
+    def start_ram_updater(self):
+        if self.ram_updater > 0:
+            GLib.source_remove(self.ram_updater)
+        self.ram_update()
+        self.ram_updater = GLib.timeout_add_seconds(1, self.ram_update)
+
+    def stop_ram_updater(self):
+        if self.ram_updater > 0:
+            GLib.source_remove(self.ram_updater)
+            self.ram_updater = 0
+
+    def start_uptime_update(self):
+        if self.uptime_updater > 0:
+            GLib.source_remove(self.uptime_updater)
+        self.uptime_update()
+        self.uptime_updater = GLib.timeout_add_seconds(60, self.uptime_update)
+
+    def stop_uptime_updater(self):
+        if self.uptime_updater > 0:
+            GLib.source_remove(self.uptime_updater)
+            self.uptime_updater = 0
+
+    def start_battery_updater(self):
+        if self.battery_updater > 0:
+            GLib.source_remove(self.battery_updater)
+        self.get_battery_duration()
+        self.battery_updater = GLib.timeout_add_seconds(
+            300, self.get_battery_duration)
+
+    def stop_battery_updater(self):
+        if self.battery_updater > 0:
+            GLib.source_remove(self.battery_updater)
+            self.battery_updater = 0
 
     def update_info_for_core(self, i):
         inv = Investigator()
@@ -901,9 +1022,39 @@ Copyright © 2016 Lorenzo Carbonell
         self.l1instruction.set_text(inv.sysdevcpu(i, 1, 'Instruction'))
         self.level2.set_text(inv.sysdevcpu(i, 2, 'Unified'))
         self.level3.set_text(inv.sysdevcpu(i, 3, 'Unified'))
-        print(os.path.join(comun.LOGOSDIR,inv.logo(i)))
         self.processor_image.set_from_file(os.path.join(comun.LOGOSDIR,
                                                         inv.logo(i)))
+
+    def on_monitor_battery_activate(self, widget, status):
+        print(widget, status)
+        cron = CronTab(user=True)
+        cron.remove_all(command=comun.BATTERY_MONITOR)
+        cron.write()
+        if status:
+            job = cron.new(command=comun.BATTERY_MONITOR,
+                           comment='--monitor-battery-cpu-g--')
+            job.minute.every(5)
+            job.enable()
+            cron.write()
+            self.battery_level.set_visible(True)
+            self.canvas.set_visible(True)
+            self.get_battery_duration()
+        else:
+            self.battery_estimated_duration.set_text('--')
+            self.battery_data2.set_text('--')
+            self.battery_level_value.set_text('--')
+            self.battery_level.set_visible(False)
+            self.canvas.set_visible(False)
+
+
+    def is_monitor_battery_activated(self):
+        cron = CronTab(user=True)
+        print(0)
+        for job in cron:
+            print(1, job)
+            if job.is_enabled():
+                return True
+        return False
 
 
 def redon(value):
@@ -925,44 +1076,6 @@ def get_selected_value_in_combo(combo):
 
 
 if __name__ == '__main__':
-    import psutil
-    print(psutil.cpu_times())
-    print(psutil.cpu_count())
-    print(psutil.virtual_memory())
-    print(psutil.swap_memory())
-    print(psutil.disk_partitions())
-    print(psutil.disk_usage('/'))
-    #exit(0)
-    inv = Investigator()
-    print(inv.cpuinfo)
-    # board_vendor, board_name, bios_vendor, bios_version, bios_date,\
-    # chassis_type
-    print(inv.cpuinfo('coresnum'))
-    for i in range(0, int(inv.cpuinfo('coresnum'))):
-        print(inv.cpuinfo('vendor', i))
-        print(inv.cpuinfo('corespeed', i))
-        print(inv.cpuinfo('model', i))
-        print(inv.cpuinfo('cache', i))
-        print(inv.cpuinfo('modelnumber', i))
-        print(inv.cpuinfo('family', i))
-        print(inv.cpuinfo('stepping', i))
-        print(inv.cpuinfo('flags', i))
-        print(inv.cpuinfo('bogomips', i))
-        print(inv.cpuinfo('width', i))
-        print(inv.logo(i))
-        print(inv.sysdevcpu(i, 1, 'Data'))
-        print(inv.sysdevcpu(i, 1, 'Instruction'))
-        print(inv.sysdevcpu(i, 2, 'Unified'))
-        print(inv.sysdevcpu(i, 3, 'Unified'))
-    print(inv.mobo('board_vendor'))
-    print(inv.mobo('board_name'))
-    print(inv.mobo('bios_vendor'))
-    print(inv.mobo('bios_version'))
-    print(inv.mobo('chassis_type'))
-    print(inv.raminfo())
-    print(inv.distro())
-    print(inv.xver())
-    print(inv.gccver())
     cpug = CPUG()
     Gtk.main()
     exit(0)

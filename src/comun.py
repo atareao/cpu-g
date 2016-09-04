@@ -45,7 +45,9 @@ if is_package():
     ICONDIR = os.path.join(ROOTDIR, 'icons')
     ICON = os.path.join(ICONDIR, 'cpu-g.png')
     LOGOSDIR = os.path.join(APPDIR, 'logos')
+    DISTROSDIR = os.path.join(APPDIR, 'distros')
     GRAPHICCARDDIR = os.path.join(APPDIR, 'graphic_card')
+    BATTERY_MONITOR = os.path.join(ROOTDIR, 'monitor_battery.py')
 else:
     ROOTDIR = os.path.dirname(__file__)
     LANGDIR = os.path.normpath(os.path.join(ROOTDIR, '../template1'))
@@ -54,8 +56,10 @@ else:
     CHANGELOG = os.path.join(DEBIANDIR, 'changelog')
     ICON = os.path.normpath(os.path.join(ROOTDIR, '../data/icons/cpu-g.png'))
     LOGOSDIR = os.path.normpath(os.path.join(ROOTDIR, '../data/logos'))
+    DISTROSDIR = os.path.normpath(os.path.join(ROOTDIR, '../data/distros'))
     GRAPHICCARDDIR = os.path.normpath(os.path.join(ROOTDIR,
                                                    '../data/graphic_card'))
+    BATTERY_MONITOR = os.path.join(ROOTDIR, 'monitor_battery.py')
 
 f = open(CHANGELOG, 'r')
 line = f.readline()
