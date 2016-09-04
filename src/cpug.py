@@ -1039,7 +1039,9 @@ Copyright © 2016 Lorenzo Carbonell
             self.battery_level.set_visible(True)
             self.canvas.set_visible(True)
             self.get_battery_duration()
+            self.start_battery_updater()
         else:
+            self.stop_battery_updater()
             self.battery_estimated_duration.set_text('--')
             self.battery_data2.set_text('--')
             self.battery_level_value.set_text('--')
