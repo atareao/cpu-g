@@ -16,6 +16,7 @@ Depends: ${misc:Depends}, ${python:Depends},
     python3-numpy,
     gir1.2-gtk-3.0,
     gir1.2-gdkpixbuf-2.0,
+    wmctrl,
     mesa-utils
 Description: CPU-G shows useful information about your computer
  CPU-G is an application that shows useful

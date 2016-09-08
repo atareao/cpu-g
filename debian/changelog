@@ -1,4 +1,10 @@
-cpu-g (0.11.0-1ubuntu1) xenial; urgency=medium
+cpu-g (0.11.1-1ubuntu3) xenial; urgency=medium
+
+  * Added wmctrl dependecy
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Thu, 08 Sep 2016 07:48:00 +0200
+
+cpu-g (0.11.1-1ubuntu2) xenial; urgency=medium
 
   * New features,
   * - System:
@@ -19,7 +25,7 @@ cpu-g (0.11.0-1ubuntu1) xenial; urgency=medium
   *   - Added graphic to show the evolution of dicharge
 
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 04 Sep 2016 13:14:08 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 04 Sep 2016 20:37:04 +0200
 
 cpu-g (0.10.0-1ubuntu0) wily; urgency=medium
 

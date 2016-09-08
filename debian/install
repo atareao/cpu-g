@@ -1,8 +1,8 @@
 bin/cpu-g /opt/extras.ubuntu.com/cpu-g/bin
 src/*.py /opt/extras.ubuntu.com/cpu-g/share/cpu-g
-src/cagraph/* /opt/extras.ubuntu.com/cpu-g/share/cpu-g/cagraph
 debian/changelog /opt/extras.ubuntu.com/cpu-g/share/cpu-g
 data/cpu-g.desktop /usr/share/applications
 data/icons/cpu-g.png /opt/extras.ubuntu.com/cpu-g/share/icons
 data/logos/*.png /opt/extras.ubuntu.com/cpu-g/share/cpu-g/logos
+data/distros/*.png /opt/extras.ubuntu.com/cpu-g/share/cpu-g/distros
 data/graphic_card/*.png /opt/extras.ubuntu.com/cpu-g/share/cpu-g/graphic_card
