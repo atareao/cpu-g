@@ -297,7 +297,8 @@ class Investigator():
         elif re.findall("ATI\s*", card_logo):
           label = 'ati.png'
         # nVidia
-        elif re.findall("nVidia\s*", card_logo):
+        # elif re.findall("nVidia\s*", card_logo):
+        elif re.findall("nVidia\s*", card_logo, re.I):
           label = 'nvidia.png'
         else:
           label = 'unknown.png'
