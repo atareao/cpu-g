@@ -14,9 +14,10 @@ import sys
 import platform
 import subprocess
 import comun
+import psutil
+
 
 class Investigator():
-
     def readfile(self, filename):
         try:
             f = open(filename, 'r')
@@ -38,7 +39,8 @@ class Investigator():
         return '%dx%d' % (s.get_width(), s.get_height())
 
     def desktop_environment(self):
-        #From http://stackoverflow.com/questions/2035657/what-is-my-current-desktop-environment
+        # From http://stackoverflow.com/questions/2035657/\
+        # what-is-my-current-desktop-environment
         # and http://ubuntuforums.org/showthread.php?t=652320
         # and http://ubuntuforums.org/showthread.php?t=652320
         # and http://ubuntuforums.org/showthread.php?t=1139057
@@ -46,18 +48,23 @@ class Investigator():
             return "windows"
         elif sys.platform == "darwin":
             return "mac"
-        else: #Most likely either a POSIX system or something not much common
+        else:  # Most likely either a POSIX system or something not much common
             desktop_session = os.environ.get("DESKTOP_SESSION")
-            if desktop_session is not None: #easier to match if we doesn't have  to deal with caracter cases
+            # easier to match if we doesn't have  to deal with caracter cases
+            if desktop_session is not None:
                 desktop_session = desktop_session.lower()
-                if desktop_session in ["gnome","unity", "cinnamon", "mate",
-                        "xfce4", "lxde", "fluxbox", "blackbox", "openbox",
-                        "icewm", "jwm", "afterstep","trinity", "kde"]:
+                if desktop_session in ["gnome", "unity", "cinnamon", "mate",
+                                       "xfce4", "lxde", "fluxbox", "blackbox",
+                                       "openbox", "icewm", "jwm",
+                                       "afterstep", "trinity", "kde"]:
                     return desktop_session
-                ## Special cases ##
-                # Canonical sets $DESKTOP_SESSION to Lubuntu rather than LXDE if using LXDE.
-                # There is no guarantee that they will not do the same with the other desktop environments.
-                elif "xfce" in desktop_session or desktop_session.startswith("xubuntu"):
+                # ## Special cases ##
+                # Canonical sets $DESKTOP_SESSION to Lubuntu rather than
+                # LXDE if using LXDE.
+                # There is no guarantee that they will not do the same with
+                # the other desktop environments.
+                elif "xfce" in desktop_session or\
+                        desktop_session.startswith("xubuntu"):
                     return "xfce4"
                 elif desktop_session.startswith("ubuntu"):
                     return "unity"
@@ -65,16 +72,17 @@ class Investigator():
                     return "lxde"
                 elif desktop_session.startswith("kubuntu"):
                     return "kde"
-                elif desktop_session.startswith("razor"): # e.g. razorkwin
+                elif desktop_session.startswith("razor"):  # e.g. razorkwin
                     return "razor-qt"
-                elif desktop_session.startswith("wmaker"): # e.g. wmaker-common
+                elif desktop_session.startswith("wmaker"):  # eg. wmaker-common
                     return "windowmaker"
             if os.environ.get('KDE_FULL_SESSION') == 'true':
                 return "kde"
             elif os.environ.get('GNOME_DESKTOP_SESSION_ID'):
-                if not "deprecated" in os.environ.get('GNOME_DESKTOP_SESSION_ID'):
+                if "deprecated" not in os.environ.get(
+                        'GNOME_DESKTOP_SESSION_ID'):
                     return "gnome2"
-            #From http://ubuntuforums.org/showthread.php?t=652320
+            # From http://ubuntuforums.org/showthread.php?t=652320
             elif self.is_running("xfce-mcs-manage"):
                 return "xfce4"
             elif self.is_running("ksmserver"):
@@ -82,12 +90,14 @@ class Investigator():
         return "unknown"
 
     def is_running(self, process):
-        #From http://www.bloggerpolis.com/2011/05/how-to-check-if-a-process-is-running-using-python/
-        # and http://richarddingwall.name/2009/06/18/windows-equivalents-of-ps-and-kill-commands/
-        try: #Linux/Unix
-            s = subprocess.Popen(["ps", "axw"],stdout=subprocess.PIPE)
-        except: #Windows
-            s = subprocess.Popen(["tasklist", "/v"],stdout=subprocess.PIPE)
+        # From http://www.bloggerpolis.com/2011/05/\
+        # how-to-check-if-a-process-is-running-using-python/
+        # and http://richarddingwall.name/2009/06/18/\
+        # windows-equivalents-of-ps-and-kill-commands/
+        try:  # Linux/Unix
+            s = subprocess.Popen(["ps", "axw"], stdout=subprocess.PIPE)
+        except:  # Windows
+            s = subprocess.Popen(["tasklist", "/v"], stdout=subprocess.PIPE)
         for x in s.stdout:
             if re.search(process, x):
                 return True
@@ -143,7 +153,7 @@ class Investigator():
         return ans
 
     def battery_info(self, data='manufacturer'):
-        info =''
+        info = ''
         if data == 'manufacturer':
             info = self.readfile('/sys/class/power_supply/BAT0/manufacturer')
         elif data == 'model_name':
@@ -157,7 +167,6 @@ class Investigator():
         elif data == 'capacity':
             info = int(self.readfile('/sys/class/power_supply/BAT0/capacity'))
         return info
-
 
     def cpuinfo(self, var, core=0):
         info = self.readfile("/proc/cpuinfo")
@@ -252,26 +261,27 @@ class Investigator():
         return re.findall("X\.Org X Server (.*)", stderr.decode())[0]
 
     def raminfo(self):
-        data = self.readfile('/proc/meminfo')
-        values = {'total': int(re.findall('^MemTotal:\s*([0-9]*)',
-                                          data, re.M)[0]) / 1024,
-                  'free': int(re.findall('^MemFree:\s*([0-9]*)',
-                                         data, re.M)[0]) / 1024,
-                  'buffers': int(re.findall('^Buffers:\s*([0-9]*)',
-                                            data, re.M)[0]) / 1024,
-                  'cached': int(re.findall('^Cached:\s*([0-9]*)',
-                                           data, re.M)[0]) / 1024,
-                  'used': 0,
-                  'active': int(re.findall('^Active:\s*([0-9]*)',
-                                           data, re.M)[0]) / 1024,
-                  'inactive': int(re.findall('^Inactive:\s*([0-9]*)',
-                                             data, re.M)[0]) / 1024,
-                  'cached': int(re.findall('^Cached:\s*([0-9]*)',
-                                           data, re.M)[0]) / 1024
+        mem = psutil.virtual_memory()
+        values = {'total': mem.total/1024/1024,
+                  'available': mem.available/1024/1024,
+                  'percent': mem.percent,
+                  'used': mem.used/1024/1024,
+                  'free': mem.free/1024/1024,
+                  'active': mem.active/1024/1024,
+                  'inactive': mem.inactive/1024/1024,
+                  'buffers': mem.buffers/1024/1024,
+                  'cached': mem.cached/1024/1024,
                   }
-        values['free'] = values['free'] + \
-            values['buffers'] + values['cached']
-        values['used'] = values['total'] - values['free']
+        return values
+
+    def swapinfo(self):
+        mem = psutil.swap_memory()
+        values = {'total': mem.total/1024/1024,
+                  'used': mem.used/1024/1024,
+                  'free': mem.free/1024/1024,
+                  'sin': mem.sin/1024/1024,
+                  'sout': mem.sout/1024/1024,
+                  }
         return values
 
     def mobo(self, var):
@@ -290,18 +300,18 @@ class Investigator():
         card_logo = os.popen("lspci | grep \'VGA\'").read()
         # Intel
         if re.findall("Intel\s*", card_logo):
-          label = 'intel.png'
+            label = 'intel.png'
         # ATI
         # ATI Technologies replace to ATI. See bug
         # https://bugs.launchpad.net/cpug/+bug/959115
         elif re.findall("ATI\s*", card_logo):
-          label = 'ati.png'
+            label = 'ati.png'
         # nVidia
         # elif re.findall("nVidia\s*", card_logo):
         elif re.findall("nVidia\s*", card_logo, re.I):
-          label = 'nvidia.png'
+            label = 'nvidia.png'
         else:
-          label = 'unknown.png'
+            label = 'unknown.png'
         return os.path.join(comun.GRAPHICCARDDIR, label)
 
     # Graphic tab
@@ -338,7 +348,7 @@ if __name__ == '__main__':
     print(psutil.swap_memory())
     print(psutil.disk_partitions())
     print(psutil.disk_usage('/'))
-    #exit(0)
+    # exit(0)
     inv = Investigator()
     print(inv.cpuinfo)
     # board_vendor, board_name, bios_vendor, bios_version, bios_date,\

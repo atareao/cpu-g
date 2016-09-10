@@ -1,3 +1,10 @@
+cpu-g (0.12.0-1ubuntu0) xenial; urgency=medium
+
+  * Added Swap info
+  * Changed battery info to use dbus history
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 10 Sep 2016 08:20:27 +0200
+
 cpu-g (0.11.2-1ubuntu0) xenial; urgency=medium
 
   * Fixed nvidia logo
