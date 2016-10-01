@@ -1,3 +1,9 @@
+cpu-g (0.13.0-1ubuntu0) xenial; urgency=medium
+
+  * Added Disks info
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 01 Oct 2016 08:38:41 +0200
+
 cpu-g (0.12.0-1ubuntu0) xenial; urgency=medium
 
   * Added Swap info

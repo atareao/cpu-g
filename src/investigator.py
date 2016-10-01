@@ -284,6 +284,24 @@ class Investigator():
                   }
         return values
 
+    def disksinfo(self):
+        values = []
+        disk_partitions = psutil.disk_partitions(all=False)
+        for partition in disk_partitions:
+            usage = psutil.disk_usage(partition.mountpoint)
+            device = {'device': partition.device,
+                      'mountpoint': partition.mountpoint,
+                      'fstype': partition.fstype,
+                      'opts': partition.opts,
+                      'total': usage.total,
+                      'used': usage.used,
+                      'free': usage.free,
+                      'percent': usage.percent
+                      }
+            values.append(device)
+        values = sorted(values, key=lambda device: device['device'])
+        return values
+
     def mobo(self, var):
         # var can be: board_vendor, board_name, bios_vendor,
         # bios_version, bios_date, or chassis_type
@@ -341,7 +359,6 @@ class Investigator():
     # End Graphic Tab
 
 if __name__ == '__main__':
-    import psutil
     print(psutil.cpu_times())
     print(psutil.cpu_count())
     print(psutil.virtual_memory())
@@ -379,4 +396,5 @@ if __name__ == '__main__':
     print(inv.distro())
     print(inv.xver())
     print(inv.gccver())
+    print(inv.disksinfo())
     exit(0)

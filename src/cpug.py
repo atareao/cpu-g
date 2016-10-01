@@ -836,6 +836,18 @@ class CPUG(Gtk.Window):
         canvas = FigureCanvas(self.fig)
         canvas.set_size_request(500, 300)
         self.srolled_windows_for_plot.add_with_viewport(canvas)
+
+        vbox7 = Gtk.VBox(spacing=5)
+        vbox7.set_border_width(5)
+        notebook.append_page(vbox7, Gtk.Label.new(_('Disks')))
+        srolled_windows_for_disks = Gtk.ScrolledWindow()
+        srolled_windows_for_disks.set_size_request(510, 310)
+        vbox7.pack_start(srolled_windows_for_disks, True, True, 0)
+        srolled_windows_for_disks.set_border_width(5)
+        self.vbox71 = Gtk.VBox(spacing=5)
+        self.vbox71.set_border_width(5)
+        srolled_windows_for_disks.add(self.vbox71)
+
         vbox99 = Gtk.VBox(spacing=5)
         vbox99.set_border_width(5)
         notebook.append_page(vbox99, Gtk.Label.new(_('About')))
@@ -1026,6 +1038,120 @@ Copyright © 2016 Lorenzo Carbonell
         self.battery_model_name.set_text(inv.battery_info('model_name'))
         self.battery_serial_number.set_text(inv.battery_info('serial_number'))
         self.battery_technology.set_text(inv.battery_info('technology'))
+        #
+        for child in self.vbox71.get_children():
+            self.vbox71.remove(child)
+        devices = inv.disksinfo()
+        for device in devices:
+            frame7x = Gtk.Frame.new()
+            self.vbox71.pack_start(frame7x, True, True, 0)
+            table7x = Gtk.Table(10, 2, False)
+            frame7x.add(table7x)
+            label = Gtk.Label(_('Device'))
+            label.set_alignment(0, 0.5)
+            table7x.attach(label, 0, 1, 0, 1,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry = Gtk.Entry()
+            table7x.attach(entry, 1, 2, 0, 1,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry.set_text(device['device'])
+            label = Gtk.Label(_('Mount Point'))
+            label.set_alignment(0, 0.5)
+            table7x.attach(label, 0, 1, 1, 2,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry = Gtk.Entry()
+            table7x.attach(entry, 1, 2, 1, 2,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry.set_text(device['mountpoint'])
+            label = Gtk.Label(_('File System Type'))
+            label.set_alignment(0, 0.5)
+            table7x.attach(label, 0, 1, 2, 3,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry = Gtk.Entry()
+            table7x.attach(entry, 1, 2, 2, 3,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry.set_text(device['fstype'])
+            label = Gtk.Label(_('Options'))
+            label.set_alignment(0, 0.5)
+            table7x.attach(label, 0, 1, 3, 4,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry = Gtk.Entry()
+            table7x.attach(entry, 1, 2, 3, 4,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            if len(device['opts']) > 70:
+                entry.set_width_chars(70)
+            else:
+                entry.set_width_chars(len(device['opts']))
+            entry.set_text(device['opts'])
+            label = Gtk.Label(_('Total space'))
+            label.set_alignment(0, 0.5)
+            table7x.attach(label, 0, 1, 4, 5,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry = Gtk.Entry()
+            table7x.attach(entry, 1, 2, 4, 5,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry.set_text('{:,.2f} MB'.format(device['total']/1024/1024))
+            label = Gtk.Label(_('Used space'))
+            label.set_alignment(0, 0.5)
+            table7x.attach(label, 0, 1, 5, 7,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry = Gtk.Entry()
+            table7x.attach(entry, 1, 2, 5, 6,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry.set_text('{:,.2f} MB'.format(device['used']/1024/1024))
+            disk_used_progress = Gtk.LevelBar()
+            disk_used_progress.set_min_value(0)
+            disk_used_progress.set_max_value(1)
+            disk_used_progress.set_value(device['used']/device['total'])
+            table7x.attach(disk_used_progress, 1, 2, 6, 7,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            label = Gtk.Label(_('Free space'))
+            label.set_alignment(0, 0.5)
+            table7x.attach(label, 0, 1, 7, 9,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry = Gtk.Entry()
+            table7x.attach(entry, 1, 2, 7, 8,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+            entry.set_text('{:,.2f} MB'.format(device['free']/1024/1024))
+            disk_free_progress = Gtk.LevelBar()
+            disk_free_progress.set_min_value(0)
+            disk_free_progress.set_max_value(1)
+            disk_free_progress.set_value(device['free']/device['total'])
+            table7x.attach(disk_free_progress, 1, 2, 8, 9,
+                           xoptions=Gtk.AttachOptions.FILL,
+                           yoptions=Gtk.AttachOptions.FILL,
+                           xpadding=5, ypadding=5)
+
         #
         self.start_ram_updater()
         self.start_uptime_update()
