@@ -254,11 +254,12 @@ class Investigator():
 
     def xver(self):
         command = subprocess.Popen(
-            ['Xorg', '-version'],
+            ['apt-cache', 'show', 'xorg'],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
         stdout, stderr = command.communicate()
-        return re.findall("X\.Org X Server (.*)", stderr.decode())[0]
+        ans = re.findall("Version: 1:(.*)\+", stdout.decode())
+        return ans[0]
 
     def raminfo(self):
         mem = psutil.virtual_memory()

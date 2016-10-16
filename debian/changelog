@@ -1,3 +1,9 @@
+cpu-g (0.14.0-1ubuntu0) xenial; urgency=medium
+
+  * Fixed a bug with Xorg version
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 16 Oct 2016 19:51:21 +0200
+
 cpu-g (0.13.0-1ubuntu0) xenial; urgency=medium
 
   * Added Disks info
