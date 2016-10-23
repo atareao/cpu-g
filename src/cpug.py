@@ -35,6 +35,7 @@ from gi.repository import Gtk
 from gi.repository import GObject
 from gi.repository import GLib
 import os
+import locale
 import comun
 import time
 import datetime
@@ -46,6 +47,8 @@ import matplotlib.ticker as ticker
 from investigator import Investigator
 from upower import BatteryDriver
 from comun import _
+
+locale.setlocale(locale.LC_ALL, '')
 
 
 class CPUG(Gtk.Window):
@@ -727,11 +730,12 @@ class CPUG(Gtk.Window):
 
         vbox6 = Gtk.VBox(spacing=5)
         vbox6.set_border_width(5)
-        notebook.append_page(vbox6, Gtk.Label.new(_('Battery')))
+        self.battery_index = notebook.append_page(
+            vbox6, Gtk.Label.new(_('Battery')))
 
         frame611 = Gtk.Frame.new()
         vbox6.pack_start(frame611, True, True, 0)
-        table611 = Gtk.Table(3, 3, False)
+        table611 = Gtk.Table(8, 4, False)
         frame611.add(table611)
         label = Gtk.Label(_('Manufacturer'))
         label.set_alignment(0, 0.5)
@@ -740,7 +744,7 @@ class CPUG(Gtk.Window):
                         yoptions=Gtk.AttachOptions.FILL,
                         xpadding=5, ypadding=5)
         self.battery_manufacturer = Gtk.Entry()
-        self.battery_manufacturer.set_width_chars(50)
+        self.battery_manufacturer.set_width_chars(30)
         table611.attach(self.battery_manufacturer, 1, 2, 0, 1,
                         xoptions=Gtk.AttachOptions.FILL,
                         yoptions=Gtk.AttachOptions.FILL,
@@ -752,7 +756,7 @@ class CPUG(Gtk.Window):
                         yoptions=Gtk.AttachOptions.FILL,
                         xpadding=5, ypadding=5)
         self.battery_model_name = Gtk.Entry()
-        self.battery_model_name.set_width_chars(50)
+        self.battery_model_name.set_width_chars(30)
         table611.attach(self.battery_model_name, 1, 2, 1, 2,
                         xoptions=Gtk.AttachOptions.FILL,
                         yoptions=Gtk.AttachOptions.FILL,
@@ -764,7 +768,7 @@ class CPUG(Gtk.Window):
                         yoptions=Gtk.AttachOptions.FILL,
                         xpadding=5, ypadding=5)
         self.battery_serial_number = Gtk.Entry()
-        self.battery_serial_number.set_width_chars(50)
+        self.battery_serial_number.set_width_chars(30)
         table611.attach(self.battery_serial_number, 1, 2, 2, 3,
                         xoptions=Gtk.AttachOptions.FILL,
                         yoptions=Gtk.AttachOptions.FILL,
@@ -776,7 +780,7 @@ class CPUG(Gtk.Window):
                         yoptions=Gtk.AttachOptions.FILL,
                         xpadding=5, ypadding=5)
         self.battery_technology = Gtk.Entry()
-        self.battery_technology.set_width_chars(50)
+        self.battery_technology.set_width_chars(30)
         table611.attach(self.battery_technology, 1, 2, 3, 4,
                         xoptions=Gtk.AttachOptions.FILL,
                         yoptions=Gtk.AttachOptions.FILL,
@@ -788,7 +792,7 @@ class CPUG(Gtk.Window):
                         yoptions=Gtk.AttachOptions.FILL,
                         xpadding=5, ypadding=5)
         self.battery_estimated_duration = Gtk.Entry()
-        self.battery_estimated_duration.set_width_chars(50)
+        self.battery_estimated_duration.set_width_chars(30)
         table611.attach(self.battery_estimated_duration, 1, 2, 4, 5,
                         xoptions=Gtk.AttachOptions.FILL,
                         yoptions=Gtk.AttachOptions.FILL,
@@ -800,7 +804,7 @@ class CPUG(Gtk.Window):
                         yoptions=Gtk.AttachOptions.FILL,
                         xpadding=5, ypadding=5)
         self.battery_data2 = Gtk.Entry()
-        self.battery_data2.set_width_chars(50)
+        self.battery_data2.set_width_chars(30)
         table611.attach(self.battery_data2, 1, 2, 5, 6,
                         xoptions=Gtk.AttachOptions.FILL,
                         yoptions=Gtk.AttachOptions.FILL,
@@ -812,7 +816,7 @@ class CPUG(Gtk.Window):
                         yoptions=Gtk.AttachOptions.FILL,
                         xpadding=5, ypadding=5)
         self.battery_level_value = Gtk.Entry()
-        self.battery_level_value.set_width_chars(50)
+        self.battery_level_value.set_width_chars(30)
         table611.attach(self.battery_level_value, 1, 2, 6, 7,
                         xoptions=Gtk.AttachOptions.FILL,
                         yoptions=Gtk.AttachOptions.FILL,
@@ -820,8 +824,92 @@ class CPUG(Gtk.Window):
         self.battery_level = Gtk.LevelBar()
         self.battery_level.set_min_value(0)
         self.battery_level.set_max_value(100)
-        self.battery_level.set_value(50)
+        self.battery_level.set_value(30)
         table611.attach(self.battery_level, 1, 2, 7, 8,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Capacity level'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 2, 3, 0, 1,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        self.battery_capacity_level = Gtk.Entry()
+        self.battery_capacity_level.set_width_chars(30)
+        table611.attach(self.battery_capacity_level, 3, 4, 0, 1,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Voltage now'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 2, 3, 1, 2,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        self.battery_voltage_now = Gtk.Entry()
+        self.battery_voltage_now.set_width_chars(30)
+        table611.attach(self.battery_voltage_now, 3, 4, 1, 2,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Minimum voltage design'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 2, 3, 2, 3,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        self.battery_min_voltage_design = Gtk.Entry()
+        self.battery_min_voltage_design.set_width_chars(30)
+        table611.attach(self.battery_min_voltage_design, 3, 4, 2, 3,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Charge now'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 2, 3, 3, 4,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        self.battery_charge_now = Gtk.Entry()
+        self.battery_charge_now.set_width_chars(30)
+        table611.attach(self.battery_charge_now, 3, 4, 3, 4,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Charge full'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 2, 3, 4, 5,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        self.battery_charge_full = Gtk.Entry()
+        self.battery_charge_full.set_width_chars(30)
+        table611.attach(self.battery_charge_full, 3, 4, 4, 5,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Charge full design'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 2, 3, 5, 6,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        self.battery_charge_full_design = Gtk.Entry()
+        self.battery_charge_full.set_width_chars(30)
+        table611.attach(self.battery_charge_full_design, 3, 4, 5, 6,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        label = Gtk.Label(_('Current now'))
+        label.set_alignment(0, 0.5)
+        table611.attach(label, 2, 3, 6, 7,
+                        xoptions=Gtk.AttachOptions.FILL,
+                        yoptions=Gtk.AttachOptions.FILL,
+                        xpadding=5, ypadding=5)
+        self.battery_current_now = Gtk.Entry()
+        self.battery_current_now.set_width_chars(30)
+        table611.attach(self.battery_current_now, 3, 4, 6, 7,
                         xoptions=Gtk.AttachOptions.FILL,
                         yoptions=Gtk.AttachOptions.FILL,
                         xpadding=5, ypadding=5)
@@ -911,7 +999,12 @@ Copyright © 2016 Lorenzo Carbonell
         self.uptime_updater = 0
         self.battery_updater = 0
         self.update_info()
-        self.read_data_for_battery_plot()
+        if self.exists_battery is True:
+            self.read_data_for_battery_plot()
+        else:
+            widget = notebook.get_nth_page(self.battery_index)
+            if widget is not None:
+                notebook.detach_tab(widget)
         self.show_all()
 
     def read_data_for_battery_plot(self):
@@ -956,8 +1049,40 @@ Copyright © 2016 Lorenzo Carbonell
             self.battery_estimated_duration.set_text('--')
             self.battery_data2.set_text('--')
         current_level = bd.get_percentage()
-        self.battery_level_value.set_text('%s %%' % current_level)
+        self.battery_level_value.set_text(
+            locale.format('%.2f', current_level) + _(' %'))
         self.battery_level.set_value(current_level)
+        inv = Investigator()
+        self.battery_capacity_level.set_text(
+            '%s' % inv.battery_info('capacity-level'))
+        self.battery_voltage_now.set_text(
+            locale.format(
+                '%.2f',
+                inv.battery_info('voltage-now')/1000000) +
+            _(' V'))
+        self.battery_min_voltage_design.set_text(
+            locale.format(
+                '%.2f',
+                inv.battery_info('voltage-min-design')/1000000) +
+            _(' V'))
+        self.battery_charge_now.set_text(
+            locale.format(
+                '%.2f',
+                inv.battery_info('charge-now')/1000000) +
+            _(' Ah'))
+        self.battery_charge_full.set_text(
+            locale.format(
+                '%.2f',
+                inv.battery_info('charge-full')/1000000) +
+            _(' Ah'))
+        self.battery_charge_full_design.set_text(
+            locale.format(
+                '%.2f',
+                inv.battery_info('charge-full-design')/1000000) +
+            _(' Ah'))
+        self.battery_current_now.set_text(
+            locale.format('%.2f', inv.battery_info('current-now')/1000000) +
+            _(' A'))
         return True
 
     def uptime_update(self):
@@ -966,26 +1091,39 @@ Copyright © 2016 Lorenzo Carbonell
 
     def ram_update(self):
         values = Investigator().raminfo()
-        self.ram_total.set_text(str(redon(values['total'])))
-        self.ram_available.set_text(str(redon(values['available'])))
+        self.ram_total.set_text(
+            locale.format('%.1f', values['total'], True) + ' ' + _('MB'))
+        self.ram_available.set_text(
+            locale.format('%.1f', values['available'], True) + ' ' + _('MB'))
         self.ram_available_progress.set_value(
             values['available']/values['total'])
-        self.ram_used.set_text(str(redon(values['used'])))
+        self.ram_used.set_text(
+            locale.format('%.1f', values['used'], True) + ' ' + _('MB'))
         self.ram_used_progress.set_value(values['used']/values['total'])
-        self.ram_free.set_text(str(redon(values['free'])))
+        self.ram_free.set_text(
+            locale.format('%.1f', values['free'], True) + ' ' + _('MB'))
         self.ram_free_progress.set_value(values['free']/values['total'])
-        self.ram_active.set_text(str(redon(values['active'])))
-        self.ram_inactive.set_text(str(redon(values['inactive'])))
-        self.ram_buffers.set_text(str(redon(values['buffers'])))
-        self.ram_cached.set_text(str(redon(values['cached'])))
+        self.ram_active.set_text(
+            locale.format('%.1f', values['active'], True) + ' ' + _('MB'))
+        self.ram_inactive.set_text(
+            locale.format('%.1f', values['inactive'], True) + ' ' + _('MB'))
+        self.ram_buffers.set_text(
+            locale.format('%.1f', values['buffers'], True) + ' ' + _('MB'))
+        self.ram_cached.set_text(
+            locale.format('%.1f', values['cached'], True) + ' ' + _('MB'))
         values = Investigator().swapinfo()
-        self.swap_total.set_text(str(redon(values['total'])))
-        self.swap_used.set_text(str(redon(values['used'])))
+        self.swap_total.set_text(
+            locale.format('%.1f', values['total'], True) + ' ' + _('MB'))
+        self.swap_used.set_text(
+            locale.format('%.1f', values['used'], True) + ' ' + _('MB'))
         self.swap_used_progress.set_value(values['used']/values['total'])
-        self.swap_free.set_text(str(redon(values['free'])))
+        self.swap_free.set_text(
+            locale.format('%.1f', values['free'], True) + ' ' + _('MB'))
         self.swap_free_progress.set_value(values['free']/values['total'])
-        self.swap_sin.set_text(str(redon(values['sin'])))
-        self.swap_sout.set_text(str(redon(values['sout'])))
+        self.swap_sin.set_text(
+            locale.format('%.1f', values['sin'], True) + ' ' + _('MB'))
+        self.swap_sout.set_text(
+            locale.format('%.1f', values['sout'], True) + ' ' + _('MB'))
         return True
 
     def close_application(self, widget):
@@ -1034,10 +1172,14 @@ Copyright © 2016 Lorenzo Carbonell
         self.opengl_version.set_text(inv.open_gl('version'))
         self.graphic_card_logo.set_from_file(inv.get_graphic_card_logo())
         #
-        self.battery_manufacturer.set_text(inv.battery_info('manufacturer'))
-        self.battery_model_name.set_text(inv.battery_info('model_name'))
-        self.battery_serial_number.set_text(inv.battery_info('serial_number'))
-        self.battery_technology.set_text(inv.battery_info('technology'))
+        self.exists_battery = inv.battery_info('exists')
+        if self.exists_battery is True:
+            self.battery_manufacturer.set_text(
+                inv.battery_info('manufacturer'))
+            self.battery_model_name.set_text(inv.battery_info('model_name'))
+            self.battery_serial_number.set_text(
+                inv.battery_info('serial_number'))
+            self.battery_technology.set_text(inv.battery_info('technology'))
         #
         for child in self.vbox71.get_children():
             self.vbox71.remove(child)
@@ -1110,7 +1252,8 @@ Copyright © 2016 Lorenzo Carbonell
                            xoptions=Gtk.AttachOptions.FILL,
                            yoptions=Gtk.AttachOptions.FILL,
                            xpadding=5, ypadding=5)
-            entry.set_text('{:,.2f} MB'.format(device['total']/1024/1024))
+            entry.set_text(locale.format(
+                '%.2f', device['total']/1024/1024, True) + ' ' + _('MB'))
             label = Gtk.Label(_('Used space'))
             label.set_alignment(0, 0.5)
             table7x.attach(label, 0, 1, 5, 7,
@@ -1122,7 +1265,8 @@ Copyright © 2016 Lorenzo Carbonell
                            xoptions=Gtk.AttachOptions.FILL,
                            yoptions=Gtk.AttachOptions.FILL,
                            xpadding=5, ypadding=5)
-            entry.set_text('{:,.2f} MB'.format(device['used']/1024/1024))
+            entry.set_text(locale.format(
+                '%.2f', device['used']/1024/1024, True) + ' ' + _('MB'))
             disk_used_progress = Gtk.LevelBar()
             disk_used_progress.set_min_value(0)
             disk_used_progress.set_max_value(1)
@@ -1142,7 +1286,8 @@ Copyright © 2016 Lorenzo Carbonell
                            xoptions=Gtk.AttachOptions.FILL,
                            yoptions=Gtk.AttachOptions.FILL,
                            xpadding=5, ypadding=5)
-            entry.set_text('{:,.2f} MB'.format(device['free']/1024/1024))
+            entry.set_text(locale.format(
+                '%.2f', device['free']/1024/1024, True) + ' ' + _('MB'))
             disk_free_progress = Gtk.LevelBar()
             disk_free_progress.set_min_value(0)
             disk_free_progress.set_max_value(1)
@@ -1155,7 +1300,8 @@ Copyright © 2016 Lorenzo Carbonell
         #
         self.start_ram_updater()
         self.start_uptime_update()
-        self.start_battery_updater()
+        if self.exists_battery is True:
+            self.start_battery_updater()
 
     def start_ram_updater(self):
         if self.ram_updater > 0:
@@ -1182,9 +1328,10 @@ Copyright © 2016 Lorenzo Carbonell
     def start_battery_updater(self):
         if self.battery_updater > 0:
             GLib.source_remove(self.battery_updater)
-        self.get_battery_duration()
-        self.battery_updater = GLib.timeout_add_seconds(
-            300, self.get_battery_duration)
+        if self.exists_battery is True:
+            self.get_battery_duration()
+            self.battery_updater = GLib.timeout_add_seconds(
+                300, self.get_battery_duration)
 
     def stop_battery_updater(self):
         if self.battery_updater > 0:

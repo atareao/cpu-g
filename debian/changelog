@@ -1,3 +1,11 @@
+cpu-g (0.15.0-1ubuntu0) xenial; urgency=medium
+
+  * Fixed a bug when no battery in computer
+  * Added more info to battery
+  * Added locale to number
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 23 Oct 2016 11:34:47 +0200
+
 cpu-g (0.14.0-1ubuntu0) xenial; urgency=medium
 
   * Fixed a bug with Xorg version

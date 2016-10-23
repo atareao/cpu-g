@@ -16,6 +16,8 @@ import subprocess
 import comun
 import psutil
 
+BATTERY_DIR = '/sys/class/power_supply/BAT0'
+
 
 class Investigator():
     def readfile(self, filename):
@@ -153,19 +155,43 @@ class Investigator():
         return ans
 
     def battery_info(self, data='manufacturer'):
-        info = ''
+        info = 0
         if data == 'manufacturer':
-            info = self.readfile('/sys/class/power_supply/BAT0/manufacturer')
+            info = self.readfile(os.path.join(BATTERY_DIR, 'manufacturer'))
         elif data == 'model_name':
-            info = self.readfile('/sys/class/power_supply/BAT0/model_name')
+            info = self.readfile(os.path.join(BATTERY_DIR, 'model_name'))
         elif data == 'serial_number':
-            info = self.readfile('/sys/class/power_supply/BAT0/serial_number')
+            info = self.readfile(os.path.join(BATTERY_DIR, 'serial_number'))
         elif data == 'technology':
-            info = self.readfile('/sys/class/power_supply/BAT0/technology')
+            info = self.readfile(os.path.join(BATTERY_DIR, 'technology'))
         elif data == 'status':
-            info = self.readfile('/sys/class/power_supply/BAT0/status')
+            info = self.readfile(os.path.join(BATTERY_DIR, 'status'))
         elif data == 'capacity':
-            info = int(self.readfile('/sys/class/power_supply/BAT0/capacity'))
+            info = int(self.readfile(os.path.join(BATTERY_DIR, 'capacity')))
+        elif data == 'capacity-level':
+            info = self.readfile(os.path.join(BATTERY_DIR, 'capacity_level'))
+        elif data == 'voltage-now':
+            info = int(self.readfile(os.path.join(BATTERY_DIR, 'voltage_now')))
+        elif data == 'voltage-min-design':
+            info = int(self.readfile(os.path.join(BATTERY_DIR,
+                                                  'voltage_min_design')))
+        elif data == 'charge-now':
+            info = int(self.readfile(os.path.join(BATTERY_DIR, 'charge_now')))
+        elif data == 'current-now':
+            info = int(self.readfile(os.path.join(BATTERY_DIR, 'current_now')))
+        elif data == 'charge-full':
+            info = int(self.readfile(os.path.join(BATTERY_DIR, 'charge_full')))
+        elif data == 'charge-full-design':
+            info = int(self.readfile(os.path.join(BATTERY_DIR,
+                                                  'charge_full_design')))
+        elif data == 'cycle-count':
+            info = int(self.readfile(os.path.join(BATTERY_DIR,
+                                                  'cycle_count')))
+        elif data == 'present':
+            info = (self.readfile(os.path.join(BATTERY_DIR,
+                                               'present')) == 1)
+        elif data == 'exists':
+            info = os.path.exists(BATTERY_DIR)
         return info
 
     def cpuinfo(self, var, core=0):
