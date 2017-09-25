@@ -1114,6 +1114,8 @@ Copyright © 2016 Lorenzo Carbonell
         values = Investigator().swapinfo()
         self.swap_total.set_text(
             locale.format('%.1f', values['total'], True) + ' ' + _('MB'))
+        if values['total'] == 0:
+            values['total'] = 1
         self.swap_used.set_text(
             locale.format('%.1f', values['used'], True) + ' ' + _('MB'))
         self.swap_used_progress.set_value(values['used']/values['total'])
