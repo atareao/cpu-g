@@ -1,3 +1,9 @@
+cpu-g (0.15.1-1ubuntu0) zesty; urgency=medium
+
+  * fixed bug zero division
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Tue, 26 Sep 2017 13:32:21 +0200
+
 cpu-g (0.15.0-1ubuntu0) xenial; urgency=medium
 
   * Fixed a bug when no battery in computer
