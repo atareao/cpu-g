@@ -1,28 +1,25 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 #
-# --BETA--
-#################################################################
-#    CPU-G version 0.9 beta, Fotis Tsamis, October 2009.        #
-#################################################################
-#    CPU-G is a program that displays information about your CPU,
-#    RAM, Motherboard and some general information about your System.
-#    Copyright © 2009  Fotis Tsamis <ftsamis at gmail dot com>.
+# CPU-G is a program that displays information about your CPU,
+# RAM, Motherboard and some general information about your System.
 #
-#    This program is free software: you can redistribute it and/or
-#    modify it under the terms of the GNU General Public License
-#    as published by the Free Software Foundation, either version 3
-#    of the License, or any later version.
+# Copyright © 2009  Fotis Tsamis <ftsamis at gmail dot com>.
+# Copyright © 2016-2019  Lorenzo Carbonell (aka atareao)
+# <lorenzo.carbonell.cerezo at gmail dotcom>
 #
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied
-#    warranty of MERCHANTABILITY or FITNESS FOR A
-#    PARTICULAR PURPOSE.
-#    See the GNU General Public License for more details.
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#    You should have received a copy of the GNU General Public
-#    License along with this program.
-#    If not, see <http://www.gnu.org/licenses/>.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import gi
 try:
@@ -1031,6 +1028,12 @@ Copyright © 2016 Lorenzo Carbonell
         self.fig.canvas.draw()
         return True
 
+    def _aux_set_text(self, textbox, value, value1):
+        if type(value) == int:
+            textbox.set_text(value1)
+        else:
+            textbox.set_text(value)
+
     def get_battery_duration(self):
         bd = BatteryDriver()
         if bd.get_state() == 'Charging':
@@ -1055,32 +1058,44 @@ Copyright © 2016 Lorenzo Carbonell
         inv = Investigator()
         self.battery_capacity_level.set_text(
             '%s' % inv.battery_info('capacity-level'))
-        self.battery_voltage_now.set_text(
+        self._aux_set_text(
+            self.battery_voltage_now,
+            inv.battery_info('voltage-now'),
             locale.format(
                 '%.2f',
                 inv.battery_info('voltage-now')/1000000) +
-            _(' V'))
-        self.battery_min_voltage_design.set_text(
+                _(' V'))
+        self._aux_set_text(
+            self.battery_min_voltage_design,
+            inv.battery_info('voltage-min-design'),
             locale.format(
                 '%.2f',
                 inv.battery_info('voltage-min-design')/1000000) +
-            _(' V'))
-        self.battery_charge_now.set_text(
+                _(' V'))
+        self._aux_set_text(
+            self.battery_charge_now,
+            inv.battery_info('charge-now'),
             locale.format(
                 '%.2f',
                 inv.battery_info('charge-now')/1000000) +
             _(' Ah'))
-        self.battery_charge_full.set_text(
+        self._aux_set_text(
+            self.battery_charge_full,
+            inv.battery_info('charge-full'),
             locale.format(
                 '%.2f',
                 inv.battery_info('charge-full')/1000000) +
             _(' Ah'))
-        self.battery_charge_full_design.set_text(
+        self._aux_set_text(
+            self.battery_charge_full_design,
+            inv.battery_info('charge-full-design'),
             locale.format(
                 '%.2f',
                 inv.battery_info('charge-full-design')/1000000) +
             _(' Ah'))
-        self.battery_current_now.set_text(
+        self._aux_set_text(
+            self.battery_current_now,
+            inv.battery_info('current-now'),
             locale.format('%.2f', inv.battery_info('current-now')/1000000) +
             _(' A'))
         return True

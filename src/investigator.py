@@ -15,6 +15,7 @@ import platform
 import subprocess
 import comun
 import psutil
+from comun import _
 
 BATTERY_DIR = '/sys/class/power_supply/BAT0'
 
@@ -30,7 +31,7 @@ class Investigator():
             return data
         except Exception as e:
             print(e)
-            return 'N/A'
+            return _('N/A')
 
     def get_window_manager(self):
         ans = subprocess.check_output(['wmctrl', '-m']).decode()
@@ -90,6 +91,12 @@ class Investigator():
             elif self.is_running("ksmserver"):
                 return "kde"
         return "unknown"
+    
+    def convert2int(value):
+        try:
+            return int(value)
+        except Exception as e:
+            return value
 
     def is_running(self, process):
         # From http://www.bloggerpolis.com/2011/05/\
@@ -167,25 +174,25 @@ class Investigator():
         elif data == 'status':
             info = self.readfile(os.path.join(BATTERY_DIR, 'status'))
         elif data == 'capacity':
-            info = int(self.readfile(os.path.join(BATTERY_DIR, 'capacity')))
+            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR, 'capacity')))
         elif data == 'capacity-level':
             info = self.readfile(os.path.join(BATTERY_DIR, 'capacity_level'))
         elif data == 'voltage-now':
-            info = int(self.readfile(os.path.join(BATTERY_DIR, 'voltage_now')))
+            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR, 'voltage_now')))
         elif data == 'voltage-min-design':
-            info = int(self.readfile(os.path.join(BATTERY_DIR,
+            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR,
                                                   'voltage_min_design')))
         elif data == 'charge-now':
-            info = int(self.readfile(os.path.join(BATTERY_DIR, 'charge_now')))
+            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR, 'charge_now')))
         elif data == 'current-now':
-            info = int(self.readfile(os.path.join(BATTERY_DIR, 'current_now')))
+            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR, 'current_now')))
         elif data == 'charge-full':
-            info = int(self.readfile(os.path.join(BATTERY_DIR, 'charge_full')))
+            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR, 'charge_full')))
         elif data == 'charge-full-design':
-            info = int(self.readfile(os.path.join(BATTERY_DIR,
+            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR,
                                                   'charge_full_design')))
         elif data == 'cycle-count':
-            info = int(self.readfile(os.path.join(BATTERY_DIR,
+            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR,
                                                   'cycle_count')))
         elif data == 'present':
             info = (self.readfile(os.path.join(BATTERY_DIR,
@@ -252,7 +259,7 @@ class Investigator():
                 self.readfile(typepath).strip() == kind:
             return self.readfile(size).strip()
         elif index == range(indexes)[-1]:
-            return 'N/A'
+            return _('N/A')
 
     def distro(self):
         try:
@@ -276,7 +283,7 @@ class Investigator():
         if gcc_version != '':
             return gcc_version
         else:
-            return 'N/A'
+            return _('N/A')
 
     def xver(self):
         command = subprocess.Popen(
@@ -285,7 +292,9 @@ class Investigator():
             stderr=subprocess.PIPE)
         stdout, stderr = command.communicate()
         ans = re.findall("Version: 1:(.*)\+", stdout.decode())
-        return ans[0]
+        if len(ans) > 0:
+            return _('N/A')
+        return _('N/A')
 
     def raminfo(self):
         mem = psutil.virtual_memory()
@@ -367,22 +376,22 @@ class Investigator():
             if open_gl_ != '':
                 return re.findall("OpenGL vendor string: (.*)", open_gl_)[0]
             else:
-                return 'N/A'
+                return _('N/A')
         elif var == 'renderer':
             if open_gl_ != '':
                 return re.findall("OpenGL renderer string: (.*)", open_gl_)[0]
             else:
-                return 'N/A'
+                return _('N/A')
         elif var == 'version':
             if open_gl_ != '':
                 return re.findall("OpenGL version string: (.*)", open_gl_)[0]
             else:
-                return 'N/A'
+                return _('N/A')
         elif var == 'VGA':
             if vga != '':
                 return vga
             else:
-                return 'N/A'
+                return _('N/A')
     # End Graphic Tab
 
 if __name__ == '__main__':

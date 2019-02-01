@@ -1,3 +1,9 @@
+cpu-g (0.15.2-1ubuntu0) cosmic; urgency=medium
+
+  * fixed bugs #2, #3
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Fri, 01 Feb 2019 20:43:22 +0100
+
 cpu-g (0.15.1-1ubuntu0) zesty; urgency=medium
 
   * fixed bug zero division

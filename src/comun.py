@@ -1,10 +1,12 @@
-#! /usr/bin/python
-# -*- coding: iso-8859-1 -*-
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
 #
-# com.py
+# CPU-G is a program that displays information about your CPU,
+# RAM, Motherboard and some general information about your System.
 #
-# Copyright (C) 2011 Lorenzo Carbonell
-# lorenzo.carbonell.cerezo@gmail.com
+# Copyright © 2009  Fotis Tsamis <ftsamis at gmail dot com>.
+# Copyright © 2016-2019  Lorenzo Carbonell (aka atareao)
+# <lorenzo.carbonell.cerezo at gmail dotcom>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,9 +20,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
+
 import os
 import sys
 import locale
