@@ -8,6 +8,26 @@
 
 It collects and displays information about your CPU, RAM, Motherboard, some general information about your system and more.
 
+More info: [cpug-g](https://www.atareao.es/aplicacion/cpu-g-donde-ver-hardware-instalado/)
+
+## Install
+
+To install CPU-G run following commands in a terminal (`Ctrl+Alt+T`),
+
+```
+sudo add-apt-repository ppa:atareao\atareao
+sudo apt update
+sudo apt install cpu-g
+```
+
+## Credits
+
+* Copyright © 2009-2010 Fotis Tsamis
+* Copyright © Michael Schmöller
+* Copyright © 2012 Michał Głowienka
+* Copyright © 2012 Michał Olber
+* Copyright © 2016-2019 Lorenzo Carbonell
+
 ## Screenshots
 
 ### Processor
@@ -41,25 +61,3 @@ It collects and displays information about your CPU, RAM, Motherboard, some gene
 ### About
 
 ![About](./screenshots/cpu-g-about.png)
-
-## Install
-
-To install CPU-G run following commands in a terminal (`Ctrl+Alt+T`),
-
-```
-sudo add-apt-repository ppa:atareao\atareao
-sudo apt update
-sudo apt install cpu-g
-```
-
-## Credits
-
-* Copyright © 2009-2010 Fotis Tsamis
-* Copyright © Michael Schmöller
-* Copyright © 2012 Michał Głowienka
-* Copyright © 2012 Michał Olber
-* Copyright © 2016-2019 Lorenzo Carbonell
-
----
-
-More info: [cpug-g](https://www.atareao.es/aplicacion/cpu-g-donde-ver-hardware-instalado/)
