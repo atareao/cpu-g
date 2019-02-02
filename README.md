@@ -36,7 +36,7 @@ It collects and displays information about your CPU, RAM, Motherboard, some gene
 
 ### Discs
 
-![Discs](./screenshots/cpu-g-discs.png)
+![Disks](./screenshots/cpu-g-disks.png)
 
 ### About
 
@@ -54,7 +54,12 @@ sudo apt install cpu-g
 
 ## Credits
 
-Copyright © 2009  Fotis Tsamis <ftsamis@gmail.com>.
-Copyright © 2016-2019  Lorenzo Carbonell (aka atareao) <lorenzo.carbonell.cerezo@gmail.com>
+* Copyright © 2009-2010 Fotis Tsamis
+* Copyright © Michael Schmöller
+* Copyright © 2012 Michał Głowienka
+* Copyright © 2012 Michał Olber
+* Copyright © 2016-2019 Lorenzo Carbonell
 
-Site: http://cpug.sourceforge.net/
+---
+
+More info: [cpug-g](https://www.atareao.es/aplicacion/cpu-g-donde-ver-hardware-instalado/)

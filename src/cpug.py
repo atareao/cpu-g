@@ -986,8 +986,8 @@ Copyright © 2016-2019 Lorenzo Carbonell
                         xoptions=Gtk.AttachOptions.EXPAND,
                         yoptions=Gtk.AttachOptions.FILL,
                         xpadding=5, ypadding=5)
-        label = Gtk.LinkButton(uri='http://www.atareao.es')
-        label.set_label('http://www.atareao.es')
+        label = Gtk.LinkButton(uri='https://www.atareao.es/aplicacion/cpu-g-donde-ver-hardware-instalado/')
+        label.set_label('CPU-G')
         table991.attach(label, 0, 1, 8, 9,
                         xoptions=Gtk.AttachOptions.EXPAND,
                         yoptions=Gtk.AttachOptions.FILL,
