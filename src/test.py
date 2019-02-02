@@ -6,7 +6,7 @@
 #
 # Copyright © 2009  Fotis Tsamis <ftsamis at gmail dot com>.
 # Copyright © 2016-2019  Lorenzo Carbonell (aka atareao)
-# <lorenzo.carbonell.cerezo at gmail dotcom>
+# <lorenzo.carbonell.cerezo at gmail dot com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,8 +24,8 @@
 from gi.repository import Gtk
 
 from matplotlib.figure import Figure
-from numpy import arange, sin, pi
-from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as
+FigureCanvas
 
 win = Gtk.Window()
 win.connect("delete-event", Gtk.main_quit)
@@ -34,8 +34,6 @@ win.set_title("Embedding in GTK")
 
 f = Figure(figsize=(5, 4), dpi=100)
 a = f.add_subplot(111)
-# t = arange(0.0, 3.0, 0.01)
-# s = sin(2*pi*t)
 t = [1, 2, 3, 4]
 s = [1, 4, 9, 16]
 a.plot(t, s)

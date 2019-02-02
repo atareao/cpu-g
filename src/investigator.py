@@ -1,5 +1,25 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
+#
+# CPU-G is a program that displays information about your CPU,
+# RAM, Motherboard and some general information about your System.
+#
+# Copyright © 2009  Fotis Tsamis <ftsamis at gmail dot com>.
+# Copyright © 2016-2019  Lorenzo Carbonell (aka atareao)
+# <lorenzo.carbonell.cerezo at gmail dot com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import gi
 try:
@@ -91,7 +111,7 @@ class Investigator():
             elif self.is_running("ksmserver"):
                 return "kde"
         return "unknown"
-    
+
     def convert2int(value):
         try:
             return int(value)
@@ -174,26 +194,31 @@ class Investigator():
         elif data == 'status':
             info = self.readfile(os.path.join(BATTERY_DIR, 'status'))
         elif data == 'capacity':
-            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR, 'capacity')))
+            info = Investigator.convert2int(
+                self.readfile(os.path.join(BATTERY_DIR, 'capacity')))
         elif data == 'capacity-level':
             info = self.readfile(os.path.join(BATTERY_DIR, 'capacity_level'))
         elif data == 'voltage-now':
-            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR, 'voltage_now')))
+            info = Investigator.convert2int(
+                self.readfile(os.path.join(BATTERY_DIR, 'voltage_now')))
         elif data == 'voltage-min-design':
-            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR,
-                                                  'voltage_min_design')))
+            info = Investigator.convert2int(
+                self.readfile(os.path.join(BATTERY_DIR, 'voltage_min_design')))
         elif data == 'charge-now':
-            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR, 'charge_now')))
+            info = Investigator.convert2int(
+                self.readfile(os.path.join(BATTERY_DIR, 'charge_now')))
         elif data == 'current-now':
-            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR, 'current_now')))
+            info = Investigator.convert2int(
+                self.readfile(os.path.join(BATTERY_DIR, 'current_now')))
         elif data == 'charge-full':
-            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR, 'charge_full')))
+            info = Investigator.convert2int(
+                self.readfile(os.path.join(BATTERY_DIR, 'charge_full')))
         elif data == 'charge-full-design':
-            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR,
-                                                  'charge_full_design')))
+            info = Investigator.convert2int(
+                self.readfile(os.path.join(BATTERY_DIR, 'charge_full_design')))
         elif data == 'cycle-count':
-            info = Investigator.convert2int(self.readfile(os.path.join(BATTERY_DIR,
-                                                  'cycle_count')))
+            info = Investigator.convert2int(
+                self.readfile(os.path.join(BATTERY_DIR, 'cycle_count')))
         elif data == 'present':
             info = (self.readfile(os.path.join(BATTERY_DIR,
                                                'present')) == 1)

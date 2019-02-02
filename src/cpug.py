@@ -6,7 +6,7 @@
 #
 # Copyright © 2009  Fotis Tsamis <ftsamis at gmail dot com>.
 # Copyright © 2016-2019  Lorenzo Carbonell (aka atareao)
-# <lorenzo.carbonell.cerezo at gmail dotcom>
+# <lorenzo.carbonell.cerezo at gmail dot com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -986,7 +986,8 @@ Copyright © 2016-2019 Lorenzo Carbonell
                         xoptions=Gtk.AttachOptions.EXPAND,
                         yoptions=Gtk.AttachOptions.FILL,
                         xpadding=5, ypadding=5)
-        label = Gtk.LinkButton(uri='https://www.atareao.es/aplicacion/cpu-g-donde-ver-hardware-instalado/')
+        label = Gtk.LinkButton(uri='https://www.atareao.es/aplicacion/\
+cpu-g-donde-ver-hardware-instalado/')
         label.set_label('CPU-G')
         table991.attach(label, 0, 1, 8, 9,
                         xoptions=Gtk.AttachOptions.EXPAND,
@@ -1063,41 +1064,37 @@ Copyright © 2016-2019 Lorenzo Carbonell
             inv.battery_info('voltage-now'),
             locale.format(
                 '%.2f',
-                inv.battery_info('voltage-now')/1000000) +
-                _(' V'))
+                inv.battery_info('voltage-now')/1000000) + _(' V'))
         self._aux_set_text(
             self.battery_min_voltage_design,
             inv.battery_info('voltage-min-design'),
             locale.format(
                 '%.2f',
-                inv.battery_info('voltage-min-design')/1000000) +
-                _(' V'))
+                inv.battery_info('voltage-min-design')/1000000) + _(' V'))
         self._aux_set_text(
             self.battery_charge_now,
             inv.battery_info('charge-now'),
             locale.format(
                 '%.2f',
-                inv.battery_info('charge-now')/1000000) +
-            _(' Ah'))
+                inv.battery_info('charge-now')/1000000) + _(' Ah'))
         self._aux_set_text(
             self.battery_charge_full,
             inv.battery_info('charge-full'),
             locale.format(
                 '%.2f',
-                inv.battery_info('charge-full')/1000000) +
-            _(' Ah'))
+                inv.battery_info('charge-full')/1000000) + _(' Ah'))
         self._aux_set_text(
             self.battery_charge_full_design,
             inv.battery_info('charge-full-design'),
             locale.format(
                 '%.2f',
-                inv.battery_info('charge-full-design')/1000000) +
-            _(' Ah'))
+                inv.battery_info('charge-full-design')/1000000) + _(' Ah'))
         self._aux_set_text(
             self.battery_current_now,
             inv.battery_info('current-now'),
-            locale.format('%.2f', inv.battery_info('current-now')/1000000) +
-            _(' A'))
+            locale.format(
+                '%.2f',
+                inv.battery_info('current-now')/1000000) + _(' A'))
         return True
 
     def uptime_update(self):
