@@ -15,7 +15,7 @@ More info: [cpu-g](https://www.atareao.es/aplicacion/cpu-g-donde-ver-hardware-in
 To install CPU-G run following commands in a terminal (`Ctrl+Alt+T`),
 
 ```
-sudo add-apt-repository ppa:atareao\atareao
+sudo add-apt-repository ppa:atareao/atareao
 sudo apt update
 sudo apt install cpu-g
 ```
@@ -54,7 +54,7 @@ sudo apt install cpu-g
 
 ![Battery](./screenshots/cpu-g-battery.png)
 
-### Discs
+### Disks
 
 ![Disks](./screenshots/cpu-g-disks.png)
 
