@@ -157,7 +157,7 @@ msgstr "Libre"
 
 #: src/cpug.py:396
 msgid "Memory not being used at all (zeroed) that is readily available (Mb)"
-msgstr "Memoria que no se está utilizando en absotulo (Mb)""
+msgstr "Memoria que no se está utilizando en absotulo (Mb)"
 
 #: src/cpug.py:410
 msgid "Active"
