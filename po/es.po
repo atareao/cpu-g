@@ -1,0 +1,413 @@
+# Spanish translations for cpu-g package.
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the cpu-g package.
+# Lorenzo <lorenzo.carbonell.cerezo@gmail.com>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cpu-g - 0.15.2-1ubuntu0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-01 20:59+0100\n"
+"PO-Revision-Date: 2019-02-01 20:59+0100\n"
+"Last-Translator: Lorenzo <lorenzo.carbonell.cerezo@gmail.com>\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/cpug.py:69
+msgid "Processor"
+msgstr "Procesador"
+
+#: src/cpug.py:70
+msgid "General"
+msgstr "General"
+
+#: src/cpug.py:74 src/cpug.py:268 src/cpug.py:294
+msgid "Vendor"
+msgstr "Fabricante"
+
+#: src/cpug.py:85 src/cpug.py:128 src/cpug.py:279
+msgid "Model"
+msgstr "Modelo"
+
+#: src/cpug.py:96
+msgid "Core Speed"
+msgstr "Velocidad del núcleo"
+
+#: src/cpug.py:112
+msgid "CPU"
+msgstr "CPU"
+
+#: src/cpug.py:116
+msgid "Family"
+msgstr "Familia"
+
+#: src/cpug.py:140
+msgid "Stepping"
+msgstr ""
+
+#: src/cpug.py:152
+msgid "Flags"
+msgstr ""
+
+#: src/cpug.py:163
+msgid "Bogomips"
+msgstr ""
+
+#: src/cpug.py:174
+msgid "Width"
+msgstr ""
+
+#: src/cpug.py:187
+msgid "Cache"
+msgstr ""
+
+#: src/cpug.py:191
+msgid "L1 Data"
+msgstr ""
+
+#: src/cpug.py:202
+msgid "L1 Instruction"
+msgstr ""
+
+#: src/cpug.py:213
+msgid "Level 2"
+msgstr "Nivel 2"
+
+#: src/cpug.py:224
+msgid "Level 3"
+msgstr "Nivel 3"
+
+#: src/cpug.py:236
+msgid "Core selection"
+msgstr "Selección del núcleo"
+
+#: src/cpug.py:240
+msgid "Number of cores"
+msgstr "Número de núclos"
+
+#: src/cpug.py:263
+msgid "Motherboard"
+msgstr "Placa madre"
+
+#: src/cpug.py:264
+msgid "Board"
+msgstr "Tablero"
+
+#: src/cpug.py:290
+msgid "Bios"
+msgstr "Bios"
+
+#: src/cpug.py:305
+msgid "Version"
+msgstr "Versión"
+
+#: src/cpug.py:316
+msgid "Date"
+msgstr "Fecha"
+
+#: src/cpug.py:329
+msgid "Memory"
+msgstr "Memoria"
+
+#: src/cpug.py:330
+msgid "Ram"
+msgstr "Ram"
+
+#: src/cpug.py:334 src/cpug.py:465
+msgid "Total"
+msgstr "Total"
+
+#: src/cpug.py:341
+msgid "Total physical memory available."
+msgstr "Memoria física total disponible"
+
+#: src/cpug.py:346
+msgid "Available"
+msgstr ""Disponible
+
+#: src/cpug.py:353
+msgid ""
+"The actual amount of available memory that can be given instantly to "
+"processes that request more memory in bytes; this is calculated by summing "
+"different memory values (Mb)"
+msgstr ""
+"La cantida de memoria disponible actual que puede ser ofrecida de forma instantánea a "
+"los procesos que necesitan mas memoria en bytes; esto se calcula sumando "
+"los diferentes valores de memoria (Mb)"
+
+#: src/cpug.py:368 src/cpug.py:478
+msgid "Used"
+msgstr "Usada"
+
+#: src/cpug.py:375
+msgid ""
+"Memory used, calculated differently depending on the platform and designed "
+"for informational purposes only (Mb)"
+msgstr ""
+"Memoria usada, caluculada de forma diferente en función de la plataforma y pensada "
+"solo con propósitos informativos (Mb)"
+
+#: src/cpug.py:389 src/cpug.py:498
+msgid "Free"
+msgstr "Libre"
+
+#: src/cpug.py:396
+msgid "Memory not being used at all (zeroed) that is readily available (Mb)"
+msgstr "Memoria que no se está utilizando en absotulo (Mb)""
+
+#: src/cpug.py:410
+msgid "Active"
+msgstr "Activa"
+
+#: src/cpug.py:417
+msgid "Memory currently in use or very recently used, and so it is in RAM (Mb)"
+msgstr "Memoria que está en uso o ha sido usada recientemente, así es RAM (Mb)"
+
+#: src/cpug.py:423
+msgid "Inactive"
+msgstr "Inactiva"
+
+#: src/cpug.py:430
+msgid "Memory that is marked as not used."
+msgstr "Memoria que está marcada como noutilizada."
+
+#: src/cpug.py:436
+msgid "Buffers"
+msgstr "Memoria intermedia"
+
+#: src/cpug.py:443
+msgid "Ccache for things like file system metadata. (Mb)"
+msgstr "Cache para usos como la metainformación del sistema de archivos (Mb)"
+
+#: src/cpug.py:449
+msgid "Cached"
+msgstr "Cacheada"
+
+#: src/cpug.py:456
+msgid "Cache for various things (Mb)"
+msgstr "Caché para usos varios (Mb)"
+
+#: src/cpug.py:461
+msgid "Swap"
+msgstr "Memoria de intercambio"
+
+#: src/cpug.py:472
+msgid "Total physical memory available in Mb."
+msgstr "Memoria física total disponible en Mb."
+
+#: src/cpug.py:485
+msgid "Used swap memory in Mb"
+msgstr "Memoria de intercambio utilizada en Mb"
+
+#: src/cpug.py:505
+msgid "Free swap memory in Mb"
+msgstr "Memoria de intercambio libre en Mb"
+
+#: src/cpug.py:518
+msgid "Sin"
+msgstr "Entrada"
+
+#: src/cpug.py:525
+msgid "The number of Mb the system has swapped in from disk (cumulative)"
+msgstr "Número de Mb del sistema que ha pasado a la memoria de intercambio"
+
+#: src/cpug.py:531
+msgid "Sout"
+msgstr "Salida"
+
+#: src/cpug.py:538
+msgid "The number of Mb the system has swapped out from disk (cumulative)"
+msgstr "Número de Mb del sistema que ha salido de la memoria de intercambio"
+
+#: src/cpug.py:547
+msgid "System"
+msgstr "Systema"
+
+#: src/cpug.py:552
+msgid "Hostname"
+msgstr ""
+
+#: src/cpug.py:563
+msgid "Architecture"
+msgstr "Arquitectura"
+
+#: src/cpug.py:574
+msgid "Kernel"
+msgstr "Núcleo"
+
+#: src/cpug.py:585
+msgid "GCC Version"
+msgstr "Versión de GCC"
+
+#: src/cpug.py:596
+msgid "Uptime"
+msgstr "Tiempo en marcha"
+
+#: src/cpug.py:607
+msgid "Xorg version"
+msgstr "Versión Xorg"
+
+#: src/cpug.py:618
+msgid "Resolution"
+msgstr "Resolución"
+
+#: src/cpug.py:630
+msgid "Distribution"
+msgstr "Distribución"
+
+#: src/cpug.py:641
+msgid "Desktop environment"
+msgstr "Entorno de escritorio"
+
+#: src/cpug.py:653
+msgid "Window manager"
+msgstr "Gestor de ventanas"
+
+#: src/cpug.py:673
+msgid "Graphic"
+msgstr "Gráfica"
+
+#: src/cpug.py:678
+msgid "Graphic Controller"
+msgstr "Controladora gráfica"
+
+#: src/cpug.py:689
+msgid "OpenGL Vendor"
+msgstr "Fabricante OpenGL"
+
+#: src/cpug.py:700
+msgid "OpenGL renderer"
+msgstr "Renderizador OpenGL"
+
+#: src/cpug.py:711
+msgid "OpenGL version"
+msgstr "Versión de OpenGL"
+
+#: src/cpug.py:731
+msgid "Battery"
+msgstr "Batería"
+
+#: src/cpug.py:737
+msgid "Manufacturer"
+msgstr "Fabricante"
+
+#: src/cpug.py:749
+msgid "Model name"
+msgstr "Modelo"
+
+#: src/cpug.py:761
+msgid "Serial number"
+msgstr "Número de serie"
+
+#: src/cpug.py:773
+msgid "Technology"
+msgstr "Tecnología"
+
+#: src/cpug.py:785
+msgid "Estimated time remaining"
+msgstr "Tiempo restante estimado"
+
+#: src/cpug.py:797
+msgid "Estimated battery discharge time"
+msgstr "Tiempo estimado de descarga de batería"
+
+#: src/cpug.py:809
+msgid "Battery level"
+msgstr "Nivel de batería"
+
+#: src/cpug.py:829
+msgid "Capacity level"
+msgstr "Nivel de capacidad"
+
+#: src/cpug.py:841
+msgid "Voltage now"
+msgstr "Voltage actual"
+
+#: src/cpug.py:853
+msgid "Minimum voltage design"
+msgstr "Voltage de diseño mínimo"
+
+#: src/cpug.py:865
+msgid "Charge now"
+msgstr "Carga actual"
+
+#: src/cpug.py:877
+msgid "Charge full"
+msgstr "Carga completa"
+
+#: src/cpug.py:889
+msgid "Charge full design"
+msgstr "Carga completa de diseño"
+
+#: src/cpug.py:901
+msgid "Current now"
+msgstr "Corriente actual"
+
+#: src/cpug.py:927
+msgid "Disks"
+msgstr "Discos"
+
+#: src/cpug.py:938
+msgid "About"
+msgstr "Acerca de"
+
+#: src/cpug.py:1056
+msgid " %"
+msgstr "%"
+
+#: src/cpug.py:1067 src/cpug.py:1074
+msgid " V"
+msgstr " V"
+
+#: src/cpug.py:1081 src/cpug.py:1088 src/cpug.py:1095
+msgid " Ah"
+msgstr " Ah"
+
+#: src/cpug.py:1100
+msgid " A"
+msgstr " A"
+
+#: src/cpug.py:1110 src/cpug.py:1112 src/cpug.py:1116 src/cpug.py:1119
+#: src/cpug.py:1122 src/cpug.py:1124 src/cpug.py:1126 src/cpug.py:1128
+#: src/cpug.py:1131 src/cpug.py:1135 src/cpug.py:1138 src/cpug.py:1141
+#: src/cpug.py:1143 src/cpug.py:1273 src/cpug.py:1286 src/cpug.py:1307
+msgid "MB"
+msgstr "MB"
+
+#: src/cpug.py:1209
+msgid "Device"
+msgstr "Dispositivo"
+
+#: src/cpug.py:1221
+msgid "Mount Point"
+msgstr "Punto de montaje"
+
+#: src/cpug.py:1233
+msgid "File System Type"
+msgstr "Tipo de sistema de archivos"
+
+#: src/cpug.py:1245
+msgid "Options"
+msgstr "Opciones"
+
+#: src/cpug.py:1261
+msgid "Total space"
+msgstr "Espacio total"
+
+#: src/cpug.py:1274
+msgid "Used space"
+msgstr "Espacio en uso"
+
+#: src/cpug.py:1295
+msgid "Free space"
+msgstr "Espacio libre"
+
+#: src/investigator.py:34 src/investigator.py:262 src/investigator.py:286
+#: src/investigator.py:296 src/investigator.py:297 src/investigator.py:379
+#: src/investigator.py:384 src/investigator.py:389 src/investigator.py:394
+msgid "N/A"
+msgstr "N/A"

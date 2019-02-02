@@ -2,8 +2,8 @@ Source: cpu-g
 Section: utils
 Priority: extra
 Maintainer: Lorenzo Carbonell Cerezo <lorenzo.carbonell.cerezo@gmail.com>
-Build-Depends: debhelper (>= 8), python, python-distutils-extra, python-polib
-Standards-Version: 3.8.4
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.4
 Homepage: http://www.atareao.es
 
 Package: cpu-g
