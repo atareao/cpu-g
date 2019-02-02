@@ -127,7 +127,7 @@ msgstr "Memoria física total disponible"
 
 #: src/cpug.py:346
 msgid "Available"
-msgstr ""Disponible
+msgstr "Disponible"
 
 #: src/cpug.py:353
 msgid ""
