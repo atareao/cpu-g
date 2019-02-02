@@ -8,7 +8,7 @@
 
 It collects and displays information about your CPU, RAM, Motherboard, some general information about your system and more.
 
-More info: [cpug-g](https://www.atareao.es/aplicacion/cpu-g-donde-ver-hardware-instalado/)
+More info: [cpu-g](https://www.atareao.es/aplicacion/cpu-g-donde-ver-hardware-instalado/)
 
 ## Install
 
