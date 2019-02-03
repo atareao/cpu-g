@@ -128,7 +128,7 @@ class Investigator():
             s = subprocess.Popen(["/bin/ps", "axw"], stdout=subprocess.PIPE)
         except Exception as e:  # Windows
             print(e)
-            s = subprocess.Popen(["tasklist", "/v"], stdout=subprocess.PIPE)
+            return False
         for x in s.stdout:
             if re.search(process, x):
                 return True
@@ -294,8 +294,7 @@ class Investigator():
             values = platform.dist()
         if len(values) == 3:
             return "%s %s %s" % (values[0], values[1], values[2])
-        else:
-            return self.readfile('/etc/issue').strip()
+        return self.readfile('/etc/issue').strip()
 
     def get_distro_logo(self):
         distro = self.distro().split()[0].lower() + '.png'
