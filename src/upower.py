@@ -56,7 +56,6 @@ def convert(dbus_obj):
     for conv in (pyint, pybool, pyfloat, pylist, pytuple, pystr, pydict):
         if any(map(_isinstance, conv.dbustypes)):
             return conv.pytype(dbus_obj)
-    else:
         return dbus_obj
 
 
@@ -171,8 +170,7 @@ class BatteryDriver():
             return 'Pending charge'
         elif ans == 6:
             return 'Pending discharge'
-        else:
-            return 'Unknown'
+        return 'Unknown'
 
     def get_capacity(self):  # < 75% renew battery
         return self.__get('Capacity')
@@ -193,8 +191,7 @@ class BatteryDriver():
             return 'Nickel cadmium'
         elif ans == 6:
             return 'Nickel metal hydride'
-        else:
-            return 'Unknown'
+        return 'Unknown'
 
     def get_statistics_discharging(self):
         return convert(self.__statistics('discharging'))
