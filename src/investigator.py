@@ -55,7 +55,7 @@ class Investigator():
             return _('N/A')
 
     def get_window_manager(self):
-        ans = subprocess.check_output(['wmctrl', '-m']).decode()
+        ans = self.execute('/usr/bin/wmctrl -m')
         return ans[6:ans.find('\n')]
 
     def resolution(self):
@@ -125,8 +125,9 @@ class Investigator():
         # and http://richarddingwall.name/2009/06/18/\
         # windows-equivalents-of-ps-and-kill-commands/
         try:  # Linux/Unix
-            s = subprocess.Popen(["ps", "axw"], stdout=subprocess.PIPE)
-        except:  # Windows
+            s = subprocess.Popen(["/bin/ps", "axw"], stdout=subprocess.PIPE)
+        except Exception as e:  # Windows
+            print(e)
             s = subprocess.Popen(["tasklist", "/v"], stdout=subprocess.PIPE)
         for x in s.stdout:
             if re.search(process, x):
@@ -258,9 +259,10 @@ class Investigator():
         elif var == 'width':
             if re.findall(' lm(?![-a-zA-Z0-9_])',
                           re.findall("flags\s*:(.*)", info)[core]):
-                return '64-bit'
+                width = '64-bit'
             else:
-                return '32-bit'
+                width = '32-bit'
+            return width
 
     def sysdevcpu(self, core, level, kind):
         coresinsysdev = str(
@@ -269,7 +271,6 @@ class Investigator():
         if coresinsysdev == self.cpuinfo('coresnum'):
             cores_matching = True
         else:
-            # FIXME: Wrong text. (?)
             print("Error: Cannot decide if the cores are %s or %s.\n" +
                   "Using the lowest value as the real cores number." %
                   (self.cpuinfo('coresnum'), coresinsysdev))
@@ -280,19 +281,18 @@ class Investigator():
             levelpath = path + 'index%i/level' % (index)
             typepath = path + 'index%i/type' % (index)
             size = path + 'index%i/size' % (index)
-        # os.chdir(newpath)
-        if self.readfile(levelpath).strip() == str(level) and\
-                self.readfile(typepath).strip() == kind:
-            return self.readfile(size).strip()
-        elif index == range(indexes)[-1]:
-            return _('N/A')
+            # os.chdir(newpath)
+            if self.readfile(levelpath).strip() == str(level) and\
+                    self.readfile(typepath).strip() == kind:
+                return self.readfile(size).strip()
+        return _('N/A')
 
     def distro(self):
         try:
             values = platform.linux_distribution()
         except AttributeError:
             values = platform.dist()
-        if len(values) != 0:
+        if len(values) == 3:
             return "%s %s %s" % (values[0], values[1], values[2])
         else:
             return self.readfile('/etc/issue').strip()
@@ -306,15 +306,14 @@ class Investigator():
 
     def gccver(self):
         gcc_version = self.execute('/usr/bin/gcc -dumpversion').strip()
-        if gcc_version != '':
-            return gcc_version
-        else:
-            return _('N/A')
+        if gcc_version == '':
+            gcc_version = _('N/A')
+        return gcc_version
 
     def xver(self):
         xver_version = self.execute('/usr/bin/apt-cache show xorg')
         ans = re.findall("Version: 1:(.*)\+", xver_version)
-        if len(ans) > 0:
+        if ans:
             return ans[0]
         return _('N/A')
 
@@ -400,23 +399,19 @@ class Investigator():
         if var == 'vendor':
             if open_gl_ != '':
                 return re.findall("OpenGL vendor string: (.*)", open_gl_)[0]
-            else:
-                return _('N/A')
+            return _('N/A')
         elif var == 'renderer':
             if open_gl_ != '':
                 return re.findall("OpenGL renderer string: (.*)", open_gl_)[0]
-            else:
-                return _('N/A')
+            return _('N/A')
         elif var == 'version':
             if open_gl_ != '':
                 return re.findall("OpenGL version string: (.*)", open_gl_)[0]
-            else:
-                return _('N/A')
+            return _('N/A')
         elif var == 'VGA':
             if vga is not None:
                 return vga
-            else:
-                return _('N/A')
+            return _('N/A')
     # End Graphic Tab
 
     def execute(self, command, parser=None):
@@ -428,7 +423,7 @@ class Investigator():
             result = stdout.decode()
         else:
             matches = re.search(parser, stdout.decode())
-            if len(matches.groups()) > 0:
+            if matches.groups():
                 result = matches.group(1)
             else:
                 result = None
@@ -473,5 +468,6 @@ if __name__ == '__main__':
     print(inv.xver())
     print(inv.gccver())
     print(inv.disksinfo())
-    print(inv.get_graphic_card_logo())
+    print(inv.get_window_manager())
+
     exit(0)
