@@ -1,8 +1,8 @@
-cpu-g (0.16.0-1ubuntu2) cosmic; urgency=medium
+cpu-g (0.16.1-1ubuntu0) cosmic; urgency=medium
 
   * Added spanish translation
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 02 Feb 2019 21:11:13 +0100
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 03 Feb 2019 10:46:50 +0100
 
 cpu-g (0.15.2-1ubuntu0) cosmic; urgency=medium
 

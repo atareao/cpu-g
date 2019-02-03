@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cpu-g - 0.15.2-1ubuntu0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-01 20:59+0100\n"
+"POT-Creation-Date: 2019-02-03 10:44+0100\n"
 "PO-Revision-Date: 2019-02-01 20:59+0100\n"
 "Last-Translator: Lorenzo <lorenzo.carbonell.cerezo@gmail.com>\n"
 "Language-Team: Spanish\n"
@@ -135,9 +135,9 @@ msgid ""
 "processes that request more memory in bytes; this is calculated by summing "
 "different memory values (Mb)"
 msgstr ""
-"La cantida de memoria disponible actual que puede ser ofrecida de forma instantánea a "
-"los procesos que necesitan mas memoria en bytes; esto se calcula sumando "
-"los diferentes valores de memoria (Mb)"
+"La cantida de memoria disponible actual que puede ser ofrecida de forma "
+"instantánea a los procesos que necesitan mas memoria en bytes; esto se "
+"calcula sumando los diferentes valores de memoria (Mb)"
 
 #: src/cpug.py:368 src/cpug.py:478
 msgid "Used"
@@ -148,8 +148,8 @@ msgid ""
 "Memory used, calculated differently depending on the platform and designed "
 "for informational purposes only (Mb)"
 msgstr ""
-"Memoria usada, caluculada de forma diferente en función de la plataforma y pensada "
-"solo con propósitos informativos (Mb)"
+"Memoria usada, caluculada de forma diferente en función de la plataforma y "
+"pensada solo con propósitos informativos (Mb)"
 
 #: src/cpug.py:389 src/cpug.py:498
 msgid "Free"
@@ -287,7 +287,7 @@ msgstr "Renderizador OpenGL"
 msgid "OpenGL version"
 msgstr "Versión de OpenGL"
 
-#: src/cpug.py:731
+#: src/cpug.py:731 src/upower.py:102
 msgid "Battery"
 msgstr "Batería"
 
@@ -355,59 +355,141 @@ msgstr "Discos"
 msgid "About"
 msgstr "Acerca de"
 
-#: src/cpug.py:1056
+#: src/cpug.py:1057
 msgid " %"
 msgstr "%"
 
-#: src/cpug.py:1067 src/cpug.py:1074
+#: src/cpug.py:1067 src/cpug.py:1073
 msgid " V"
 msgstr " V"
 
-#: src/cpug.py:1081 src/cpug.py:1088 src/cpug.py:1095
+#: src/cpug.py:1079 src/cpug.py:1085 src/cpug.py:1091
 msgid " Ah"
 msgstr " Ah"
 
-#: src/cpug.py:1100
+#: src/cpug.py:1097
 msgid " A"
 msgstr " A"
 
-#: src/cpug.py:1110 src/cpug.py:1112 src/cpug.py:1116 src/cpug.py:1119
-#: src/cpug.py:1122 src/cpug.py:1124 src/cpug.py:1126 src/cpug.py:1128
-#: src/cpug.py:1131 src/cpug.py:1135 src/cpug.py:1138 src/cpug.py:1141
-#: src/cpug.py:1143 src/cpug.py:1273 src/cpug.py:1286 src/cpug.py:1307
+#: src/cpug.py:1107 src/cpug.py:1109 src/cpug.py:1113 src/cpug.py:1116
+#: src/cpug.py:1119 src/cpug.py:1121 src/cpug.py:1123 src/cpug.py:1125
+#: src/cpug.py:1128 src/cpug.py:1132 src/cpug.py:1135 src/cpug.py:1138
+#: src/cpug.py:1140 src/cpug.py:1270 src/cpug.py:1283 src/cpug.py:1304
 msgid "MB"
 msgstr "MB"
 
-#: src/cpug.py:1209
+#: src/cpug.py:1206
 msgid "Device"
 msgstr "Dispositivo"
 
-#: src/cpug.py:1221
+#: src/cpug.py:1218
 msgid "Mount Point"
 msgstr "Punto de montaje"
 
-#: src/cpug.py:1233
+#: src/cpug.py:1230
 msgid "File System Type"
 msgstr "Tipo de sistema de archivos"
 
-#: src/cpug.py:1245
+#: src/cpug.py:1242
 msgid "Options"
 msgstr "Opciones"
 
-#: src/cpug.py:1261
+#: src/cpug.py:1258
 msgid "Total space"
 msgstr "Espacio total"
 
-#: src/cpug.py:1274
+#: src/cpug.py:1271
 msgid "Used space"
 msgstr "Espacio en uso"
 
-#: src/cpug.py:1295
+#: src/cpug.py:1292
 msgid "Free space"
 msgstr "Espacio libre"
 
-#: src/investigator.py:34 src/investigator.py:262 src/investigator.py:286
-#: src/investigator.py:296 src/investigator.py:297 src/investigator.py:379
-#: src/investigator.py:384 src/investigator.py:389 src/investigator.py:394
+#: src/upower.py:98 src/upower.py:115 src/upower.py:159 src/upower.py:172
+#: src/upower.py:180 src/upower.py:193
+msgid "Unknown"
+msgstr ""
+
+#: src/upower.py:100
+msgid "Line Power"
+msgstr ""
+
+#: src/upower.py:104
+msgid "Ups"
+msgstr ""
+
+#: src/upower.py:106
+msgid "Monitor"
+msgstr ""
+
+#: src/upower.py:108
+msgid "Mouse"
+msgstr ""
+
+#: src/upower.py:110
+#, fuzzy
+msgid "Keyboard"
+msgstr "Placa madre"
+
+#: src/upower.py:112
+msgid "Pda"
+msgstr "Pda"
+
+#: src/upower.py:114
+msgid "Phone"
+msgstr "Teléfono"
+
+#: src/upower.py:161
+msgid "Charging"
+msgstr "Cargando"
+
+#: src/upower.py:163
+msgid "Discharging"
+msgstr "Descargando"
+
+#: src/upower.py:165
+msgid "Empty"
+msgstr "Vacía"
+
+#: src/upower.py:167
+msgid "Fully charged"
+msgstr "Completamente cargada"
+
+#: src/upower.py:169
+msgid "Pending charge"
+msgstr "Pendiente de carga"
+
+#: src/upower.py:171
+msgid "Pending discharge"
+msgstr "Pendiente de descarga"
+
+#: src/upower.py:182
+msgid "Lithium ion"
+msgstr "Ion Litio"
+
+#: src/upower.py:184
+msgid "Lithium polymer"
+msgstr "Litio polímero"
+
+#: src/upower.py:186
+msgid "Lithium iron phosphate"
+msgstr "Litio hierro fosfato"
+
+#: src/upower.py:188
+msgid "Lead acid"
+msgstr "Plomo ácido"
+
+#: src/upower.py:190
+msgid "Nickel cadmium"
+msgstr "Niquel cadmio"
+
+#: src/upower.py:192
+msgid "Nickel metal hydride"
+msgstr "Niquel metal híbrido"
+
+#: src/investigator.py:55 src/investigator.py:288 src/investigator.py:309
+#: src/investigator.py:317 src/investigator.py:401 src/investigator.py:405
+#: src/investigator.py:409 src/investigator.py:413
 msgid "N/A"
 msgstr "N/A"
