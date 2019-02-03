@@ -24,7 +24,7 @@
 import dbus
 from collections import namedtuple
 from functools import partial
-
+from comun import _
 
 def convert(dbus_obj):
     """Converts dbus_obj from dbus type to python type.
@@ -95,25 +95,24 @@ class BatteryDriver():
     def get_type(self):
         ans = self.__get('Type')
         if ans == 0:
-            return 'Unknown'
+            return _('Unknown')
         elif ans == 1:
-            return 'Line Power'
+            return _('Line Power')
         elif ans == 2:
-            return 'Battery'
+            return _('Battery')
         elif ans == 3:
-            return 'Ups'
+            return _('Ups')
         elif ans == 4:
-            return 'Monitor'
+            return _('Monitor')
         elif ans == 5:
-            return 'Mouse'
+            return _('Mouse')
         elif ans == 6:
-            return 'Keyboard'
+            return _('Keyboard')
         elif ans == 7:
-            return 'Pda'
+            return _('Pda')
         elif ans == 8:
-            return 'Phone'
-        else:
-            return 'Unknown'
+            return _('Phone')
+        return _('Unknown')
 
     def get_power_supply(self):
         return convert(self.__get('PowerSupply'))
@@ -157,20 +156,20 @@ class BatteryDriver():
     def get_state(self):
         ans = self.__get('State')
         if ans == 0:
-            return 'Unknown'
+            return _('Unknown')
         elif ans == 1:
-            return 'Charging'
+            return _('Charging')
         elif ans == 2:
-            return 'Discharging'
+            return _('Discharging')
         elif ans == 3:
-            return 'Empty'
+            return _('Empty')
         elif ans == 4:
-            return 'Fully charged'
+            return _('Fully charged')
         elif ans == 5:
-            return 'Pending charge'
+            return _('Pending charge')
         elif ans == 6:
-            return 'Pending discharge'
-        return 'Unknown'
+            return _('Pending discharge')
+        return _('Unknown')
 
     def get_capacity(self):  # < 75% renew battery
         return self.__get('Capacity')
@@ -178,20 +177,20 @@ class BatteryDriver():
     def get_technology(self):
         ans = self.__get('Technology')
         if ans == 0:
-            return 'Unknown'
+            return _('Unknown')
         elif ans == 1:
-            return 'Lithium ion'
+            return _('Lithium ion')
         elif ans == 2:
-            return 'Lithium polymer'
+            return _('Lithium polymer')
         elif ans == 3:
-            return 'Lithium iron phosphate'
+            return _('Lithium iron phosphate')
         elif ans == 4:
-            return 'Lead acid'
+            return _('Lead acid')
         elif ans == 5:
-            return 'Nickel cadmium'
+            return _('Nickel cadmium')
         elif ans == 6:
-            return 'Nickel metal hydride'
-        return 'Unknown'
+            return _('Nickel metal hydride')
+        return _('Unknown')
 
     def get_statistics_discharging(self):
         return convert(self.__statistics('discharging'))
