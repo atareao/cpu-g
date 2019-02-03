@@ -1030,7 +1030,7 @@ cpu-g-donde-ver-hardware-instalado/')
         return True
 
     def _aux_set_text(self, textbox, value, value1):
-        if type(value) == int:
+        if isinstance(value, int):
             textbox.set_text(value1)
         else:
             textbox.set_text(value)

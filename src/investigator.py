@@ -33,6 +33,7 @@ import re
 import sys
 import platform
 import subprocess
+import shlex
 import comun
 import psutil
 from comun import _
@@ -304,21 +305,17 @@ class Investigator():
         return None
 
     def gccver(self):
-        gcc_version = os.popen('gcc -dumpversion').read().strip()
+        gcc_version = self.execute('/usr/bin/gcc -dumpversion').strip()
         if gcc_version != '':
             return gcc_version
         else:
             return _('N/A')
 
     def xver(self):
-        command = subprocess.Popen(
-            ['apt-cache', 'show', 'xorg'],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-        stdout, stderr = command.communicate()
-        ans = re.findall("Version: 1:(.*)\+", stdout.decode())
+        xver_version = self.execute('/usr/bin/apt-cache show xorg')
+        ans = re.findall("Version: 1:(.*)\+", xver_version)
         if len(ans) > 0:
-            return _('N/A')
+            return ans[0]
         return _('N/A')
 
     def raminfo(self):
@@ -376,27 +373,30 @@ class Investigator():
         return "%i days, %i hours, %i minutes" % (days, hours, minutes)
 
     def get_graphic_card_logo(self):
-        card_logo = os.popen("lspci | grep \'VGA\'").read()
-        # Intel
-        if re.findall("Intel\s*", card_logo):
-            label = 'intel.png'
-        # ATI
-        # ATI Technologies replace to ATI. See bug
-        # https://bugs.launchpad.net/cpug/+bug/959115
-        elif re.findall("ATI\s*", card_logo):
-            label = 'ati.png'
-        # nVidia
-        # elif re.findall("nVidia\s*", card_logo):
-        elif re.findall("nVidia\s*", card_logo, re.I):
-            label = 'nvidia.png'
+        card_logo = self.execute('/usr/bin/lspci', 'VGA(.*)')
+        if card_logo is not None:
+            # Intel
+            if re.findall("Intel\s*", card_logo):
+                label = 'intel.png'
+            # ATI
+            # ATI Technologies replace to ATI. See bug
+            # https://bugs.launchpad.net/cpug/+bug/959115
+            elif re.findall("ATI\s*", card_logo):
+                label = 'ati.png'
+            # nVidia
+            # elif re.findall("nVidia\s*", card_logo):
+            elif re.findall("nVidia\s*", card_logo, re.I):
+                label = 'nvidia.png'
+            else:
+                label = 'unknown.png'
         else:
             label = 'unknown.png'
         return os.path.join(comun.GRAPHICCARDDIR, label)
 
     # Graphic tab
     def open_gl(self, var):
-        open_gl_ = os.popen('glxinfo').read()
-        vga = os.popen("lspci | grep 'VGA' | cut -d ':' -f 3").read()
+        open_gl_ = self.execute('/usr/bin/glxinfo')
+        vga = self.execute('/usr/bin/lspci', 'VGA[^:]*:(.*)')
         if var == 'vendor':
             if open_gl_ != '':
                 return re.findall("OpenGL vendor string: (.*)", open_gl_)[0]
@@ -413,11 +413,26 @@ class Investigator():
             else:
                 return _('N/A')
         elif var == 'VGA':
-            if vga != '':
+            if vga is not None:
                 return vga
             else:
                 return _('N/A')
     # End Graphic Tab
+
+    def execute(self, command, parser=None):
+        command_with_args = shlex.split(command)
+        execution = subprocess.Popen(command_with_args, stdout=subprocess.PIPE,
+                                     stderr=subprocess.PIPE)
+        stdout, stderr = execution.communicate()
+        if parser is None:
+            result = stdout.decode()
+        else:
+            matches = re.search(parser, stdout.decode())
+            if len(matches.groups()) > 0:
+                result = matches.group(1)
+            else:
+                result = None
+        return result
 
 if __name__ == '__main__':
     print(psutil.cpu_times())
@@ -458,4 +473,5 @@ if __name__ == '__main__':
     print(inv.xver())
     print(inv.gccver())
     print(inv.disksinfo())
+    print(inv.get_graphic_card_logo())
     exit(0)
