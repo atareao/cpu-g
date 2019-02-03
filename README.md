@@ -1,5 +1,7 @@
 # CPU-G
 
+![CodeFactor](https://www.codefactor.io/repository/github/signalr/signalr/badge?style=plastic)
+
 <img src="./data/icons/cpu-g.png" align="right"
      title="CPU-G Logo" width="128" height="128">
 
