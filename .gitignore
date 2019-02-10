@@ -47,7 +47,7 @@ coverage.xml
 
 # Translations
 *.mo
-*.pot
+#*.pot
 
 # Django stuff:
 *.log
@@ -86,3 +86,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Visual Studio code
+.vscode
