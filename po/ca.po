@@ -1,0 +1,495 @@
+# Catalan translations for cpu-g package.
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the cpu-g package.
+# Marcel <marcelcosta@mcosta.cat>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cpu-g - 0.15.2-1ubuntu0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-03 10:44+0100\n"
+"PO-Revision-Date: 2019-02-01 20:59+0100\n"
+"Last-Translator: Marcel <marcelcosta@mcosta.cat>\n"
+"Language-Team: Catalan\n"
+"Language: cat\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/cpug.py:69
+msgid "Processor"
+msgstr "Processador"
+
+#: src/cpug.py:70
+msgid "General"
+msgstr "General"
+
+#: src/cpug.py:74 src/cpug.py:268 src/cpug.py:294
+msgid "Vendor"
+msgstr "Fabricant"
+
+#: src/cpug.py:85 src/cpug.py:128 src/cpug.py:279
+msgid "Model"
+msgstr "Model"
+
+#: src/cpug.py:96
+msgid "Core Speed"
+msgstr "Velocitat del nucli."
+
+#: src/cpug.py:112
+msgid "CPU"
+msgstr "CPU"
+
+#: src/cpug.py:116
+msgid "Family"
+msgstr "Família"
+
+#: src/cpug.py:140
+msgid "Stepping"
+msgstr "Número de revisió"
+
+#: src/cpug.py:152
+msgid "Flags"
+msgstr "Banderes"
+
+#: src/cpug.py:163
+msgid "Bogomips"
+msgstr ""
+
+#: src/cpug.py:174
+msgid "Width"
+msgstr "Amplada de dades"
+
+#: src/cpug.py:187
+msgid "Cache"
+msgstr "Memòria cau"
+
+#: src/cpug.py:191
+msgid "L1 Data"
+msgstr "Dades L1"
+
+#: src/cpug.py:202
+msgid "L1 Instruction"
+msgstr "Instruccions L1"
+
+#: src/cpug.py:213
+msgid "Level 2"
+msgstr "Nivell 2"
+
+#: src/cpug.py:224
+msgid "Level 3"
+msgstr "Nivell 3"
+
+#: src/cpug.py:236
+msgid "Core selection"
+msgstr "Selecció del nucli"
+
+#: src/cpug.py:240
+msgid "Number of cores"
+msgstr "Número de nuclis"
+
+#: src/cpug.py:263
+msgid "Motherboard"
+msgstr "Placa mare"
+
+#: src/cpug.py:264
+msgid "Board"
+msgstr "Placa"
+
+#: src/cpug.py:290
+msgid "Bios"
+msgstr "Bios"
+
+#: src/cpug.py:305
+msgid "Version"
+msgstr "Versió"
+
+#: src/cpug.py:316
+msgid "Date"
+msgstr "Data"
+
+#: src/cpug.py:329
+msgid "Memory"
+msgstr "Memòria"
+
+#: src/cpug.py:330
+msgid "Ram"
+msgstr "Ram"
+
+#: src/cpug.py:334 src/cpug.py:465
+msgid "Total"
+msgstr "Total"
+
+#: src/cpug.py:341
+msgid "Total physical memory available."
+msgstr "Memòria física total disponible"
+
+#: src/cpug.py:346
+msgid "Available"
+msgstr "Disponible"
+
+#: src/cpug.py:353
+msgid ""
+"The actual amount of available memory that can be given instantly to "
+"processes that request more memory in bytes; this is calculated by summing "
+"different memory values (Mb)"
+msgstr ""
+"La quantitat de memòria disponible actual que pot ser distribuida de forma "
+"instantànea als processos que necessiten més memòria en bytes; això es "
+"calcula sumant els diferents valors de memòria (Mb)"
+
+#: src/cpug.py:368 src/cpug.py:478
+msgid "Used"
+msgstr "Utilitzada"
+
+#: src/cpug.py:375
+msgid ""
+"Memory used, calculated differently depending on the platform and designed "
+"for informational purposes only (Mb)"
+msgstr ""
+"Memòria utilitzada, calculada de forma diferent en funció de la plataforma i "
+"pensada només amb propòsits informatius (Mb)"
+
+#: src/cpug.py:389 src/cpug.py:498
+msgid "Free"
+msgstr "Lliure"
+
+#: src/cpug.py:396
+msgid "Memory not being used at all (zeroed) that is readily available (Mb)"
+msgstr "Memòria que no s'està utilizant en absolut (Mb)"
+
+#: src/cpug.py:410
+msgid "Active"
+msgstr "Activa"
+
+#: src/cpug.py:417
+msgid "Memory currently in use or very recently used, and so it is in RAM (Mb)"
+msgstr "Memòria que està en ús o ha estat utilitzada recentment, i per tant en RAM (Mb)"
+
+#: src/cpug.py:423
+msgid "Inactive"
+msgstr "Inactiva"
+
+#: src/cpug.py:430
+msgid "Memory that is marked as not used."
+msgstr "Memòria que està marcada com no utilitzada."
+
+#: src/cpug.py:436
+msgid "Buffers"
+msgstr "Memòria intermitja"
+
+#: src/cpug.py:443
+msgid "Ccache for things like file system metadata. (Mb)"
+msgstr "Memòria cau per a usos com la metainformació del sistema d'arxius (Mb)"
+
+#: src/cpug.py:449
+msgid "Cached"
+msgstr "Emmagatzemada"
+
+#: src/cpug.py:456
+msgid "Cache for various things (Mb)"
+msgstr "Memòria cau per a usos diversos (Mb)"
+
+#: src/cpug.py:461
+msgid "Swap"
+msgstr "Memòria d'intercanvi"
+
+#: src/cpug.py:472
+msgid "Total physical memory available in Mb."
+msgstr "Memòria física total disponible en Mb."
+
+#: src/cpug.py:485
+msgid "Used swap memory in Mb"
+msgstr "Memòria d'intercanvi utilitzada en Mb"
+
+#: src/cpug.py:505
+msgid "Free swap memory in Mb"
+msgstr "Memòria d'intercanvi lliure en Mb"
+
+#: src/cpug.py:518
+msgid "Sin"
+msgstr "Entrada"
+
+#: src/cpug.py:525
+msgid "The number of Mb the system has swapped in from disk (cumulative)"
+msgstr "Número de Mb del sistema que ha passat a la memòria d'intercanvi (acumulatiu)"
+
+#: src/cpug.py:531
+msgid "Sout"
+msgstr "Sortida"
+
+#: src/cpug.py:538
+msgid "The number of Mb the system has swapped out from disk (cumulative)"
+msgstr "Número de Mb del sistema que ha sortit de la memòria d'intercanvi (acumulatiu)"
+
+#: src/cpug.py:547
+msgid "System"
+msgstr "Sistema"
+
+#: src/cpug.py:552
+msgid "Hostname"
+msgstr "Nom d'equip"
+
+#: src/cpug.py:563
+msgid "Architecture"
+msgstr "Arquitectura"
+
+#: src/cpug.py:574
+msgid "Kernel"
+msgstr "Nucli"
+
+#: src/cpug.py:585
+msgid "GCC Version"
+msgstr "Versió de GCC"
+
+#: src/cpug.py:596
+msgid "Uptime"
+msgstr "Temps en marcha"
+
+#: src/cpug.py:607
+msgid "Xorg version"
+msgstr "Versió Xorg"
+
+#: src/cpug.py:618
+msgid "Resolution"
+msgstr "Resolució"
+
+#: src/cpug.py:630
+msgid "Distribution"
+msgstr "Distribució"
+
+#: src/cpug.py:641
+msgid "Desktop environment"
+msgstr "Entorn d'escriptori"
+
+#: src/cpug.py:653
+msgid "Window manager"
+msgstr "Gestor de finestres"
+
+#: src/cpug.py:673
+msgid "Graphic"
+msgstr "Gràfica"
+
+#: src/cpug.py:678
+msgid "Graphic Controller"
+msgstr "Controladora gràfica"
+
+#: src/cpug.py:689
+msgid "OpenGL Vendor"
+msgstr "Fabricant OpenGL"
+
+#: src/cpug.py:700
+msgid "OpenGL renderer"
+msgstr "Renderitzador OpenGL"
+
+#: src/cpug.py:711
+msgid "OpenGL version"
+msgstr "Versió d'OpenGL"
+
+#: src/cpug.py:731 src/upower.py:102
+msgid "Battery"
+msgstr "Bateria"
+
+#: src/cpug.py:737
+msgid "Manufacturer"
+msgstr "Fabricant"
+
+#: src/cpug.py:749
+msgid "Model name"
+msgstr "Model"
+
+#: src/cpug.py:761
+msgid "Serial number"
+msgstr "Número de sèrie"
+
+#: src/cpug.py:773
+msgid "Technology"
+msgstr "Tecnologia"
+
+#: src/cpug.py:785
+msgid "Estimated time remaining"
+msgstr "Temps restant estimat"
+
+#: src/cpug.py:797
+msgid "Estimated battery discharge time"
+msgstr "Temps estimat de descàrrega de bateria"
+
+#: src/cpug.py:809
+msgid "Battery level"
+msgstr "Nivell de bateria"
+
+#: src/cpug.py:829
+msgid "Capacity level"
+msgstr "Nivell de capacitat"
+
+#: src/cpug.py:841
+msgid "Voltage now"
+msgstr "Voltatge actual"
+
+#: src/cpug.py:853
+msgid "Minimum voltage design"
+msgstr "Voltatge de diseny mínim"
+
+#: src/cpug.py:865
+msgid "Charge now"
+msgstr "Càrrega actual"
+
+#: src/cpug.py:877
+msgid "Charge full"
+msgstr "Càrrega completa"
+
+#: src/cpug.py:889
+msgid "Charge full design"
+msgstr "Càrrega completa de diseny"
+
+#: src/cpug.py:901
+msgid "Current now"
+msgstr "Corrent actual"
+
+#: src/cpug.py:927
+msgid "Disks"
+msgstr "Discs"
+
+#: src/cpug.py:938
+msgid "About"
+msgstr "Sobre"
+
+#: src/cpug.py:1057
+msgid " %"
+msgstr "%"
+
+#: src/cpug.py:1067 src/cpug.py:1073
+msgid " V"
+msgstr " V"
+
+#: src/cpug.py:1079 src/cpug.py:1085 src/cpug.py:1091
+msgid " Ah"
+msgstr " Ah"
+
+#: src/cpug.py:1097
+msgid " A"
+msgstr " A"
+
+#: src/cpug.py:1107 src/cpug.py:1109 src/cpug.py:1113 src/cpug.py:1116
+#: src/cpug.py:1119 src/cpug.py:1121 src/cpug.py:1123 src/cpug.py:1125
+#: src/cpug.py:1128 src/cpug.py:1132 src/cpug.py:1135 src/cpug.py:1138
+#: src/cpug.py:1140 src/cpug.py:1270 src/cpug.py:1283 src/cpug.py:1304
+msgid "MB"
+msgstr "MB"
+
+#: src/cpug.py:1206
+msgid "Device"
+msgstr "Dispositiu"
+
+#: src/cpug.py:1218
+msgid "Mount Point"
+msgstr "Punt de montatge"
+
+#: src/cpug.py:1230
+msgid "File System Type"
+msgstr "Tipus de sistema d'arxius"
+
+#: src/cpug.py:1242
+msgid "Options"
+msgstr "Opcions"
+
+#: src/cpug.py:1258
+msgid "Total space"
+msgstr "Espai total"
+
+#: src/cpug.py:1271
+msgid "Used space"
+msgstr "Espai en ús"
+
+#: src/cpug.py:1292
+msgid "Free space"
+msgstr "Espai lliure"
+
+#: src/upower.py:98 src/upower.py:115 src/upower.py:159 src/upower.py:172
+#: src/upower.py:180 src/upower.py:193
+msgid "Unknown"
+msgstr "Desconegut"
+
+#: src/upower.py:100
+msgid "Line Power"
+msgstr ""
+
+#: src/upower.py:104
+msgid "Ups"
+msgstr ""
+
+#: src/upower.py:106
+msgid "Monitor"
+msgstr "Monitor"
+
+#: src/upower.py:108
+msgid "Mouse"
+msgstr "Ratolí"
+
+#: src/upower.py:110
+#, fuzzy
+msgid "Keyboard"
+msgstr "Placa mare"
+
+#: src/upower.py:112
+msgid "Pda"
+msgstr "Pda"
+
+#: src/upower.py:114
+msgid "Phone"
+msgstr "Telèfon"
+
+#: src/upower.py:161
+msgid "Charging"
+msgstr "Carregant"
+
+#: src/upower.py:163
+msgid "Discharging"
+msgstr "Descarregant"
+
+#: src/upower.py:165
+msgid "Empty"
+msgstr "Buida"
+
+#: src/upower.py:167
+msgid "Fully charged"
+msgstr "Completament carregada"
+
+#: src/upower.py:169
+msgid "Pending charge"
+msgstr "Pendent de càrrega"
+
+#: src/upower.py:171
+msgid "Pending discharge"
+msgstr "Pendent de descàrrega"
+
+#: src/upower.py:182
+msgid "Lithium ion"
+msgstr "Ió Liti"
+
+#: src/upower.py:184
+msgid "Lithium polymer"
+msgstr "Polímer de liti"
+
+#: src/upower.py:186
+msgid "Lithium iron phosphate"
+msgstr "Liti ferro fosfat"
+
+#: src/upower.py:188
+msgid "Lead acid"
+msgstr "Plom àcid"
+
+#: src/upower.py:190
+msgid "Nickel cadmium"
+msgstr "Níquel cadmi"
+
+#: src/upower.py:192
+msgid "Nickel metal hydride"
+msgstr "Níquel metall híbrid"
+
+#: src/investigator.py:55 src/investigator.py:288 src/investigator.py:309
+#: src/investigator.py:317 src/investigator.py:401 src/investigator.py:405
+#: src/investigator.py:409 src/investigator.py:413
+msgid "N/A"
+msgstr "N/A"
