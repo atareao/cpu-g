@@ -58,7 +58,7 @@ class Investigator():
         try:
             ans = self.execute('/usr/bin/wmctrl -m')
             res = ans[6:ans.find('\n')]
-        except:
+        except Exception as e:
             res = _('N/A')
         return res
 
@@ -131,7 +131,7 @@ class Investigator():
         # windows-equivalents-of-ps-and-kill-commands/
         try:  # Linux/Unix
             s = subprocess.Popen(["/bin/ps", "axw"], stdout=subprocess.PIPE,
-                universal_newlines=True)
+                                 universal_newlines=True)
         except Exception as e:  # Windows
             print(e)
             return False
