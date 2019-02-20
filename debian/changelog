@@ -1,3 +1,11 @@
+cpu-g (0.16.2-1ubuntu0) cosmic; urgency=medium
+
+  * Fixed for Debian 9 and MATE #4 by @rstephan
+  * Added catalan translation #6 by @marcelcosta
+  * Added basque translation #7 by @xabiliza
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Wed, 20 Feb 2019 06:28:12 +0100
+
 cpu-g (0.16.1-1ubuntu0) cosmic; urgency=medium
 
   * Added spanish translation
@@ -12,7 +20,7 @@ cpu-g (0.15.2-1ubuntu0) cosmic; urgency=medium
 
 cpu-g (0.15.1-1ubuntu0) zesty; urgency=medium
 
-  * fixed bug zero division
+  * fixed bug zero division #1 by @tonyfarney 
 
  -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Tue, 26 Sep 2017 13:32:21 +0200
 
