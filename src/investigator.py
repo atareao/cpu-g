@@ -55,8 +55,12 @@ class Investigator():
             return _('N/A')
 
     def get_window_manager(self):
-        ans = self.execute('/usr/bin/wmctrl -m')
-        return ans[6:ans.find('\n')]
+        try:
+            ans = self.execute('/usr/bin/wmctrl -m')
+            res = ans[6:ans.find('\n')]
+        except Exception as e:
+            res = _('N/A')
+        return res
 
     def resolution(self):
         s = Gdk.Screen.get_default()
@@ -80,7 +84,8 @@ class Investigator():
                 if desktop_session in ["gnome", "unity", "cinnamon", "mate",
                                        "xfce4", "lxde", "fluxbox", "blackbox",
                                        "openbox", "icewm", "jwm",
-                                       "afterstep", "trinity", "kde"]:
+                                       "afterstep", "trinity", "kde",
+                                       "lightdm-xsession"]:
                     return desktop_session
                 # ## Special cases ##
                 # Canonical sets $DESKTOP_SESSION to Lubuntu rather than
@@ -125,7 +130,8 @@ class Investigator():
         # and http://richarddingwall.name/2009/06/18/\
         # windows-equivalents-of-ps-and-kill-commands/
         try:  # Linux/Unix
-            s = subprocess.Popen(["/bin/ps", "axw"], stdout=subprocess.PIPE)
+            s = subprocess.Popen(["/bin/ps", "axw"], stdout=subprocess.PIPE,
+                                 universal_newlines=True)
         except Exception as e:  # Windows
             print(e)
             return False
