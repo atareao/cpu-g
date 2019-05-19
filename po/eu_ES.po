@@ -88,9 +88,7 @@ msgstr "Nukleo aukeraketa"
 
 #: src/cpug.py:240
 msgid "Number of cores"
-msgstr ""
-"Nukleo \n"
-"kopurua"
+msgstr "Nukleo kopurua"
 
 #: src/cpug.py:263
 msgid "Motherboard"
@@ -180,11 +178,11 @@ msgstr "Markatua dan memoria erabili gabekoa bezela."
 
 #: src/cpug.py:436
 msgid "Buffers"
-msgstr "Bufferrak"
+msgstr "Bitarteko memoria"
 
 #: src/cpug.py:443
 msgid "Ccache for things like file system metadata. (Mb)"
-msgstr "Artxiboen sistemaren metainformazioa bezelako gauzentzako katxea"
+msgstr "Artxiboen sistemaren metainformazioa bezelako gauzentzako katxea. (Mb)"
 
 #: src/cpug.py:449
 msgid "Cached"
@@ -196,7 +194,7 @@ msgstr "Katxea gauza ugarientzako (Mb)"
 
 #: src/cpug.py:461
 msgid "Swap"
-msgstr "Swap"
+msgstr "Memoria trukea"
 
 #: src/cpug.py:472
 msgid "Total physical memory available in Mb."
