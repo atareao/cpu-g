@@ -272,7 +272,7 @@ class Investigator():
 
     def sysdevcpu(self, core, level, kind):
         coresinsysdev = str(
-            len(re.findall("'cpu[0-9]'",
+            len(re.findall("'cpu[0-9]+'",
                            str(os.listdir("/sys/devices/system/cpu/")))))
         if coresinsysdev == self.cpuinfo('coresnum'):
             cores_matching = True
