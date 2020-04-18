@@ -36,6 +36,7 @@ import subprocess
 import shlex
 import comun
 import psutil
+from distro import get_distro
 from comun import _
 
 BATTERY_DIR = '/sys/class/power_supply/BAT0'
@@ -271,6 +272,8 @@ class Investigator():
             return width
 
     def sysdevcpu(self, core, level, kind):
+        if not os.path.exists('/sys/devices/system/cpu'):
+            return _('N/A')
         coresinsysdev = str(
             len(re.findall("'cpu[0-9]+'",
                            str(os.listdir("/sys/devices/system/cpu/")))))
@@ -294,6 +297,7 @@ class Investigator():
         return _('N/A')
 
     def distro(self):
+        return get_distro()
         try:
             values = platform.linux_distribution()
         except AttributeError:

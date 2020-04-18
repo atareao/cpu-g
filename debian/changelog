@@ -1,10 +1,11 @@
-cpu-g (0.16.2-1ubuntu0) cosmic; urgency=medium
+cpu-g (0.16.3-1ubuntu0) focal; urgency=medium
 
   * Fixed for Debian 9 and MATE #4 by @rstephan
   * Added catalan translation #6 by @marcelcosta
   * Added basque translation #7 by @xabiliza
+  * Fixed minor bugs
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Wed, 20 Feb 2019 06:28:12 +0100
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 18 Apr 2020 21:33:42 +0200
 
 cpu-g (0.16.1-1ubuntu0) cosmic; urgency=medium
 
