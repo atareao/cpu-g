@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cpu-g - 0.15.2-1ubuntu0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-03 10:44+0100\n"
+"POT-Creation-Date: 2019-02-20 06:33+0100\n"
 "PO-Revision-Date: 2019-02-01 20:59+0100\n"
 "Last-Translator: Lorenzo <lorenzo.carbonell.cerezo@gmail.com>\n"
 "Language-Team: Spanish\n"
@@ -488,8 +488,8 @@ msgstr "Niquel cadmio"
 msgid "Nickel metal hydride"
 msgstr "Niquel metal híbrido"
 
-#: src/investigator.py:55 src/investigator.py:288 src/investigator.py:309
-#: src/investigator.py:317 src/investigator.py:401 src/investigator.py:405
-#: src/investigator.py:409 src/investigator.py:413
+#: src/investigator.py:55 src/investigator.py:62 src/investigator.py:294
+#: src/investigator.py:315 src/investigator.py:323 src/investigator.py:407
+#: src/investigator.py:411 src/investigator.py:415 src/investigator.py:419
 msgid "N/A"
 msgstr "N/A"

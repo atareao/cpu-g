@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-10 09:26+0100\n"
+"POT-Creation-Date: 2019-02-20 06:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -482,8 +482,8 @@ msgstr ""
 msgid "Nickel metal hydride"
 msgstr ""
 
-#: src/investigator.py:55 src/investigator.py:288 src/investigator.py:309
-#: src/investigator.py:317 src/investigator.py:401 src/investigator.py:405
-#: src/investigator.py:409 src/investigator.py:413
+#: src/investigator.py:55 src/investigator.py:62 src/investigator.py:294
+#: src/investigator.py:315 src/investigator.py:323 src/investigator.py:407
+#: src/investigator.py:411 src/investigator.py:415 src/investigator.py:419
 msgid "N/A"
 msgstr ""

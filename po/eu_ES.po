@@ -1,22 +1,22 @@
 # Basque translations for cpu-g package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the cpu-g package.
 # Xabi <xlizarralde@gmail.com>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version:cpu-g \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-10 09:26+0100\n"
+"POT-Creation-Date: 2019-02-20 06:33+0100\n"
 "PO-Revision-Date: 2019-02-19 10:53+0100\n"
+"Last-Translator: Xabi xlizarralde@gmail.com\n"
 "Language-Team: Basque\n"
+"Language: eu_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.1\n"
-"Last-Translator: Xabi xlizarralde@gmail.com\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: eu_ES\n"
 
 #: src/cpug.py:69
 msgid "Processor"
@@ -491,8 +491,8 @@ msgstr "Nikel cadmioa"
 msgid "Nickel metal hydride"
 msgstr "Nikel metal hidruroa"
 
-#: src/investigator.py:55 src/investigator.py:288 src/investigator.py:309
-#: src/investigator.py:317 src/investigator.py:401 src/investigator.py:405
-#: src/investigator.py:409 src/investigator.py:413
+#: src/investigator.py:55 src/investigator.py:62 src/investigator.py:294
+#: src/investigator.py:315 src/investigator.py:323 src/investigator.py:407
+#: src/investigator.py:411 src/investigator.py:415 src/investigator.py:419
 msgid "N/A"
 msgstr "N/A"

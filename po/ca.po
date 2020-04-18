@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cpu-g - 0.15.2-1ubuntu0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-03 10:44+0100\n"
+"POT-Creation-Date: 2019-02-20 06:33+0100\n"
 "PO-Revision-Date: 2019-02-01 20:59+0100\n"
 "Last-Translator: Marcel <marcelcosta@mcosta.cat>\n"
 "Language-Team: Catalan\n"
@@ -165,7 +165,9 @@ msgstr "Activa"
 
 #: src/cpug.py:417
 msgid "Memory currently in use or very recently used, and so it is in RAM (Mb)"
-msgstr "Memòria que està en ús o ha estat utilitzada recentment, i per tant en RAM (Mb)"
+msgstr ""
+"Memòria que està en ús o ha estat utilitzada recentment, i per tant en RAM "
+"(Mb)"
 
 #: src/cpug.py:423
 msgid "Inactive"
@@ -213,7 +215,8 @@ msgstr "Entrada"
 
 #: src/cpug.py:525
 msgid "The number of Mb the system has swapped in from disk (cumulative)"
-msgstr "Número de Mb del sistema que ha passat a la memòria d'intercanvi (acumulatiu)"
+msgstr ""
+"Número de Mb del sistema que ha passat a la memòria d'intercanvi (acumulatiu)"
 
 #: src/cpug.py:531
 msgid "Sout"
@@ -221,7 +224,9 @@ msgstr "Sortida"
 
 #: src/cpug.py:538
 msgid "The number of Mb the system has swapped out from disk (cumulative)"
-msgstr "Número de Mb del sistema que ha sortit de la memòria d'intercanvi (acumulatiu)"
+msgstr ""
+"Número de Mb del sistema que ha sortit de la memòria d'intercanvi "
+"(acumulatiu)"
 
 #: src/cpug.py:547
 msgid "System"
@@ -488,8 +493,8 @@ msgstr "Níquel cadmi"
 msgid "Nickel metal hydride"
 msgstr "Níquel metall híbrid"
 
-#: src/investigator.py:55 src/investigator.py:288 src/investigator.py:309
-#: src/investigator.py:317 src/investigator.py:401 src/investigator.py:405
-#: src/investigator.py:409 src/investigator.py:413
+#: src/investigator.py:55 src/investigator.py:62 src/investigator.py:294
+#: src/investigator.py:315 src/investigator.py:323 src/investigator.py:407
+#: src/investigator.py:411 src/investigator.py:415 src/investigator.py:419
 msgid "N/A"
 msgstr "N/A"

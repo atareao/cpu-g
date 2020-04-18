@@ -34,10 +34,14 @@ install: build
 	dh_installdirs
 	dh_install
 	# Create languages directories
+	mkdir -p ${CURDIR}/debian/cpu-g/usr/share/locale-langpack/ca/LC_MESSAGES
 	mkdir -p ${CURDIR}/debian/cpu-g/usr/share/locale-langpack/es/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/cpu-g/usr/share/locale-langpack/eu_ES/LC_MESSAGES
 	# End create languages directories
 	# Compile languages
+	msgfmt po/ca.po -o ${CURDIR}/debian/cpu-g/usr/share/locale-langpack/ca/LC_MESSAGES/cpu-g.mo
 	msgfmt po/es.po -o ${CURDIR}/debian/cpu-g/usr/share/locale-langpack/es/LC_MESSAGES/cpu-g.mo
+	msgfmt po/eu_ES.po -o ${CURDIR}/debian/cpu-g/usr/share/locale-langpack/eu_ES/LC_MESSAGES/cpu-g.mo
 	# End comile languages
 	# Add here commands to install the package into debian/<packagename>.
 	#$(MAKE) prefix=`pwd`/debian/`dh_listpackages`/usr install
