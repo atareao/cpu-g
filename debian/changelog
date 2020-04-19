@@ -1,3 +1,10 @@
+cpu-g (0.16.3-1ubuntu1) UNRELEASED; urgency=medium
+
+  * TypeError: cannot use a string pattern on a bytes-like object # 10
+  * arch linux problems (python3.8) # 12 by @s0me0ther
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 18 Apr 2020 21:37:32 +0200
+
 cpu-g (0.16.3-1ubuntu0) focal; urgency=medium
 
   * Fixed for Debian 9 and MATE #4 by @rstephan
