@@ -148,6 +148,8 @@ class Investigator():
             label = 'amd.png'
         elif vendor == 'Intel':
             label = 'intel.png'
+        elif vendor == 'Zhaoxin':
+            label = 'zhaoxin.png'
         # AMDs
         if re.match("AMD Athlon\(tm\) 64 X2.*", model)\
                 or re.match("AMD Athlon\(tm\) X2.*", model):
@@ -244,6 +246,8 @@ class Investigator():
                 vendor[core] = 'AMD'
             elif vendor[core] == 'GenuineIntel':
                 vendor[core] = 'Intel'
+            elif vendor[core] == 'CentaurHauls' or 'Shanghai':
+                vendor[core] = 'Zhaoxin'
             return vendor[core]
         elif var == 'corespeed':
             return re.findall("cpu MHz\s*:\s*(.*)", info)[core] + ' MHz'
@@ -394,6 +398,9 @@ class Investigator():
             # https://bugs.launchpad.net/cpug/+bug/959115
             elif re.findall("ATI\s*", card_logo):
                 label = 'ati.png'
+            # Zhaoxin
+            elif re.findall("Zhaoxin\s*", card_logo):
+                label = 'zhaoxin.png'
             # nVidia
             # elif re.findall("nVidia\s*", card_logo):
             elif re.findall("nVidia\s*", card_logo, re.I):
