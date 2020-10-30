@@ -137,7 +137,9 @@ class Investigator():
             print(e)
             return False
         for x in s.stdout:
-            if re.search(process, x.decode('utf-8')):
+            if type(x).__name__ == 'bytes':
+                x = x.decode('utf-8')
+            if re.search(process, x):
                 return True
         return False
 
