@@ -40,7 +40,7 @@ def get_distro():
         if version_split[0] == major_version:
             # Just major version shown, replace it with the full version
             RELEASE_DATA["VERSION"] = " ".join([DEBIAN_VERSION] + version_split[1:])
-    return "{} {}".format(RELEASE_DATA["NAME"], RELEASE_DATA["VERSION"])
+    return "{} {}".format(RELEASE_DATA["NAME"], RELEASE_DATA.get("VERSION", ""))
 
 
 if __name__ == '__main__':
