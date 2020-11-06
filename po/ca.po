@@ -253,8 +253,8 @@ msgid "Uptime"
 msgstr "Temps en marcha"
 
 #: src/cpug.py:607
-msgid "Xorg version"
-msgstr "Versió Xorg"
+msgid "Xorg Server version"
+msgstr "Versió Xorg Server"
 
 #: src/cpug.py:618
 msgid "Resolution"

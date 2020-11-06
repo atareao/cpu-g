@@ -119,6 +119,7 @@ class Investigator():
                 return "kde"
         return "unknown"
 
+    @staticmethod
     def convert2int(value):
         try:
             return int(value)
@@ -325,12 +326,9 @@ class Investigator():
             gcc_version = _('N/A')
         return gcc_version
 
-    def xver(self):
-        try:
-            xver_version = self.execute('/usr/bin/apt-cache show xorg')
-        except FileNotFoundError:
-            xver_version = ""
-        ans = re.findall("Version: 1:(.*)\+", xver_version)
+    def x_server_version(self):
+        xver_version = self.execute('cat /var/log/Xorg.0.log | head')
+        ans = re.findall("X Server (.*)", xver_version)
         if ans:
             return ans[0]
         return _('N/A')
@@ -486,7 +484,7 @@ if __name__ == '__main__':
     print(inv.mobo('chassis_type'))
     print(inv.raminfo())
     print(inv.distro())
-    print(inv.xver())
+    print(inv.x_server_version())
     print(inv.gccver())
     print(inv.disksinfo())
     print(inv.get_window_manager())
