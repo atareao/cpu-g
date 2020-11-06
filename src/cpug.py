@@ -604,14 +604,14 @@ class CPUG(Gtk.Window):
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
-        label = Gtk.Label(_('Xorg version'))
+        label = Gtk.Label(_('Xorg Server version'))
         label.set_alignment(0, 0.5)
         table41.attach(label, 0, 1, 5, 6,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
-        self.xorg_version = Gtk.Entry()
-        table41.attach(self.xorg_version, 1, 2, 5, 6,
+        self.xorg_server_version = Gtk.Entry()
+        table41.attach(self.xorg_server_version, 1, 2, 5, 6,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
@@ -1169,7 +1169,7 @@ cpu-g-donde-ver-hardware-instalado/')
         self.hostname.set_text(os.uname()[1])
         self.architecture.set_text(os.uname()[4])
         self.kernel.set_text(os.uname()[2])
-        self.xorg_version.set_text(inv.xver())
+        self.xorg_server_version.set_text(inv.x_server_version())
         self.screen_resolution.set_text(inv.resolution())
         self.desktop_environment.set_text(inv.desktop_environment())
         self.window_manager.set_text(inv.get_window_manager())
