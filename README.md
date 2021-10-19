@@ -26,7 +26,7 @@ Before running CPU-G install the dependencies.
 
 ```
 sudo apt install libgirepository1.0-dev gcc libcairo2-dev pkg-config python3-dev gir1.2-gtk-3.0
-pip3 install pycairo PyGObject psutil dbus-python
+pip3 install pycairo PyGObject psutil dbus-python matplotlib
 ```
 
 ## Credits
