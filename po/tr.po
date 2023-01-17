@@ -67,7 +67,7 @@ msgstr "Önbellek"
 
 #: src/cpug.py:191
 msgid "L1 Data"
-msgstr "L1 Verileri"
+msgstr "L1 Verisi"
 
 #: src/cpug.py:202
 msgid "L1 Instruction"
