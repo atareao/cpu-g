@@ -252,15 +252,15 @@ msgstr ""
 
 #: src/cpug.py:630
 msgid "Distribution"
-msgstr ""
+msgstr "Dağıtım"
 
 #: src/cpug.py:641
 msgid "Desktop environment"
-msgstr ""
+msgstr "Masaüstü ortamı"
 
 #: src/cpug.py:653
 msgid "Window manager"
-msgstr ""
+msgstr "Pencere yöneticisi"
 
 #: src/cpug.py:673
 msgid "Graphic"
@@ -332,7 +332,7 @@ msgstr ""
 
 #: src/cpug.py:877
 msgid "Charge full"
-msgstr ""
+msgstr "Şarj dolu"
 
 #: src/cpug.py:889
 msgid "Charge full design"
@@ -340,7 +340,7 @@ msgstr ""
 
 #: src/cpug.py:901
 msgid "Current now"
-msgstr ""
+msgstr "Şimdiki"
 
 #: src/cpug.py:927
 msgid "Disks"
