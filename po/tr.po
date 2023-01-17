@@ -1,0 +1,489 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-20 06:33+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/cpug.py:69
+msgid "Processor"
+msgstr ""
+
+#: src/cpug.py:70
+msgid "General"
+msgstr ""
+
+#: src/cpug.py:74 src/cpug.py:268 src/cpug.py:294
+msgid "Vendor"
+msgstr ""
+
+#: src/cpug.py:85 src/cpug.py:128 src/cpug.py:279
+msgid "Model"
+msgstr ""
+
+#: src/cpug.py:96
+msgid "Core Speed"
+msgstr ""
+
+#: src/cpug.py:112
+msgid "CPU"
+msgstr ""
+
+#: src/cpug.py:116
+msgid "Family"
+msgstr ""
+
+#: src/cpug.py:140
+msgid "Stepping"
+msgstr ""
+
+#: src/cpug.py:152
+msgid "Flags"
+msgstr ""
+
+#: src/cpug.py:163
+msgid "Bogomips"
+msgstr ""
+
+#: src/cpug.py:174
+msgid "Width"
+msgstr ""
+
+#: src/cpug.py:187
+msgid "Cache"
+msgstr ""
+
+#: src/cpug.py:191
+msgid "L1 Data"
+msgstr ""
+
+#: src/cpug.py:202
+msgid "L1 Instruction"
+msgstr ""
+
+#: src/cpug.py:213
+msgid "Level 2"
+msgstr ""
+
+#: src/cpug.py:224
+msgid "Level 3"
+msgstr ""
+
+#: src/cpug.py:236
+msgid "Core selection"
+msgstr ""
+
+#: src/cpug.py:240
+msgid "Number of cores"
+msgstr ""
+
+#: src/cpug.py:263
+msgid "Motherboard"
+msgstr ""
+
+#: src/cpug.py:264
+msgid "Board"
+msgstr ""
+
+#: src/cpug.py:290
+msgid "Bios"
+msgstr ""
+
+#: src/cpug.py:305
+msgid "Version"
+msgstr ""
+
+#: src/cpug.py:316
+msgid "Date"
+msgstr ""
+
+#: src/cpug.py:329
+msgid "Memory"
+msgstr ""
+
+#: src/cpug.py:330
+msgid "Ram"
+msgstr ""
+
+#: src/cpug.py:334 src/cpug.py:465
+msgid "Total"
+msgstr ""
+
+#: src/cpug.py:341
+msgid "Total physical memory available."
+msgstr ""
+
+#: src/cpug.py:346
+msgid "Available"
+msgstr ""
+
+#: src/cpug.py:353
+msgid ""
+"The actual amount of available memory that can be given instantly to "
+"processes that request more memory in bytes; this is calculated by summing "
+"different memory values (Mb)"
+msgstr ""
+
+#: src/cpug.py:368 src/cpug.py:478
+msgid "Used"
+msgstr ""
+
+#: src/cpug.py:375
+msgid ""
+"Memory used, calculated differently depending on the platform and designed "
+"for informational purposes only (Mb)"
+msgstr ""
+
+#: src/cpug.py:389 src/cpug.py:498
+msgid "Free"
+msgstr ""
+
+#: src/cpug.py:396
+msgid "Memory not being used at all (zeroed) that is readily available (Mb)"
+msgstr ""
+
+#: src/cpug.py:410
+msgid "Active"
+msgstr ""
+
+#: src/cpug.py:417
+msgid "Memory currently in use or very recently used, and so it is in RAM (Mb)"
+msgstr ""
+
+#: src/cpug.py:423
+msgid "Inactive"
+msgstr ""
+
+#: src/cpug.py:430
+msgid "Memory that is marked as not used."
+msgstr ""
+
+#: src/cpug.py:436
+msgid "Buffers"
+msgstr ""
+
+#: src/cpug.py:443
+msgid "Ccache for things like file system metadata. (Mb)"
+msgstr ""
+
+#: src/cpug.py:449
+msgid "Cached"
+msgstr ""
+
+#: src/cpug.py:456
+msgid "Cache for various things (Mb)"
+msgstr ""
+
+#: src/cpug.py:461
+msgid "Swap"
+msgstr ""
+
+#: src/cpug.py:472
+msgid "Total physical memory available in Mb."
+msgstr ""
+
+#: src/cpug.py:485
+msgid "Used swap memory in Mb"
+msgstr ""
+
+#: src/cpug.py:505
+msgid "Free swap memory in Mb"
+msgstr ""
+
+#: src/cpug.py:518
+msgid "Sin"
+msgstr ""
+
+#: src/cpug.py:525
+msgid "The number of Mb the system has swapped in from disk (cumulative)"
+msgstr ""
+
+#: src/cpug.py:531
+msgid "Sout"
+msgstr ""
+
+#: src/cpug.py:538
+msgid "The number of Mb the system has swapped out from disk (cumulative)"
+msgstr ""
+
+#: src/cpug.py:547
+msgid "System"
+msgstr ""
+
+#: src/cpug.py:552
+msgid "Hostname"
+msgstr ""
+
+#: src/cpug.py:563
+msgid "Architecture"
+msgstr ""
+
+#: src/cpug.py:574
+msgid "Kernel"
+msgstr ""
+
+#: src/cpug.py:585
+msgid "GCC Version"
+msgstr ""
+
+#: src/cpug.py:596
+msgid "Uptime"
+msgstr ""
+
+#: src/cpug.py:607
+msgid "Xorg Server Version"
+msgstr ""
+
+#: src/cpug.py:618
+msgid "Resolution"
+msgstr ""
+
+#: src/cpug.py:630
+msgid "Distribution"
+msgstr ""
+
+#: src/cpug.py:641
+msgid "Desktop environment"
+msgstr ""
+
+#: src/cpug.py:653
+msgid "Window manager"
+msgstr ""
+
+#: src/cpug.py:673
+msgid "Graphic"
+msgstr ""
+
+#: src/cpug.py:678
+msgid "Graphic Controller"
+msgstr ""
+
+#: src/cpug.py:689
+msgid "OpenGL Vendor"
+msgstr ""
+
+#: src/cpug.py:700
+msgid "OpenGL renderer"
+msgstr ""
+
+#: src/cpug.py:711
+msgid "OpenGL version"
+msgstr ""
+
+#: src/cpug.py:731 src/upower.py:102
+msgid "Battery"
+msgstr ""
+
+#: src/cpug.py:737
+msgid "Manufacturer"
+msgstr ""
+
+#: src/cpug.py:749
+msgid "Model name"
+msgstr ""
+
+#: src/cpug.py:761
+msgid "Serial number"
+msgstr ""
+
+#: src/cpug.py:773
+msgid "Technology"
+msgstr ""
+
+#: src/cpug.py:785
+msgid "Estimated time remaining"
+msgstr ""
+
+#: src/cpug.py:797
+msgid "Estimated battery discharge time"
+msgstr ""
+
+#: src/cpug.py:809
+msgid "Battery level"
+msgstr ""
+
+#: src/cpug.py:829
+msgid "Capacity level"
+msgstr ""
+
+#: src/cpug.py:841
+msgid "Voltage now"
+msgstr ""
+
+#: src/cpug.py:853
+msgid "Minimum voltage design"
+msgstr ""
+
+#: src/cpug.py:865
+msgid "Charge now"
+msgstr ""
+
+#: src/cpug.py:877
+msgid "Charge full"
+msgstr ""
+
+#: src/cpug.py:889
+msgid "Charge full design"
+msgstr ""
+
+#: src/cpug.py:901
+msgid "Current now"
+msgstr ""
+
+#: src/cpug.py:927
+msgid "Disks"
+msgstr ""
+
+#: src/cpug.py:938
+msgid "About"
+msgstr ""
+
+#: src/cpug.py:1057
+msgid " %"
+msgstr ""
+
+#: src/cpug.py:1067 src/cpug.py:1073
+msgid " V"
+msgstr ""
+
+#: src/cpug.py:1079 src/cpug.py:1085 src/cpug.py:1091
+msgid " Ah"
+msgstr ""
+
+#: src/cpug.py:1097
+msgid " A"
+msgstr ""
+
+#: src/cpug.py:1107 src/cpug.py:1109 src/cpug.py:1113 src/cpug.py:1116
+#: src/cpug.py:1119 src/cpug.py:1121 src/cpug.py:1123 src/cpug.py:1125
+#: src/cpug.py:1128 src/cpug.py:1132 src/cpug.py:1135 src/cpug.py:1138
+#: src/cpug.py:1140 src/cpug.py:1270 src/cpug.py:1283 src/cpug.py:1304
+msgid "MB"
+msgstr ""
+
+#: src/cpug.py:1206
+msgid "Device"
+msgstr ""
+
+#: src/cpug.py:1218
+msgid "Mount Point"
+msgstr ""
+
+#: src/cpug.py:1230
+msgid "File System Type"
+msgstr ""
+
+#: src/cpug.py:1242
+msgid "Options"
+msgstr ""
+
+#: src/cpug.py:1258
+msgid "Total space"
+msgstr ""
+
+#: src/cpug.py:1271
+msgid "Used space"
+msgstr ""
+
+#: src/cpug.py:1292
+msgid "Free space"
+msgstr ""
+
+#: src/upower.py:98 src/upower.py:115 src/upower.py:159 src/upower.py:172
+#: src/upower.py:180 src/upower.py:193
+msgid "Unknown"
+msgstr ""
+
+#: src/upower.py:100
+msgid "Line Power"
+msgstr ""
+
+#: src/upower.py:104
+msgid "Ups"
+msgstr ""
+
+#: src/upower.py:106
+msgid "Monitor"
+msgstr ""
+
+#: src/upower.py:108
+msgid "Mouse"
+msgstr ""
+
+#: src/upower.py:110
+msgid "Keyboard"
+msgstr ""
+
+#: src/upower.py:112
+msgid "Pda"
+msgstr ""
+
+#: src/upower.py:114
+msgid "Phone"
+msgstr ""
+
+#: src/upower.py:161
+msgid "Charging"
+msgstr ""
+
+#: src/upower.py:163
+msgid "Discharging"
+msgstr ""
+
+#: src/upower.py:165
+msgid "Empty"
+msgstr ""
+
+#: src/upower.py:167
+msgid "Fully charged"
+msgstr ""
+
+#: src/upower.py:169
+msgid "Pending charge"
+msgstr ""
+
+#: src/upower.py:171
+msgid "Pending discharge"
+msgstr ""
+
+#: src/upower.py:182
+msgid "Lithium ion"
+msgstr ""
+
+#: src/upower.py:184
+msgid "Lithium polymer"
+msgstr ""
+
+#: src/upower.py:186
+msgid "Lithium iron phosphate"
+msgstr ""
+
+#: src/upower.py:188
+msgid "Lead acid"
+msgstr ""
+
+#: src/upower.py:190
+msgid "Nickel cadmium"
+msgstr ""
+
+#: src/upower.py:192
+msgid "Nickel metal hydride"
+msgstr ""
+
+#: src/investigator.py:55 src/investigator.py:62 src/investigator.py:294
+#: src/investigator.py:315 src/investigator.py:323 src/investigator.py:407
+#: src/investigator.py:411 src/investigator.py:415 src/investigator.py:419
+msgid "N/A"
+msgstr ""
