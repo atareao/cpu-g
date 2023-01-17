@@ -127,7 +127,7 @@ msgstr "Kullanılabilir toplam fiziksel bellek."
 
 #: src/cpug.py:346
 msgid "Available"
-msgstr "Kullanılan"
+msgstr "Kullanılabilir"
 
 #: src/cpug.py:353
 msgid ""
