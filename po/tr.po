@@ -19,39 +19,39 @@ msgstr ""
 
 #: src/cpug.py:69
 msgid "Processor"
-msgstr ""
+msgstr "İşlemci"
 
 #: src/cpug.py:70
 msgid "General"
-msgstr ""
+msgstr "Genel"
 
 #: src/cpug.py:74 src/cpug.py:268 src/cpug.py:294
 msgid "Vendor"
-msgstr ""
+msgstr "Üretici"
 
 #: src/cpug.py:85 src/cpug.py:128 src/cpug.py:279
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 #: src/cpug.py:96
 msgid "Core Speed"
-msgstr ""
+msgstr "Çekirdek Hızı"
 
 #: src/cpug.py:112
 msgid "CPU"
-msgstr ""
+msgstr "İşlemci"
 
 #: src/cpug.py:116
 msgid "Family"
-msgstr ""
+msgstr "Aile"
 
 #: src/cpug.py:140
 msgid "Stepping"
-msgstr ""
+msgstr "Adım"
 
 #: src/cpug.py:152
 msgid "Flags"
-msgstr ""
+msgstr "Bayrak"
 
 #: src/cpug.py:163
 msgid "Bogomips"
@@ -59,15 +59,15 @@ msgstr ""
 
 #: src/cpug.py:174
 msgid "Width"
-msgstr ""
+msgstr "Genişlik"
 
 #: src/cpug.py:187
 msgid "Cache"
-msgstr ""
+msgstr "Önbellek"
 
 #: src/cpug.py:191
 msgid "L1 Data"
-msgstr ""
+msgstr "L1 Verileri"
 
 #: src/cpug.py:202
 msgid "L1 Instruction"
