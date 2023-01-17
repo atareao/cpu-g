@@ -107,7 +107,7 @@ msgstr "Sürüm"
 
 #: src/cpug.py:316
 msgid "Date"
-msgstr ""
+msgstr "Tarih"
 
 #: src/cpug.py:329
 msgid "Memory"
@@ -148,11 +148,11 @@ msgstr ""
 
 #: src/cpug.py:389 src/cpug.py:498
 msgid "Free"
-msgstr ""
+msgstr "Boşta"
 
 #: src/cpug.py:396
 msgid "Memory not being used at all (zeroed) that is readily available (Mb)"
-msgstr ""
+msgstr "Bellek hiç kullanılmıyor (sıfırlanmış) hazır durumda (Mb)"
 
 #: src/cpug.py:410
 msgid "Active"
@@ -168,7 +168,7 @@ msgstr "Etkin değil"
 
 #: src/cpug.py:430
 msgid "Memory that is marked as not used."
-msgstr ""
+msgstr "Kullanılmıyor olarak işaretlenen bellek."
 
 #: src/cpug.py:436
 msgid "Buffers"
@@ -180,7 +180,7 @@ msgstr ""
 
 #: src/cpug.py:449
 msgid "Cached"
-msgstr ""
+msgstr "Önbellekte"
 
 #: src/cpug.py:456
 msgid "Cache for various things (Mb)"
@@ -196,11 +196,11 @@ msgstr ""
 
 #: src/cpug.py:485
 msgid "Used swap memory in Mb"
-msgstr ""
+msgstr "Kullanılan takas belleği Mb"
 
 #: src/cpug.py:505
 msgid "Free swap memory in Mb"
-msgstr ""
+msgstr "Boş takas belleği"
 
 #: src/cpug.py:518
 msgid "Sin"
@@ -228,27 +228,27 @@ msgstr ""
 
 #: src/cpug.py:563
 msgid "Architecture"
-msgstr ""
+msgstr "Mimari"
 
 #: src/cpug.py:574
 msgid "Kernel"
-msgstr ""
+msgstr "Çekirdek"
 
 #: src/cpug.py:585
 msgid "GCC Version"
-msgstr ""
+msgstr "GCC sürümü"
 
 #: src/cpug.py:596
 msgid "Uptime"
-msgstr ""
+msgstr "Çalışma süresi"
 
 #: src/cpug.py:607
 msgid "Xorg Server Version"
-msgstr ""
+msgstr "Xorg sunucu sürümü"
 
 #: src/cpug.py:618
 msgid "Resolution"
-msgstr ""
+msgstr "Çözünürlük"
 
 #: src/cpug.py:630
 msgid "Distribution"
