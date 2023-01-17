@@ -156,7 +156,7 @@ msgstr ""
 
 #: src/cpug.py:410
 msgid "Active"
-msgstr ""
+msgstr "Etkin"
 
 #: src/cpug.py:417
 msgid "Memory currently in use or very recently used, and so it is in RAM (Mb)"
@@ -164,7 +164,7 @@ msgstr ""
 
 #: src/cpug.py:423
 msgid "Inactive"
-msgstr ""
+msgstr "Etkin değil"
 
 #: src/cpug.py:430
 msgid "Memory that is marked as not used."
@@ -172,7 +172,7 @@ msgstr ""
 
 #: src/cpug.py:436
 msgid "Buffers"
-msgstr ""
+msgstr "Tamponlar"
 
 #: src/cpug.py:443
 msgid "Ccache for things like file system metadata. (Mb)"
@@ -188,7 +188,7 @@ msgstr ""
 
 #: src/cpug.py:461
 msgid "Swap"
-msgstr ""
+msgstr "Takas"
 
 #: src/cpug.py:472
 msgid "Total physical memory available in Mb."
@@ -220,7 +220,7 @@ msgstr ""
 
 #: src/cpug.py:547
 msgid "System"
-msgstr ""
+msgstr "Sistem"
 
 #: src/cpug.py:552
 msgid "Hostname"
@@ -264,55 +264,55 @@ msgstr ""
 
 #: src/cpug.py:673
 msgid "Graphic"
-msgstr ""
+msgstr "Grafik"
 
 #: src/cpug.py:678
 msgid "Graphic Controller"
-msgstr ""
+msgstr "Grafik Denetleyici"
 
 #: src/cpug.py:689
 msgid "OpenGL Vendor"
-msgstr ""
+msgstr "OpenGL üretici"
 
 #: src/cpug.py:700
 msgid "OpenGL renderer"
-msgstr ""
+msgstr "OpenGL işleyici"
 
 #: src/cpug.py:711
 msgid "OpenGL version"
-msgstr ""
+msgstr "OpenGL sürüm"
 
 #: src/cpug.py:731 src/upower.py:102
 msgid "Battery"
-msgstr ""
+msgstr "Batarya"
 
 #: src/cpug.py:737
 msgid "Manufacturer"
-msgstr ""
+msgstr "Üretici firma"
 
 #: src/cpug.py:749
 msgid "Model name"
-msgstr ""
+msgstr "Model adı"
 
 #: src/cpug.py:761
 msgid "Serial number"
-msgstr ""
+msgstr "Seri numarası"
 
 #: src/cpug.py:773
 msgid "Technology"
-msgstr ""
+msgstr "Teknoloji"
 
 #: src/cpug.py:785
 msgid "Estimated time remaining"
-msgstr ""
+msgstr "Tahmini kalan süre"
 
 #: src/cpug.py:797
 msgid "Estimated battery discharge time"
-msgstr ""
+msgstr "Tahmini pil deşarj süresi"
 
 #: src/cpug.py:809
 msgid "Battery level"
-msgstr ""
+msgstr "Pil seviyesi"
 
 #: src/cpug.py:829
 msgid "Capacity level"
@@ -344,11 +344,11 @@ msgstr ""
 
 #: src/cpug.py:927
 msgid "Disks"
-msgstr ""
+msgstr "Sürücüler"
 
 #: src/cpug.py:938
 msgid "About"
-msgstr ""
+msgstr "Hakkında"
 
 #: src/cpug.py:1057
 msgid " %"
@@ -375,23 +375,23 @@ msgstr ""
 
 #: src/cpug.py:1206
 msgid "Device"
-msgstr ""
+msgstr "Cihaz"
 
 #: src/cpug.py:1218
 msgid "Mount Point"
-msgstr ""
+msgstr "Bağlama Noktası"
 
 #: src/cpug.py:1230
 msgid "File System Type"
-msgstr ""
+msgstr "Dosya Sistemi Türü"
 
 #: src/cpug.py:1242
 msgid "Options"
-msgstr ""
+msgstr "Seçenekler"
 
 #: src/cpug.py:1258
 msgid "Total space"
-msgstr ""
+msgstr "Toplam alan"
 
 #: src/cpug.py:1271
 msgid "Used space"
@@ -399,7 +399,7 @@ msgstr ""
 
 #: src/cpug.py:1292
 msgid "Free space"
-msgstr ""
+msgstr "Boş alan"
 
 #: src/upower.py:98 src/upower.py:115 src/upower.py:159 src/upower.py:172
 #: src/upower.py:180 src/upower.py:193
