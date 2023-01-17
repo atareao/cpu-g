@@ -316,7 +316,7 @@ msgstr "Pil seviyesi"
 
 #: src/cpug.py:829
 msgid "Capacity level"
-msgstr ""
+msgstr "Kapasite seviyesi"
 
 #: src/cpug.py:841
 msgid "Voltage now"
@@ -395,7 +395,7 @@ msgstr "Toplam alan"
 
 #: src/cpug.py:1271
 msgid "Used space"
-msgstr ""
+msgstr "Kullanılan alan"
 
 #: src/cpug.py:1292
 msgid "Free space"
@@ -420,11 +420,11 @@ msgstr ""
 
 #: src/upower.py:108
 msgid "Mouse"
-msgstr ""
+msgstr "Fare"
 
 #: src/upower.py:110
 msgid "Keyboard"
-msgstr ""
+msgstr "Klavye"
 
 #: src/upower.py:112
 msgid "Pda"
@@ -432,15 +432,15 @@ msgstr ""
 
 #: src/upower.py:114
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: src/upower.py:161
 msgid "Charging"
-msgstr ""
+msgstr "Doluyor"
 
 #: src/upower.py:163
 msgid "Discharging"
-msgstr ""
+msgstr "Boşaltılıyor"
 
 #: src/upower.py:165
 msgid "Empty"
