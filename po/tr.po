@@ -224,7 +224,7 @@ msgstr "Sistem"
 
 #: src/cpug.py:552
 msgid "Hostname"
-msgstr ""
+msgstr "Makina adı"
 
 #: src/cpug.py:563
 msgid "Architecture"
