@@ -71,31 +71,31 @@ msgstr "L1 Verileri"
 
 #: src/cpug.py:202
 msgid "L1 Instruction"
-msgstr ""
+msgstr "L1 Talimatı"
 
 #: src/cpug.py:213
 msgid "Level 2"
-msgstr ""
+msgstr "Seviye 2"
 
 #: src/cpug.py:224
 msgid "Level 3"
-msgstr ""
+msgstr "Seviye 3"
 
 #: src/cpug.py:236
 msgid "Core selection"
-msgstr ""
+msgstr "Çekirdek seçimi"
 
 #: src/cpug.py:240
 msgid "Number of cores"
-msgstr ""
+msgstr "Çekirdek sayısı"
 
 #: src/cpug.py:263
 msgid "Motherboard"
-msgstr ""
+msgstr "Anakart"
 
 #: src/cpug.py:264
 msgid "Board"
-msgstr ""
+msgstr "Kart"
 
 #: src/cpug.py:290
 msgid "Bios"
@@ -103,7 +103,7 @@ msgstr ""
 
 #: src/cpug.py:305
 msgid "Version"
-msgstr ""
+msgstr "Sürüm"
 
 #: src/cpug.py:316
 msgid "Date"
@@ -111,19 +111,19 @@ msgstr ""
 
 #: src/cpug.py:329
 msgid "Memory"
-msgstr ""
+msgstr "Hafıza"
 
 #: src/cpug.py:330
 msgid "Ram"
-msgstr ""
+msgstr "RAM"
 
 #: src/cpug.py:334 src/cpug.py:465
 msgid "Total"
-msgstr ""
+msgstr "Toplam"
 
 #: src/cpug.py:341
 msgid "Total physical memory available."
-msgstr ""
+msgstr "Kullanılabilir toplam fiziksel bellek."
 
 #: src/cpug.py:346
 msgid "Available"
