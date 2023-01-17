@@ -1,0 +1,489 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-20 06:33+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: mobilturka <03teknoloji@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/cpug.py:69
+msgid "Processor"
+msgstr "İşlemci"
+
+#: src/cpug.py:70
+msgid "General"
+msgstr "Genel"
+
+#: src/cpug.py:74 src/cpug.py:268 src/cpug.py:294
+msgid "Vendor"
+msgstr "Üretici"
+
+#: src/cpug.py:85 src/cpug.py:128 src/cpug.py:279
+msgid "Model"
+msgstr "Model"
+
+#: src/cpug.py:96
+msgid "Core Speed"
+msgstr "Çekirdek Hızı"
+
+#: src/cpug.py:112
+msgid "CPU"
+msgstr "İşlemci"
+
+#: src/cpug.py:116
+msgid "Family"
+msgstr "Aile"
+
+#: src/cpug.py:140
+msgid "Stepping"
+msgstr "Adım"
+
+#: src/cpug.py:152
+msgid "Flags"
+msgstr "Bayrak"
+
+#: src/cpug.py:163
+msgid "Bogomips"
+msgstr ""
+
+#: src/cpug.py:174
+msgid "Width"
+msgstr "Genişlik"
+
+#: src/cpug.py:187
+msgid "Cache"
+msgstr "Önbellek"
+
+#: src/cpug.py:191
+msgid "L1 Data"
+msgstr "L1 Verisi"
+
+#: src/cpug.py:202
+msgid "L1 Instruction"
+msgstr "L1 Talimatı"
+
+#: src/cpug.py:213
+msgid "Level 2"
+msgstr "Seviye 2"
+
+#: src/cpug.py:224
+msgid "Level 3"
+msgstr "Seviye 3"
+
+#: src/cpug.py:236
+msgid "Core selection"
+msgstr "Çekirdek seçimi"
+
+#: src/cpug.py:240
+msgid "Number of cores"
+msgstr "Çekirdek sayısı"
+
+#: src/cpug.py:263
+msgid "Motherboard"
+msgstr "Anakart"
+
+#: src/cpug.py:264
+msgid "Board"
+msgstr "Kart"
+
+#: src/cpug.py:290
+msgid "Bios"
+msgstr ""
+
+#: src/cpug.py:305
+msgid "Version"
+msgstr "Sürüm"
+
+#: src/cpug.py:316
+msgid "Date"
+msgstr "Tarih"
+
+#: src/cpug.py:329
+msgid "Memory"
+msgstr "Hafıza"
+
+#: src/cpug.py:330
+msgid "Ram"
+msgstr "RAM"
+
+#: src/cpug.py:334 src/cpug.py:465
+msgid "Total"
+msgstr "Toplam"
+
+#: src/cpug.py:341
+msgid "Total physical memory available."
+msgstr "Kullanılabilir toplam fiziksel bellek."
+
+#: src/cpug.py:346
+msgid "Available"
+msgstr "Kullanılabilir"
+
+#: src/cpug.py:353
+msgid ""
+"The actual amount of available memory that can be given instantly to "
+"processes that request more memory in bytes; this is calculated by summing "
+"different memory values (Mb)"
+msgstr ""
+
+#: src/cpug.py:368 src/cpug.py:478
+msgid "Used"
+msgstr "Kullanılan"
+
+#: src/cpug.py:375
+msgid ""
+"Memory used, calculated differently depending on the platform and designed "
+"for informational purposes only (Mb)"
+msgstr ""
+
+#: src/cpug.py:389 src/cpug.py:498
+msgid "Free"
+msgstr "Boşta"
+
+#: src/cpug.py:396
+msgid "Memory not being used at all (zeroed) that is readily available (Mb)"
+msgstr "Bellek hiç kullanılmıyor (sıfırlanmış) hazır durumda (Mb)"
+
+#: src/cpug.py:410
+msgid "Active"
+msgstr "Etkin"
+
+#: src/cpug.py:417
+msgid "Memory currently in use or very recently used, and so it is in RAM (Mb)"
+msgstr ""
+
+#: src/cpug.py:423
+msgid "Inactive"
+msgstr "Etkin değil"
+
+#: src/cpug.py:430
+msgid "Memory that is marked as not used."
+msgstr "Kullanılmıyor olarak işaretlenen bellek."
+
+#: src/cpug.py:436
+msgid "Buffers"
+msgstr "Tamponlar"
+
+#: src/cpug.py:443
+msgid "Ccache for things like file system metadata. (Mb)"
+msgstr ""
+
+#: src/cpug.py:449
+msgid "Cached"
+msgstr "Önbellekte"
+
+#: src/cpug.py:456
+msgid "Cache for various things (Mb)"
+msgstr ""
+
+#: src/cpug.py:461
+msgid "Swap"
+msgstr "Takas"
+
+#: src/cpug.py:472
+msgid "Total physical memory available in Mb."
+msgstr ""
+
+#: src/cpug.py:485
+msgid "Used swap memory in Mb"
+msgstr "Kullanılan takas belleği Mb"
+
+#: src/cpug.py:505
+msgid "Free swap memory in Mb"
+msgstr "Boş takas belleği"
+
+#: src/cpug.py:518
+msgid "Sin"
+msgstr ""
+
+#: src/cpug.py:525
+msgid "The number of Mb the system has swapped in from disk (cumulative)"
+msgstr ""
+
+#: src/cpug.py:531
+msgid "Sout"
+msgstr ""
+
+#: src/cpug.py:538
+msgid "The number of Mb the system has swapped out from disk (cumulative)"
+msgstr ""
+
+#: src/cpug.py:547
+msgid "System"
+msgstr "Sistem"
+
+#: src/cpug.py:552
+msgid "Hostname"
+msgstr "Makina adı"
+
+#: src/cpug.py:563
+msgid "Architecture"
+msgstr "Mimari"
+
+#: src/cpug.py:574
+msgid "Kernel"
+msgstr "Çekirdek"
+
+#: src/cpug.py:585
+msgid "GCC Version"
+msgstr "GCC sürümü"
+
+#: src/cpug.py:596
+msgid "Uptime"
+msgstr "Çalışma süresi"
+
+#: src/cpug.py:607
+msgid "Xorg Server Version"
+msgstr "Xorg sunucu sürümü"
+
+#: src/cpug.py:618
+msgid "Resolution"
+msgstr "Çözünürlük"
+
+#: src/cpug.py:630
+msgid "Distribution"
+msgstr "Dağıtım"
+
+#: src/cpug.py:641
+msgid "Desktop environment"
+msgstr "Masaüstü ortamı"
+
+#: src/cpug.py:653
+msgid "Window manager"
+msgstr "Pencere yöneticisi"
+
+#: src/cpug.py:673
+msgid "Graphic"
+msgstr "Grafik"
+
+#: src/cpug.py:678
+msgid "Graphic Controller"
+msgstr "Grafik Denetleyici"
+
+#: src/cpug.py:689
+msgid "OpenGL Vendor"
+msgstr "OpenGL üretici"
+
+#: src/cpug.py:700
+msgid "OpenGL renderer"
+msgstr "OpenGL işleyici"
+
+#: src/cpug.py:711
+msgid "OpenGL version"
+msgstr "OpenGL sürüm"
+
+#: src/cpug.py:731 src/upower.py:102
+msgid "Battery"
+msgstr "Batarya"
+
+#: src/cpug.py:737
+msgid "Manufacturer"
+msgstr "Üretici firma"
+
+#: src/cpug.py:749
+msgid "Model name"
+msgstr "Model adı"
+
+#: src/cpug.py:761
+msgid "Serial number"
+msgstr "Seri numarası"
+
+#: src/cpug.py:773
+msgid "Technology"
+msgstr "Teknoloji"
+
+#: src/cpug.py:785
+msgid "Estimated time remaining"
+msgstr "Tahmini kalan süre"
+
+#: src/cpug.py:797
+msgid "Estimated battery discharge time"
+msgstr "Tahmini pil deşarj süresi"
+
+#: src/cpug.py:809
+msgid "Battery level"
+msgstr "Pil seviyesi"
+
+#: src/cpug.py:829
+msgid "Capacity level"
+msgstr "Kapasite seviyesi"
+
+#: src/cpug.py:841
+msgid "Voltage now"
+msgstr ""
+
+#: src/cpug.py:853
+msgid "Minimum voltage design"
+msgstr ""
+
+#: src/cpug.py:865
+msgid "Charge now"
+msgstr ""
+
+#: src/cpug.py:877
+msgid "Charge full"
+msgstr "Şarj dolu"
+
+#: src/cpug.py:889
+msgid "Charge full design"
+msgstr ""
+
+#: src/cpug.py:901
+msgid "Current now"
+msgstr "Şimdiki"
+
+#: src/cpug.py:927
+msgid "Disks"
+msgstr "Sürücüler"
+
+#: src/cpug.py:938
+msgid "About"
+msgstr "Hakkında"
+
+#: src/cpug.py:1057
+msgid " %"
+msgstr ""
+
+#: src/cpug.py:1067 src/cpug.py:1073
+msgid " V"
+msgstr ""
+
+#: src/cpug.py:1079 src/cpug.py:1085 src/cpug.py:1091
+msgid " Ah"
+msgstr ""
+
+#: src/cpug.py:1097
+msgid " A"
+msgstr ""
+
+#: src/cpug.py:1107 src/cpug.py:1109 src/cpug.py:1113 src/cpug.py:1116
+#: src/cpug.py:1119 src/cpug.py:1121 src/cpug.py:1123 src/cpug.py:1125
+#: src/cpug.py:1128 src/cpug.py:1132 src/cpug.py:1135 src/cpug.py:1138
+#: src/cpug.py:1140 src/cpug.py:1270 src/cpug.py:1283 src/cpug.py:1304
+msgid "MB"
+msgstr ""
+
+#: src/cpug.py:1206
+msgid "Device"
+msgstr "Cihaz"
+
+#: src/cpug.py:1218
+msgid "Mount Point"
+msgstr "Bağlama Noktası"
+
+#: src/cpug.py:1230
+msgid "File System Type"
+msgstr "Dosya Sistemi Türü"
+
+#: src/cpug.py:1242
+msgid "Options"
+msgstr "Seçenekler"
+
+#: src/cpug.py:1258
+msgid "Total space"
+msgstr "Toplam alan"
+
+#: src/cpug.py:1271
+msgid "Used space"
+msgstr "Kullanılan alan"
+
+#: src/cpug.py:1292
+msgid "Free space"
+msgstr "Boş alan"
+
+#: src/upower.py:98 src/upower.py:115 src/upower.py:159 src/upower.py:172
+#: src/upower.py:180 src/upower.py:193
+msgid "Unknown"
+msgstr ""
+
+#: src/upower.py:100
+msgid "Line Power"
+msgstr ""
+
+#: src/upower.py:104
+msgid "Ups"
+msgstr ""
+
+#: src/upower.py:106
+msgid "Monitor"
+msgstr ""
+
+#: src/upower.py:108
+msgid "Mouse"
+msgstr "Fare"
+
+#: src/upower.py:110
+msgid "Keyboard"
+msgstr "Klavye"
+
+#: src/upower.py:112
+msgid "Pda"
+msgstr ""
+
+#: src/upower.py:114
+msgid "Phone"
+msgstr "Telefon"
+
+#: src/upower.py:161
+msgid "Charging"
+msgstr "Doluyor"
+
+#: src/upower.py:163
+msgid "Discharging"
+msgstr "Boşaltılıyor"
+
+#: src/upower.py:165
+msgid "Empty"
+msgstr ""
+
+#: src/upower.py:167
+msgid "Fully charged"
+msgstr ""
+
+#: src/upower.py:169
+msgid "Pending charge"
+msgstr ""
+
+#: src/upower.py:171
+msgid "Pending discharge"
+msgstr ""
+
+#: src/upower.py:182
+msgid "Lithium ion"
+msgstr ""
+
+#: src/upower.py:184
+msgid "Lithium polymer"
+msgstr ""
+
+#: src/upower.py:186
+msgid "Lithium iron phosphate"
+msgstr ""
+
+#: src/upower.py:188
+msgid "Lead acid"
+msgstr ""
+
+#: src/upower.py:190
+msgid "Nickel cadmium"
+msgstr ""
+
+#: src/upower.py:192
+msgid "Nickel metal hydride"
+msgstr ""
+
+#: src/investigator.py:55 src/investigator.py:62 src/investigator.py:294
+#: src/investigator.py:315 src/investigator.py:323 src/investigator.py:407
+#: src/investigator.py:411 src/investigator.py:415 src/investigator.py:419
+msgid "N/A"
+msgstr ""
