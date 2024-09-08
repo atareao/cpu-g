@@ -1,6 +1,6 @@
 [project]
 name = "cpu-g"
-version = "0.16.4"
+version = "0.16.5"
 description = "Add your description here"
 authors = [
     { name = "Lorenzo Carbonell <atareao@atareao.es", email = "lorenzo.carbonell.cerezo@gmail.com" }
