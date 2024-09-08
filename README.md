@@ -35,7 +35,7 @@ pip3 install pycairo PyGObject psutil dbus-python matplotlib
 * Copyright © Michael Schmöller
 * Copyright © 2012 Michał Głowienka
 * Copyright © 2012 Michał Olber
-* Copyright © 2016-2019 Lorenzo Carbonell
+* Copyright © 2016 Lorenzo Carbonell
 
 ## Screenshots
 
