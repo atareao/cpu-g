@@ -154,38 +154,38 @@ class Investigator():
         elif vendor == 'Zhaoxin':
             label = 'zhaoxin.png'
         # AMDs
-        if re.match("AMD Athlon\(tm\) 64 X2.*", model)\
-                or re.match("AMD Athlon\(tm\) X2.*", model):
+        if re.match(r"AMD Athlon\(tm\) 64 X2.*", model)\
+                or re.match(r"AMD Athlon\(tm\) X2.*", model):
             label = 'AMD-AthlonX2.png'
-        elif re.match("AMD Sempron\(tm\).*", model):
+        elif re.match(r"AMD Sempron\(tm\).*", model):
             label = 'AMD-Sempron.png'
-        elif re.match("Mobile AMD Sempron\(tm\).*", model):
+        elif re.match(r"Mobile AMD Sempron\(tm\).*", model):
             label = 'AMD-Sempron-Mobile.png'
-        elif re.match("Dual-Core AMD Opteron\(tm\).*", model)\
-                or re.match("AMD Opteron\(tm\).*", model):
+        elif re.match(r"Dual-Core AMD Opteron\(tm\).*", model)\
+                or re.match(r"AMD Opteron\(tm\).*", model):
             label = 'AMD-Opteron.png'
-        elif re.match("AMD Athlon\(tm\) XP.*", model):
+        elif re.match(r"AMD Athlon\(tm\) XP.*", model):
             label = 'AMD-AthlonXP.png'
-        elif re.match("AMD Athlon\(tm\) 64 Processor.*", model):
+        elif re.match(r"AMD Athlon\(tm\) 64 Processor.*", model):
             label = 'AMD-Athlon64.png'
-        elif re.match("AMD Phenom\(tm\).*", model):
+        elif re.match(r"AMD Phenom\(tm\).*", model):
             label = 'AMD-Phenom.png'
         # Intels
-        elif re.match("Intel\(R\) Core\(TM\)2 Duo.*", model):
+        elif re.match(r"Intel\(R\) Core\(TM\)2 Duo.*", model):
             label = 'Intel-Core2Duo.png'
-        elif re.match("Intel\(R\) Core\(TM\)2 Quad.*", model):
+        elif re.match(r"Intel\(R\) Core\(TM\)2 Quad.*", model):
             label = 'Intel-Core2Quad.png'
-        elif re.match("Intel\(R\) Core\(TM\)2 CPU.*", model):
+        elif re.match(r"Intel\(R\) Core\(TM\)2 CPU.*", model):
             label = 'Intel-Core2Quad.png'
-        elif re.match("Intel\(R\) Atom\(TM\) CPU.*", model):
+        elif re.match(r"Intel\(R\) Atom\(TM\) CPU.*", model):
             label = 'Intel-Atom.png'
-        elif re.match("Intel\(R\) Core\(TM\)2 Extreme CPU.*", model):
+        elif re.match(r"Intel\(R\) Core\(TM\)2 Extreme CPU.*", model):
             label = 'Intel-Core2Extreme.png'
-        elif re.match("Intel\(R\) Xeon\(TM\).*", model):
+        elif re.match(r"Intel\(R\) Xeon\(TM\).*", model):
             label = 'Intel-Xeon.png'
-        elif re.match(".*Pentium II.*", model):
+        elif re.match(r".*Pentium II.*", model):
             label = 'Intel-Pentium2.png'
-        elif re.match("Intel\(R\) Pentium\(R\) Dual CPU.*", model):
+        elif re.match(r"Intel\(R\) Pentium\(R\) Dual CPU.*", model):
             label = 'Intel-PentiumDual.png'
         return label
 
@@ -244,7 +244,7 @@ class Investigator():
         info = self.readfile("/proc/cpuinfo")
 
         if var == 'vendor':
-            vendor = re.findall("vendor_id\s*:\s*(.*)", info)
+            vendor = re.findall(r"vendor_id\s*:\s*(.*)", info)
             if vendor[core] == 'AuthenticAMD':
                 vendor[core] = 'AMD'
             elif vendor[core] == 'GenuineIntel':
@@ -253,26 +253,26 @@ class Investigator():
                 vendor[core] = 'Zhaoxin'
             return vendor[core]
         elif var == 'corespeed':
-            return re.findall("cpu MHz\s*:\s*(.*)", info)[core] + ' MHz'
+            return re.findall(r"cpu MHz\s*:\s*(.*)", info)[core] + ' MHz'
         elif var == 'model':
-            return re.findall("model name\s*:\s*(.*)", info)[core]
+            return re.findall(r"model name\s*:\s*(.*)", info)[core]
         elif var == 'cache':
-            return re.findall("cache size\s*:\s*(.*)", info)[core]
+            return re.findall(r"cache size\s*:\s*(.*)", info)[core]
         elif var == 'modelnumber':
-            return re.findall("model\s*:\s*(.*)", info)[core]
+            return re.findall(r"model\s*:\s*(.*)", info)[core]
         elif var == 'family':
-            return re.findall("cpu family\s*:\s*(.*)", info)[core]
+            return re.findall(r"cpu family\s*:\s*(.*)", info)[core]
         elif var == 'stepping':
-            return re.findall("stepping\s*:\s*(.*)", info)[core]
+            return re.findall(r"stepping\s*:\s*(.*)", info)[core]
         elif var == 'coresnum':
-            return str(len(re.findall("processor\s*:\s*(.*)", info)))
+            return str(len(re.findall(r"processor\s*:\s*(.*)", info)))
         elif var == 'flags':
-            return re.findall("flags\s*:\s*(.*)", info)[core]
+            return re.findall(r"flags\s*:\s*(.*)", info)[core]
         elif var == 'bogomips':
-            return re.findall("bogomips\s*:\s*(.*)", info)[core]
+            return re.findall(r"bogomips\s*:\s*(.*)", info)[core]
         elif var == 'width':
             if re.findall(' lm(?![-a-zA-Z0-9_])',
-                          re.findall("flags\s*:(.*)", info)[core]):
+                          re.findall(r"flags\s*:(.*)", info)[core]):
                 width = '64-bit'
             else:
                 width = '32-bit'
@@ -391,19 +391,19 @@ class Investigator():
         card_logo = self.execute('/usr/bin/lspci', 'VGA(.*)')
         if card_logo is not None:
             # Intel
-            if re.findall("Intel\s*", card_logo):
+            if re.findall(r"Intel\s*", card_logo):
                 label = 'intel.png'
             # ATI
             # ATI Technologies replace to ATI. See bug
             # https://bugs.launchpad.net/cpug/+bug/959115
-            elif re.findall("ATI\s*", card_logo):
+            elif re.findall(r"ATI\s*", card_logo):
                 label = 'ati.png'
             # Zhaoxin
-            elif re.findall("Zhaoxin\s*", card_logo):
+            elif re.findall(r"Zhaoxin\s*", card_logo):
                 label = 'zhaoxin.png'
             # nVidia
             # elif re.findall("nVidia\s*", card_logo):
-            elif re.findall("nVidia\s*", card_logo, re.I):
+            elif re.findall(r"nVidia\s*", card_logo, re.I):
                 label = 'nvidia.png'
             else:
                 label = 'unknown.png'
