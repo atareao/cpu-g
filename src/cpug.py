@@ -38,7 +38,7 @@ import time
 import datetime
 import sys
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as\
+from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as \
     FigureCanvas
 import matplotlib.ticker as ticker
 from investigator import Investigator
@@ -49,7 +49,7 @@ locale.setlocale(locale.LC_ALL, '')
 
 
 class CPUG(Gtk.Window):
-    """Description"""
+
     def __init__(self):
         Gtk.Window.__init__(self)
         self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
@@ -1054,7 +1054,7 @@ cpu-g-donde-ver-hardware-instalado/')
             self.battery_data2.set_text('--')
         current_level = bd.get_percentage()
         self.battery_level_value.set_text(
-            locale.format('%.2f', current_level) + _(' %'))
+            locale.format_string('%.2f', current_level) + _(' %'))
         self.battery_level.set_value(current_level)
         inv = Investigator()
         self.battery_capacity_level.set_text(
@@ -1062,37 +1062,37 @@ cpu-g-donde-ver-hardware-instalado/')
         self._aux_set_text(
             self.battery_voltage_now,
             inv.battery_info('voltage-now'),
-            locale.format(
+            locale.format_string(
                 '%.2f',
                 inv.battery_info('voltage-now')/1000000) + _(' V'))
         self._aux_set_text(
             self.battery_min_voltage_design,
             inv.battery_info('voltage-min-design'),
-            locale.format(
+            locale.format_string(
                 '%.2f',
                 inv.battery_info('voltage-min-design')/1000000) + _(' V'))
         self._aux_set_text(
             self.battery_charge_now,
             inv.battery_info('charge-now'),
-            locale.format(
+            locale.format_string(
                 '%.2f',
                 inv.battery_info('charge-now')/1000000) + _(' Ah'))
         self._aux_set_text(
             self.battery_charge_full,
             inv.battery_info('charge-full'),
-            locale.format(
+            locale.format_string(
                 '%.2f',
                 inv.battery_info('charge-full')/1000000) + _(' Ah'))
         self._aux_set_text(
             self.battery_charge_full_design,
             inv.battery_info('charge-full-design'),
-            locale.format(
+            locale.format_string(
                 '%.2f',
                 inv.battery_info('charge-full-design')/1000000) + _(' Ah'))
         self._aux_set_text(
             self.battery_current_now,
             inv.battery_info('current-now'),
-            locale.format(
+            locale.format_string(
                 '%.2f',
                 inv.battery_info('current-now')/1000000) + _(' A'))
         return True
@@ -1104,40 +1104,40 @@ cpu-g-donde-ver-hardware-instalado/')
     def ram_update(self):
         values = Investigator().raminfo()
         self.ram_total.set_text(
-            locale.format('%.1f', values['total'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['total'], True) + ' ' + _('MB'))
         self.ram_available.set_text(
-            locale.format('%.1f', values['available'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['available'], True) + ' ' + _('MB'))
         self.ram_available_progress.set_value(
             values['available']/values['total'])
         self.ram_used.set_text(
-            locale.format('%.1f', values['used'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['used'], True) + ' ' + _('MB'))
         self.ram_used_progress.set_value(values['used']/values['total'])
         self.ram_free.set_text(
-            locale.format('%.1f', values['free'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['free'], True) + ' ' + _('MB'))
         self.ram_free_progress.set_value(values['free']/values['total'])
         self.ram_active.set_text(
-            locale.format('%.1f', values['active'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['active'], True) + ' ' + _('MB'))
         self.ram_inactive.set_text(
-            locale.format('%.1f', values['inactive'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['inactive'], True) + ' ' + _('MB'))
         self.ram_buffers.set_text(
-            locale.format('%.1f', values['buffers'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['buffers'], True) + ' ' + _('MB'))
         self.ram_cached.set_text(
-            locale.format('%.1f', values['cached'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['cached'], True) + ' ' + _('MB'))
         values = Investigator().swapinfo()
         self.swap_total.set_text(
-            locale.format('%.1f', values['total'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['total'], True) + ' ' + _('MB'))
         if values['total'] == 0:
             values['total'] = 1
         self.swap_used.set_text(
-            locale.format('%.1f', values['used'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['used'], True) + ' ' + _('MB'))
         self.swap_used_progress.set_value(values['used']/values['total'])
         self.swap_free.set_text(
-            locale.format('%.1f', values['free'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['free'], True) + ' ' + _('MB'))
         self.swap_free_progress.set_value(values['free']/values['total'])
         self.swap_sin.set_text(
-            locale.format('%.1f', values['sin'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['sin'], True) + ' ' + _('MB'))
         self.swap_sout.set_text(
-            locale.format('%.1f', values['sout'], True) + ' ' + _('MB'))
+            locale.format_string('%.1f', values['sout'], True) + ' ' + _('MB'))
         return True
 
     def close_application(self, widget):
@@ -1266,7 +1266,7 @@ cpu-g-donde-ver-hardware-instalado/')
                            xoptions=Gtk.AttachOptions.FILL,
                            yoptions=Gtk.AttachOptions.FILL,
                            xpadding=5, ypadding=5)
-            entry.set_text(locale.format(
+            entry.set_text(locale.format_string(
                 '%.2f', device['total']/1024/1024, True) + ' ' + _('MB'))
             label = Gtk.Label(_('Used space'))
             label.set_alignment(0, 0.5)
@@ -1279,7 +1279,7 @@ cpu-g-donde-ver-hardware-instalado/')
                            xoptions=Gtk.AttachOptions.FILL,
                            yoptions=Gtk.AttachOptions.FILL,
                            xpadding=5, ypadding=5)
-            entry.set_text(locale.format(
+            entry.set_text(locale.format_string(
                 '%.2f', device['used']/1024/1024, True) + ' ' + _('MB'))
             disk_used_progress = Gtk.LevelBar()
             disk_used_progress.set_min_value(0)
@@ -1300,7 +1300,7 @@ cpu-g-donde-ver-hardware-instalado/')
                            xoptions=Gtk.AttachOptions.FILL,
                            yoptions=Gtk.AttachOptions.FILL,
                            xpadding=5, ypadding=5)
-            entry.set_text(locale.format(
+            entry.set_text(locale.format_string(
                 '%.2f', device['free']/1024/1024, True) + ' ' + _('MB'))
             disk_free_progress = Gtk.LevelBar()
             disk_free_progress.set_min_value(0)
