@@ -21,31 +21,56 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import gi
+gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
+import matplotlib
+matplotlib.use('GTK3Agg')
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as
-FigureCanvas
+from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
 
-win = Gtk.Window()
-win.connect("delete-event", Gtk.main_quit)
-win.set_default_size(800, 600)
-win.set_title("Embedding in GTK")
+class MatplotlibGTKWindow:
+    def __init__(self):
+        self.window = Gtk.Window()
+        self.window.connect("delete-event", Gtk.main_quit)
+        self.window.set_default_size(800, 600)
+        self.window.set_title("Embedding in GTK - Updated")
+        self.setup_ui()
 
-f = Figure(figsize=(5, 4), dpi=100)
-a = f.add_subplot(111)
-t = [1, 2, 3, 4]
-s = [1, 4, 9, 16]
-a.plot(t, s)
+    def setup_ui(self):
+        # Create scrolled window
+        sw = Gtk.ScrolledWindow()
+        sw.set_border_width(10)
+        sw.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
 
-sw = Gtk.ScrolledWindow()
-win.add(sw)
-# A scrolled window border goes outside the scrollbars and viewport
-sw.set_border_width(10)
+        # Create matplotlib figure and plot
+        self.figure = Figure(figsize=(5, 4), dpi=100)
+        self.axes = self.figure.add_subplot(111)
 
-canvas = FigureCanvas(f)  # a Gtk.DrawingArea
-canvas.set_size_request(400, 300)
-sw.add_with_viewport(canvas)
+        # Sample data
+        t = [1, 2, 3, 4]
+        s = [1, 4, 9, 16]
+        self.axes.plot(t, s, 'b-', linewidth=2)
+        self.axes.set_xlabel('Time')
+        self.axes.set_ylabel('Value')
+        self.axes.set_title('Sample Plot')
+        self.axes.grid(True)
 
-win.show_all()
-Gtk.main()
+        # Create canvas
+        self.canvas = FigureCanvas(self.figure)
+        self.canvas.set_size_request(600, 400)
+
+        # Add canvas to scrolled window
+        sw.add(self.canvas)
+
+        # Add scrolled window to main window
+        self.window.add(sw)
+
+    def show(self):
+        self.window.show_all()
+        Gtk.main()
+
+if __name__ == "__main__":
+    app = MatplotlibGTKWindow()
+    app.show()

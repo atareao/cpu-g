@@ -1,30 +1,52 @@
 [project]
 name = "cpu-g"
 version = "0.16.4"
-description = "Add your description here"
+description = "CPU information and monitoring tool"
 authors = [
-    { name = "Lorenzo Carbonell <atareao@atareao.es", email = "lorenzo.carbonell.cerezo@gmail.com" }
+    { name = "Lorenzo Carbonell", email = "lorenzo.carbonell.cerezo@gmail.com" }
 ]
 dependencies = [
-    "cycler==0.12.1",
-    "contourpy==1.2.0",
-    "dbus-python==1.3.2",
-    "fonttools==4.47.0",
-    "kiwisolver==1.4.5",
-    "matplotlib==3.8.2",
-    "numpy==1.26.3",
-    "packaging==23.2",
-    "pillow==10.3.0",
-    "psutil==5.9.7",
-    "pycairo==1.25.1",
-    "pygobject==3.46.0",
-    "pyparsing==3.1.1",
-    "python-dateutil==2.8.2",
-    "six==1.16.0",
+    "cycler>=0.12.1",
+    "contourpy>=1.3.3",
+    "dbus-python>=1.4.0",
+    "fonttools>=4.60.1",
+    "kiwisolver>=1.4.9",
+    "matplotlib>=3.10.8",
+    "numpy>=2.3.5",
+    "packaging>=25.0",
+    "pillow>=12.0.0",
+    "psutil>=7.1.3",
+    "pycairo>=1.29.0",
+    "pygobject>=3.54.5",
+    "pyparsing>=3.2.5",
+    "python-dateutil>=2.9.0.post0",
+    "six>=1.17.0",
+    # Jupyter/Lab
+    "ipykernel>=7.1.0",
+    "ipython>=9.7.0",
+    "jupyter-client>=8.6.3",
+    "jupyter-core>=5.9.1",
+    # System information
+    "platformdirs>=4.5.0",
+    "setuptools>=80.9.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
 license = { text = "MIT" }
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.1",
+    "pytest-cov>=7.0.0",
+    "black>=25.11.0",
+    "flake8>=7.3.0",
+    "mypy>=1.18.2",
+]
+jupyter = [
+    "jupyterlab>=4.4.10",
+    "notebook>=7.4.7",
+    "ipywidgets>=8.1.8",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -39,3 +61,6 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/cpu_g"]
+
+[project.scripts]
+cpu-g = "cpu_g.main:main"
