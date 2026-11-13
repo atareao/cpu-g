@@ -1,6 +1,6 @@
 # CPU-G
 
-![CodeFactor](https://www.codefactor.io/repository/github/signalr/signalr/badge?style=plastic)
+![CodeFactor](https://www.codefactor.io/repository/github/atareao/cpu-g/badge?style=plastic)
 
 <img src="./data/icons/cpu-g.png" align="right"
      title="CPU-G Logo" width="128" height="128">
@@ -37,7 +37,7 @@ pip3 install pycairo PyGObject psutil dbus-python matplotlib
 * Copyright © 2012 Michał Olber
 * Copyright © 2016 Lorenzo Carbonell
 
-And more
+and [other contributors](https://github.com/atareao/cpu-g/graphs/contributors)
 
 ## Screenshots
 
@@ -72,3 +72,13 @@ And more
 ### About
 
 ![About](./screenshots/cpu-g-about.png)
+
+## Author
+
+👤 **Lorenzo Carbonell** — [@atareao](https://github.com/atareao)
+
+More apps and articles on [atareao.es](https://atareao.es).
+
+## License
+
+GPL-3.0 — see [LICENSE](./LICENSE) for details.
