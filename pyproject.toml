@@ -23,16 +23,16 @@ dependencies = [
     "six==1.16.0",
 ]
 readme = "README.md"
-requires-python = ">= 3.8"
+requires-python = ">= 3.9"
 license = { text = "MIT" }
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.rye]
-managed = true
-dev-dependencies = []
+[tool.uv]
+# cpu-g is an application, not a distributable package.
+package = false
 
 [tool.hatch.metadata]
 allow-direct-references = true

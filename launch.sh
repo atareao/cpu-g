@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-python -m venv env
-source env/bin/activate
-pip install -r requirements.txt
-./bin/cpu-g
+# Sync the environment from uv.lock and launch cpu-g.
+uv sync
+uv run ./bin/cpu-g
