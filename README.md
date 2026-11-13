@@ -29,6 +29,16 @@ sudo apt install libgirepository1.0-dev gcc libcairo2-dev pkg-config python3-dev
 pip3 install pycairo PyGObject psutil dbus-python matplotlib
 ```
 
+### Development
+
+The project dependencies are managed with [uv](https://docs.astral.sh/uv/).
+The lockfile is `uv.lock`:
+
+```
+uv sync
+uv run ./bin/cpu-g
+```
+
 ## Credits
 
 * Copyright © 2009-2010 Fotis Tsamis
